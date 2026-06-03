@@ -89,48 +89,148 @@ export default defineConfig({
 						list: true,
 						options: [
 							{
-								value: "technical",
-								label: "Technical",
-							},
-							{
 								value: "advice",
 								label: "Advice",
-							},
-							{
-								value: "events",
-								label: "Events",
-							},
-							{
-								value: "learning",
-								label: "Learning",
-							},
-							{
-								value: "meta",
-								label: "Meta",
-							},
-							{
-								value: "work",
-								label: "Work",
-							},
-							{
-								value: "personal",
-								label: "Personal",
-							},
-							{
-								value: "projects",
-								label: "Projects",
-							},
-							{
-								value: "opentelemetry",
-								label: "OpenTelemetry",
 							},
 							{
 								value: "AI",
 								label: "AI Stuff",
 							},
 							{
+								value: "argocd",
+								label: "ArgoCD",
+							},
+							{
+								value: "azure",
+								label: "Azure",
+							},
+							{
+								value: "cert-manager",
+								label: "cert-manager",
+							},
+							{
+								value: "conferences",
+								label: "Conferences",
+							},
+							{
 								value: "devcontainers",
 								label: "Dev Containers",
+							},
+							{
+								value: "devrel",
+								label: "DevRel",
+							},
+							{
+								value: "docker",
+								label: "Docker",
+							},
+							{
+								value: "dynatrace",
+								label: "Dynatrace",
+							},
+							{
+								value: "events",
+								label: "Events",
+							},
+							{
+								value: "github-codespaces",
+								label: "GitHub Codespaces",
+							},
+							{
+								value: "google-cloud",
+								label: "Google Cloud",
+							},
+							{
+								value: "hashicorp",
+								label: "Hashicorp",
+							},
+							{
+								value: "hashiqube",
+								label: "Hashiqube",
+							},
+							{
+								value: "kubernetes",
+								label: "Kubernetes",
+							},
+							{
+								value: "kubecon",
+								label: "KubeCon",
+							},
+							{
+								value: "learning",
+								label: "Learning",
+							},
+							{
+								value: "lightstep",
+								label: "Lightstep",
+							},
+							{
+								value: "mcp",
+								label: "MCP",
+							},
+							{
+								value: "nomad",
+								label: "Nomad",
+							},
+							{
+								value: "observability",
+								label: "Observability",
+							},
+							{
+								value: "opentelemetry",
+								label: "OpenTelemetry",
+							},
+							{
+								value: "otel-collector",
+								label: "Otel Collector",
+							},
+							{
+								value: "opamp",
+								label: "OTel OpAMP",
+							},
+							{
+								value: "otel-operator",
+								label: "OTel Operator",
+							},
+							{
+								value: "personal",
+								label: "Personal",
+							},
+							{
+								value: "platform-engineering",
+								label: "Platform Engineering",
+							},
+							{
+								value: "podcast",
+								label: "Podcast",
+							},
+							{
+								value: "projects",
+								label: "Projects",
+							},
+							{
+								value: "sre",
+								label: "SRE",
+							},
+							{
+								value: "technical",
+								label: "Technical",
+							},
+							{
+								value: "tekton",
+								label: "Tekton",
+							},
+							{
+								value: "terraform",
+								label: "Terraform",
+							},
+							{
+								value: "thought-leadership",
+								label: "Thought Leadership",
+							},
+							{
+								value: "vibe-coding",
+								label: "Vibe Coding",
 							},
 						],
 					},
