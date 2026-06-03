@@ -1,9 +1,11 @@
-Welcome to this blog template by [cassidoo](https://cassidoo.co)!
+<div class="about-card">
 
-It's using Astro and TinaCMS. You can [clone it on GitHub](https://github.com/cassidoo/blahg) to use it for yourself, and see how it works! I would _love_ if you told me when you do use it, I love seeing variations on it!
+<div style="width:75%; margin:0 auto;">
 
-The tags at the bottom of the page are dynamically generated. The more tags you use, the more tags are added to the list! Posts are simple markdown files.
+<hr>
 
-You should also check out [my newsletter](https://cassidoo.co/newsletter) or my [GitHub profile](https://github.com/cassidoo). Or don't. Follow your dreams.
+</div>
 
-Enjoy!
+My name is Adriana Villela, and I am a serial blogger, international keyynote speaker, host of the [Geeking Out podcast](https://bio.site/geekingout), CNCF Ambassador, OpenTelemetry Community Manager, and maintainer of the OpenTelemetry End User SIG. By day, I focus on Observability and OpenTelemetry, as a Principal Developer Advocate at Dynatrace. By night, I climb walls. I also love capybaras, because they make me happy.
+
+In past lives, I've managed both a Platform Engineering team and Observability Practices team at Tucows. I've also worked at various large-scale enterprises as both an individual contributor and leader, including Bank of Montreal, Ceridian, and Accenture.

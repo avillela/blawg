@@ -120,6 +120,18 @@ export default defineConfig({
 								value: "projects",
 								label: "Projects",
 							},
+							{
+								value: "opentelemetry",
+								label: "OpenTelemetry",
+							},
+							{
+								value: "AI",
+								label: "AI Stuff",
+							},
+							{
+								value: "devcontainers",
+								label: "Dev Containers",
+							},
 						],
 					},
 					{

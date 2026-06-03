@@ -1,0 +1,30 @@
+{
+    "name": "default",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+      "ghcr.io/devcontainers/features/node:2": {
+        "version": "22",
+      },
+      "ghcr.io/devcontainers/features/python:1": {
+        "version": "3.14",
+      },
+      "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+    },
+    "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/docker-in-docker",
+        "ghcr.io/devcontainers/features/node",
+        "ghcr.io/devcontainers/features/python",
+        "ghcr.io/anthropics/devcontainer-features/claude-code",
+    ],
+    "hostRequirements": {
+      "cpus": 5,
+      "memory": "32gb",
+      "storage": "16gb"
+    },
+    "remoteEnv": {
+      "PODMAN_USERNS": "keep-id"
+    },
+    "containerUser": "vscode",
+    "postCreateCommand": ".devcontainer/post-create.sh",
+  }
