@@ -1,0 +1,9 @@
+[build]
+  command = "tinacms build && astro build"
+  publish = "dist"
+
+[env]
+  NODE_VERSION = "22"
+
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "tina/__generated__,public/admin"
