@@ -1,0 +1,174 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ColorScript from "../components/ColorScript.astro";
+import oreillyLogo from "../assets/oreilly.svg";
+
+import { title, subtitle } from "../settings/settings.json"
+
+const sections = [
+	{
+		name: "Social Media",
+		links: [
+			{ label: "Instagram", url: "https://www.instagram.com/adrianamvillela", icon: "instagram", color: "#eb4888" },
+			{ label: "LinkedIn", url: "https://linkedin.com/in/adrianavillela", icon: "linkedin", color: "#10a2f5" },
+			{ label: "Bluesky", url: "https://bsky.app/profile/adrianamvillela", icon: "bluesky", color: "#1185fe" },
+			{ label: "Mastodon", url: "https://hachyderm.io/@adrianamvillela", icon: "mastodon", color: "#6364ff" },
+			{ label: "GitHub", url: "https://github.com/avillela", icon: "github", color: "#333" },
+			{ label: "YouTube", url: "https://www.youtube.com/@adrianamvillela", icon: "youtube", color: "#ff0000" },
+		]
+	},
+	{
+		name: "Content & Learning",
+		links: [
+			{ label: "Featured Talks", url: "https://youtube.com/playlist?list=PL2n5EpcOFZfuBRsG6CFY3swZfKbW9_HCL&si=U3Pp1Yq-sagHEyP6", icon: "youtube", color: "#ff0000" },
+			{ label: "Panels & Webinars", url: "https://youtube.com/playlist?list=PL2n5EpcOFZfuAdcp3x02fGcvvzo0jji7p&si=BbSr7VBPFIsqgzZZ", icon: "youtube", color: "#ff0000" },
+			{ label: "Podcast Appearances", url: "https://youtube.com/playlist?list=PL2n5EpcOFZfuZUHv35RwTPzATs3ZWqsg2&si=Scn9oZ6dWioZWrNN", icon: "youtube", color: "#ff0000" },
+			{ label: "O'Reilly: Fundamentals of Observability", url: "https://learning.oreilly.com/course/fundamentals-of-observability/0636920926597/", icon: "oreilly", color: "#ffffff" },
+		]
+	},
+];
+
+const getIconUrl = (iconName: string) => `https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/${iconName}.svg`;
+---
+
+<!doctype html>
+<html lang="en-us">
+	<BaseHead title={`Socials - ${title}`} description={subtitle} />
+	<body>
+		<Header />
+		<main>
+			<content>
+				<p class="description">Connect with me and find my content</p>
+
+				{sections.map((section) => (
+					<div class="section">
+						<h2>{section.name}</h2>
+						<div class="cards-grid">
+							{section.links.map((link) => (
+								<a href={link.url} target="_blank" rel="noopener noreferrer" class="card">
+									<div class="icon-wrapper" style={`--icon-color: ${link.color}`}>
+										{link.icon === "oreilly" ? (
+											<img
+												src={oreillyLogo.src}
+												alt={link.label}
+												class="icon oreilly-icon"
+											/>
+										) : (
+											<img
+												src={getIconUrl(link.icon)}
+												alt={link.label}
+												class="icon"
+											/>
+										)}
+									</div>
+									<div class="card-content">
+										<h3>{link.label}</h3>
+									</div>
+								</a>
+							))}
+						</div>
+					</div>
+				))}
+			</content>
+		</main>
+		<Footer />
+		<ColorScript />
+	</body>
+</html>
+
+<style>
+	.description {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.section {
+		margin-bottom: 3rem;
+	}
+
+	.section h2 {
+		font-size: 1.3rem;
+		margin-bottom: 1.5rem;
+		border-bottom: 2px solid var(--gray);
+		padding-bottom: 0.5rem;
+	}
+
+	.cards-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		padding: 1.5rem;
+		border: 2px solid var(--gray);
+		border-radius: 12px;
+		background-color: #e6f4ff;
+		text-decoration: none;
+		transition: all 0.3s ease;
+	}
+
+	.card:hover {
+		border-color: currentColor;
+		transform: translateY(-4px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+
+	.icon-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		background-color: var(--icon-color);
+		flex-shrink: 0;
+	}
+
+	.icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		filter: brightness(0) invert(1);
+	}
+
+	.oreilly-icon {
+		filter: none;
+	}
+
+	.card-content {
+		text-align: center;
+	}
+
+	.card-content h3 {
+		margin: 0;
+		font-size: 1rem;
+		color: #1a1a1a;
+	}
+
+	@media (max-width: 640px) {
+		.cards-grid {
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 1rem;
+		}
+
+		.card {
+			padding: 1rem;
+		}
+
+		.icon-wrapper {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
+
+		.icon {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+	}
+</style>

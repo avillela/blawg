@@ -1,0 +1,336 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ColorScript from "../components/ColorScript.astro";
+
+import { title, subtitle } from "../settings/settings.json"
+
+const talks = [
+	{
+		year: 2026,
+		videos: [
+			{
+				title: "Devoxx Greece 2026 - Uncovered: The Hard Truth About OpenTelemetry's Vendor Neutrality",
+				url: "https://youtu.be/sV3swTMfpKM?si=tFpkx7_ZDY-zrMlR"
+			},
+			{
+				title: "Devoxx Greece 2026 - The lazy developer's guide to observing your own code",
+				url: "https://www.youtube.com/watch?v=sV3swTMfpKM"
+			},
+			{
+				title: "OTel Updates + Spec-tacular Game Show",
+				url: "https://youtu.be/cjLh36N_c7k?si=RxiZfO4cGXE6_3Oc"
+			},
+			{
+				title: "OTel Project Updates",
+				url: "https://youtu.be/XpMWqeAey1Q?si=QasKyIluZw6tTErT&t=785"
+			},
+			{
+				title: "Maintainer Summit: Building Bridges: How the OTel End User SIG Helps Foster Community",
+				url: "https://youtu.be/6UVY1tUOgaw?si=PE4g48ToYfmBkF8B"
+			},
+			{
+				title: "OpenTelemetry At Scale 101: Intro to OpAMP",
+				url: "https://youtu.be/zlGkhvhE-KQ?si=xkCT0-TTCbXsPl9b"
+			},
+		]
+	},
+	{
+		year: 2025,
+		videos: [
+			{
+				title: "An OTel Carol: Past, Present, and Future of OpenTelemetry",
+				url: "https://youtu.be/SoMAupGzDY0?si=2GNOcdLzassMX60p"
+			},
+			{
+				title: "OSSummit Japan: The Power of Community",
+				url: "https://youtu.be/uVPj8k12oYE?si=OrwGq0HkqtAYbZOe"
+			},
+			{
+				title: "OSSummit Japan: Devs Just Wanna Have Fun",
+				url: "https://youtu.be/5A2jOxCC08A?si=P1qs3TXnG6D1v45m"
+			},
+			{
+				title: "Cloud Native Days Bergen: Observability is a Team Sport",
+				url: "https://youtu.be/bSa6bBLymFE?si=pdB64unIhZD2HCNa"
+			},
+			{
+				title: "OSOD: The Truth About OpenTelemetry Vendor Neutrality",
+				url: "https://youtu.be/TK6evvTQVjw?si=vux1sEO8LYWJ-m8Z"
+			},
+			{
+				title: "Cloud Native Days Austria: Uncovered: The Truth About OpenTelemetry Vendor Neutrality",
+				url: "https://youtu.be/1gxLseuaTdM?si=5iBkeoGotxv7JsY5"
+			},
+			{
+				title: "SCaLE 22x: Infrastructure-as-Code 3 Ways",
+				url: "https://www.socallinuxexpo.org/scale/22x/presentations/infrastructure-code-3-ways"
+			},
+			{
+				title: "SCaLE 22x: When Things Go Sideways: Troubleshooting the OpenTelemetry Collector",
+				url: "https://www.socallinuxexpo.org/scale/22x/presentations/when-things-go-sideways-troubleshooting-otel-operator"
+			},
+			{
+				title: "E20: Livestream on M.A.I.N",
+				url: "https://www.youtube.com/watch?v=fhR9ZL7NvbE"
+			},
+			{
+				title: "Dynatrace AMA: From Data to Insights",
+				url: "https://www.youtube.com/watch?v=wI4RyxvQyHs"
+			},
+			{
+				title: "Solving for Change Podcast",
+				url: "https://youtu.be/DaP0aESniwM?si=Js8OcKAksYstoKfM"
+			},
+			{
+				title: "KubeCon Japan: Green OpenTelemetry: Have Your Cake and Eat it Too",
+				url: "https://youtu.be/XNLC3TVB868?si=aO7PewfQ-X3Ve6nK"
+			},
+			{
+				title: "Call for Proposals 101: Mastering the Art of CFP Writing",
+				url: "https://youtu.be/30zD8d33i_o?si=FgUxEGx82Q6cVN6g"
+			},
+			{
+				title: "Observe All The Things Webinar",
+				url: "https://www.youtube.com/live/ArgPxFru5ag?si=nBdSx-NpKCockJ9E"
+			},
+			{
+				title: "OTel Community Day Webinar",
+				url: "https://www.youtube.com/live/A8blir4JoRw?si=GWYERXUJ8dd_SQPL"
+			},
+			{
+				title: "In Love with OTel",
+				url: "https://youtu.be/1CUMo-b50-Q?si=ABYYX9G6b2ztrf2y"
+			},
+			{
+				title: "KubeCon EU 2025: OTel Me How To Get My Open Source Community Taken Seriously",
+				url: "https://youtu.be/Hdrf5QosFTw?si=WiCVFoNFIA7Qw0qV"
+			},
+			{
+				title: "KubeCon EU 2025: How Green is My OpenTelemetry Collector?",
+				url: "https://youtu.be/ea2CKLX5vEs?si=ZkLQIVU17pjBwGys"
+			},
+			{
+				title: "Observability Day EU 2025: Putting the Experience in UX",
+				url: "https://youtu.be/UXlKChQLcPk?si=oa2hI_7u8oXeKVIi"
+			},
+		]
+	},
+	{
+		year: 2024,
+		videos: [
+			{
+				title: "Holiday Sweaters and OTel Insights",
+				url: "https://youtu.be/YeZdX-R2vhc?si=veC28Yha01wGJoms"
+			},
+			{
+				title: "Exploring Platform Engineering at KubeCon Salt Lake City",
+				url: "https://techstrong.tv/videos/kubecon-cloudnativecon-north-america-2024/exploring-platform-engineering-at-kubecon-salt-lake-city-kubecon-slc-2024"
+			},
+			{
+				title: "Humans of OTel Livestream from KubeCon",
+				url: "https://www.youtube.com/live/LjD454EPMgQ?si=QKuCe_-YmC-lMKh8"
+			},
+			{
+				title: "Road To KubeCon NA 2024: Adriana Villela",
+				url: "https://www.youtube.com/watch?v=hZRtJV1vmYQ"
+			},
+			{
+				title: "Observability Day NA 2024: When Things Go Sideways: Troubleshooting the OpenTelemetry Operator",
+				url: "https://youtu.be/Ms0Yvtm_4hE?si=yUhV6S6Ivo6mWK2Y"
+			},
+			{
+				title: "Platform Engineering Day NA 2024: Secure Your Systems the Better Way with Policy-as-Code",
+				url: "https://youtu.be/QwH3dZ-ag70?si=hgb-2FlwTEPSej69"
+			},
+			{
+				title: "O11ycast Ep. #75: O11yneering with Daniel Ravenstone and Adriana Villela",
+				url: "https://www.heavybit.com/library/podcasts/o11ycast/ep-75-o11yneering-with-daniel-ravenstone-and-adriana-villela"
+			},
+			{
+				title: "Scaling Tech Podcast - Mastering OpenTelemetry and Observability",
+				url: "https://youtu.be/TsctD9N6YR4?si=nFglHM_IvT8P1gZR"
+			},
+			{
+				title: "Open Source Summit EU: Dude, Where's My Error?",
+				url: "https://youtu.be/YbXQYZKgSuY?si=wcEo1dBTAKbwvPR7"
+			},
+			{
+				title: "Cloud Native Podcast episode",
+				url: "https://youtu.be/pz1rYVFr-6Q?si=LR7vLgkfjs5wZWCv"
+			},
+			{
+				title: "Women of CloudNative podcast",
+				url: "https://www.youtube.com/watch?v=Ws6ougPhIzM"
+			},
+			{
+				title: "Portal Talks: Onboarding Doesn't Have to Suck",
+				url: "https://youtu.be/Jl3tUIckZT0"
+			},
+			{
+				title: "Conf42 Observability - Observability Panel",
+				url: "https://www.conf42.com/Observability_2024__panel_discussion"
+			},
+			{
+				title: "KuberTENes Celebration - CNCF Islamabad",
+				url: "https://www.youtube.com/live/wb2-eUhHPRc?si=O-g7ypZ5bFNVRdr5"
+			},
+			{
+				title: "OTel Q&A with Tracetest",
+				url: "https://youtu.be/KR8j11FECgc?si=oU080A8SQN6q56NS"
+			},
+			{
+				title: "KuberTENes - Kubicast",
+				url: "https://www.youtube.com/watch?v=Ej71FdKNgNs&t=3357s"
+			},
+			{
+				title: "Enlightning - Observability 2.0: Not Just Another Buzzword",
+				url: "https://www.youtube.com/live/WiFoSr54kjM?si=va4aEv8--TuplBHL"
+			},
+			{
+				title: "DevOps Days Montreal Talk: Beyond Platform Engineering",
+				url: "https://youtu.be/a8eomJYDJ88?si=CnLTV7FbOtkGDP2J"
+			},
+			{
+				title: "Kubicast - 10 years of Kubernetes promo video (Portuguese)",
+				url: "https://youtu.be/zl86cYfJh04"
+			},
+			{
+				title: "TILConf: How to be an Ethical Engineering Leader",
+				url: "https://til-conf.netlify.app/agenda-day1/"
+			},
+			{
+				title: "Is It Observable Interviews",
+				url: "https://youtu.be/AgkgYl8Vpls?si=4tiv8R6UeBt8YWGN"
+			},
+			{
+				title: "Open Source Summit: Onboarding Doesn't Have to Suck",
+				url: "https://youtu.be/zN6mXIsekoA?si=0cKaFKjYhjh9xySx"
+			},
+			{
+				title: "Observable Lightning Talks April 2024",
+				url: "https://youtu.be/TZ0euOmz0kU?si=474-kAREtfGS-gN8"
+			},
+			{
+				title: "KubeCon NA 2023: Empowering Users Through Platform Engineering",
+				url: "https://youtu.be/18OzVFoOZTU?si=gTRd14wSfmAfpCbO"
+			},
+		]
+	},
+	{
+		year: 2023,
+		videos: [
+			{
+				title: "MC: HashiTalks Deploy",
+				url: "https://www.youtube.com/live/GAQegAt39Fo?si=Q941JqH8ebvwJgD_&t=14644"
+			},
+			{
+				title: "Monitorama: Observability Anti-Patterns",
+				url: "https://www.youtube.com/watch?v=CRJcc1TqBhM"
+			},
+			{
+				title: "Dose de Telemetria",
+				url: "https://www.youtube.com/live/wOIN9cNKHwo?feature=share"
+			},
+			{
+				title: "AllThingsOpen: Be Nice In The Sandbox",
+				url: "https://2023.allthingsopen.org/sessions/be-nice-in-the-sandbox-how-opensource-gets-competitors-to-collaborate/"
+			},
+			{
+				title: "NewRelic x Honeycomb x Lightstep Live Stream",
+				url: "https://www.youtube.com/live/4Aqp5zpPpsU?feature=share"
+			},
+			{
+				title: "Cloud Native Rejekts (Amsterdam 2023)",
+				url: "https://youtu.be/F1GsX2VTVxk?si=pD6zjq7WmcWUKNZQ"
+			},
+		]
+	},
+];
+---
+
+<!doctype html>
+<html lang="en-us">
+	<BaseHead title={`Talks - ${title}`} description={subtitle} />
+	<body>
+		<Header />
+		<main>
+			<content>
+				<p class="description">A collection of my talks, webinars, and podcast appearances</p>
+
+				{talks.map((yearGroup) => (
+					<div class="year-section" id={`year-${yearGroup.year}`}>
+						<h2><a href={`#year-${yearGroup.year}`}>{yearGroup.year}</a></h2>
+						<ul class="talks-list">
+							{yearGroup.videos.map((talk) => (
+								<li>
+									<a href={talk.url} target="_blank" rel="noopener noreferrer">
+										{talk.title}
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</content>
+		</main>
+		<Footer />
+		<ColorScript />
+	</body>
+</html>
+
+<style>
+	.description {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	.year-section {
+		margin-bottom: 3rem;
+	}
+
+	.year-section h2 {
+		font-size: 1.8rem;
+		margin-bottom: 1rem;
+		border-bottom: 2px solid var(--color-border);
+		padding-bottom: 0.5rem;
+	}
+
+	.year-section h2 a {
+		text-decoration: none;
+	}
+
+	.year-section h2 a:hover {
+		text-decoration: underline;
+	}
+
+	.talks-list {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.talks-list li {
+		margin-bottom: 0.75rem;
+		padding-left: 1.5rem;
+		position: relative;
+	}
+
+	.talks-list li::before {
+		content: "■";
+		color: #f5b3d4;
+		position: absolute;
+		left: 0;
+	}
+
+	.talks-list a {
+		color: var(--color-text);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.talks-list a:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
+	}
+</style>
