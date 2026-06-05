@@ -1,0 +1,14 @@
+{
+	"name": "import-talks",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"start": "node index.mjs"
+	},
+	"dependencies": {
+		"commander": "^14.0.0",
+		"googleapis": "^173.0.0",
+		"inquirer": "^14.0.0"
+	}
+}
