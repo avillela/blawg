@@ -25,3 +25,5 @@ node_modules
 
 temp
 _bmad
+*credentials*
+*secret*
