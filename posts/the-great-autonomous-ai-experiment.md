@@ -301,7 +301,7 @@ That’s all well and good, but let’s face it. No matter how good a job you do
 Which brings me to my next point… 
 
 
-### Agents needs intervention
+### Agents need intervention
 
 In software development, we know that the further along the system development life cycle (SDLC) you ignore the problem, the more difficult it will be to fix.
 
