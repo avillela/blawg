@@ -11,6 +11,9 @@ tags:
   - vibe-coding
 ---
 
+![Bee pollinating a flower. Photo by author.](images/the-great-agentic-ai-experiment/bee-and-flower.jpg "A close‑up of a bee perched on a round cluster of purple flowers, with a blurred outdoor background.")
+
+
 We’re a few years deep into The Great AI Experiment, and there is still a lot of debate out there on how to incorporate AI effectively into our tech lives. On the one extreme, we have those who have embraced AI wholeheartedly. On the other extreme, we have those who refuse to do anything AI. As with any big technology disruption, the answer lies somewhere in the middle.
 
 Like many of my peers in tech, I am still struggling to find that “right balance” of AI use in my work, and to help me, I’ve been experimenting and educating myself on various topics. My latest set of experiments have brought me to the wonderful world of autonomous AI workflows, which is what I’ll be talking about today.
