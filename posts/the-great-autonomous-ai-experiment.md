@@ -1,6 +1,6 @@
 ---
 title: The Great Autonomous AI Experiment
-slug: the-great-autonomous-ai-experiment
+slug: BLAH-great-autonomous-ai-experiment
 description: Exploring autonomous AI development using Paperclip and BMAD
 tags:
   - AI
