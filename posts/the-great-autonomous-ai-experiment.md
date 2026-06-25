@@ -69,3 +69,5 @@ Paperclip agents are defined in an `AGENTS.md` file, and they include things lik
 Additionally, Paperclip allows you to define goals, create projects, and assign agents to project tasks. You can associate goals to a project, and within a project, you can create issues and assign them to an agent.
 
 All of this is packaged neatly into a nice web interface.
+
+![Paperclip UI](/assets/paperclip-dashboard.png "Paperclip UI")
