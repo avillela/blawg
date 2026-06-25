@@ -117,3 +117,37 @@ I would like recommendations of stats to collect for both YouTube videos and pod
 ```
 
 We chatted back-and forth a bunch, and he came up with a nice app for me.
+
+Damn, Winston…nice job. I was pretty happy…until I realized that I wasn’t really taking advantage of what Paperclip had to offer. What was the point of having this whole company of autonomous agents with different roles, handing tasks off to one another, if I was only engaging with just one agent?
+
+Also…where were the other agents, anyway?
+
+Confused, I messaged Henrik about the lack of agent handoff. He (rightly) pointed out that I needed to have done the following:
+
+* Create the issue in Paperclip
+* Assign it to the CEO, explicitly saying that it needed to follow the BMAD method
+
+Oh…DUH. 🙄
+
+So I started over.
+
+### Second try: Working with a team of agents
+
+Okay. Time to do this properly. I decided to nuke my Paperclip + BMAD environment and start from scratch…including writing the app.
+
+I wanted to do this in a more Paperclip-native way, so here’s what I did the second time around:
+
+* Created a goal in Paperclip: “Display stats for the Geeking Out Podcast from multiple sources in a single dashboard”.
+* Created a project called *Geeking Out Podcast Stats Dashboard*. I then attached the above goal to the project.
+* Created a markdown file in my repository with the project requirements. It included:
+  * Goal
+  * Language and framework used for development
+  * Data to display
+  * Data filter options
+* Created a new issue inside the new project, and assigned it to the CEO. My new prompt was:
+
+```
+Implement the requirements from the file /workspaces/devrel-toolkit/requirements/podcast-stats-requirements.md"
+```
+
+The new prompt was encapsulated in a markdown file in my repository, and had way more details than the prompt I used the first time around.
