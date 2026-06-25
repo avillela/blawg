@@ -25,7 +25,7 @@ But before we dig in, let’s take a little detour and do a little level-set on 
 
 **Harness:** A harness adds infrastructure around your agent. It is the agent’s operational runtime, providing the infrastructure that supports the agent. It does things like memory management, observability, and lifecycle management. Tools like [Goose](https://goose-docs.ai), Claude Code, and GitHub Copilot serve as both agents and harnesses. Just to add to confusion to an already confusing topic. 🫠💀
 
-*(*) Kinda…[AI has been around for a few decades](https://www.tableau.com/data-insights/ai/history).\*
+> *(\*) Kinda…[AI has been around for a few decades](https://www.tableau.com/data-insights/ai/history).*
 
 ## The Experiment
 
@@ -70,4 +70,50 @@ Additionally, Paperclip allows you to define goals, create projects, and assign 
 
 All of this is packaged neatly into a nice web interface.
 
-![Paperclip UI](/assets/paperclip-dashboard.png "Paperclip UI")
+![Paperclip UI. Made with Claude.](/assets/paperclip-dashboard.png "A dark dashboard showing agent counts, zero recent activity, and a sidebar listing work items, projects, and multiple agent roles.")
+
+As I said previously, I wanted a team of agents to do my bidding. After chatting with my co-worker and teammate, [Henrik Rexed](https://www.linkedin.com/in/hrexed/), who has done a LOT of work in this area, I decided to set up BMAD agents in Paperclip. In fact, I used his repository, [Papreclip-Bmad-Crew](https://github.com/henrikrexed/Paperclip-Bmad-Crew/tree/main), as a starting point for my explorations, since there’s no official documentation for setting up BMAD with Paperclip.
+
+**BMAD** is a tool that provides AI agent skills for software development. Each agent has a set of skills that are mapped to different roles/personas in an Agile software development team. [I’ve played with BMAD before](https://adrianavillela.com/post/my-thoughts-on-vibe-coding-have-evolved/), and loved the experience of using it for AI-assisted software development.
+
+I chose **Claude Sonnet** as the underlying LLM for my agents. Sonnet is a pretty powerful model, and it doesn’t burn through tokens like Opus does.
+
+> **✨In a nutshell:** Paperclip manages the AI agents, and BMAD supplies the agent’s base skills, with Claude doing the work.
+
+![Using Claude, BMAD, and Paperclip](/assets/paperclip-architecture.png "Short alt text:
+A three‑layer diagram showing Paperclip at the top, BMAD skill roles in the middle, and Claude Sonnet as the model executing those skills at the bottom.")
+
+### The Team
+
+Using the agent definitions from [Henrik’s repository](https://github.com/henrikrexed/Paperclip-Bmad-Crew/tree/main), the team was structured as follows:
+
+* **CEO:** Manages the organization.
+* **Crew Manager (CTO):** Manages the development team. Reports to the CEO.
+* **Development team:**
+  * **Winston:** Architecture and implementation
+  * **Mary:** Research and market analysis
+  * **Amelia:** Dual personas, serving as both developer and code reviewer
+  * **John:** Product manager who translates user needs into product requirements
+  * **Story writer:** Bridges product planning and development execution
+  * **Testing architect:** Test automation and quality assurance
+  * **Challenger:** Looks at things with a critical eye.
+
+You may notice in the diagram above that there are also O11y Engineer and DevOps Engineer agents. I personally didn’t use them for my little side project, and they don’t map to BMAD skills. If you want to leverage them (and other Paperclip-ready agents) for one of your projects, you should check out Henrik’s [GitHub repository of shareable Paperclip agents](https://github.com/henrikrexed/PaperClip-Agents).
+
+### The project
+
+To test this setup, I came up with an app idea. I have a podcast called [Geeking Out](https://bio.site/geekingout). I publish episodes to various podcasting platforms (e.g. Apple Music, Spotify, Amazon Music) using a tool called [Simplecast](https://geeking-out.simplecast.com). I also publish episodes on [YouTube](https://youtube.com/@geekingout_pod). I can’t view consolidated podcast stats across both tools, so I thought it would be useful to create a tool that pulls the stats for my podcast from YouTube and Simplecast onto a single dashboard.
+
+And with that project in mind, away I went!
+
+### First try: Winston built my app for me
+
+After setting up my BMAD crew in Paperclip, I created an issue in Paperclip, and assigned it to Winston, who, you may recall, is the architect agent. The issue stated:
+
+```
+I would like collect stats from my YouTube channel (https://youtube.com/@geekingout_pod) and from my podcast hosted at https://geeking-out.simplecast.com.
+I would like build an app that lets me see all of my stats in one place and and exports them to a PDF or spreadsheet (options for both).
+I would like recommendations of stats to collect for both YouTube videos and podcast episodes, and the best way to display them.
+```
+
+We chatted back-and forth a bunch, and he came up with a nice app for me.
