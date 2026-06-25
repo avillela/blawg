@@ -1,7 +1,7 @@
 ---
-title: "The Great Agentic AI Experiment"
-slug: the-great-agentic-ai-experiment
-description: "Exploring prompt-based workflow orchestration with MCP servers and Goose"
+title: "The Great Autonomous AI Experiment"
+slug: the-great-autonomous-ai-experiment
+description: "Exploring autonomous AI workflows using Paperclip and BMAD"
 added: "Jun 25, 2026"
 tags:
   - technical
