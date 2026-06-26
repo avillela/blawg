@@ -1,7 +1,7 @@
 ---
-title: "The Great Autonomous AI Experiment"
+title: "Autonomous AI Software Development: Good Idea, or Bad Idea?"
 slug: the-great-autonomous-ai-experiment
-description: "Exploring autonomous AI workflows using Paperclip and BMAD"
+description: "Exploring autonomous AI software development using Paperclip and BMAD"
 added: "Jun 25, 2026"
 tags:
   - technical
