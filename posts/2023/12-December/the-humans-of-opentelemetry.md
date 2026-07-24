@@ -9,6 +9,7 @@ tags:
   - observability
   - conferences
   - kubecon
+  - "2023"
 ---
 
 

@@ -7,6 +7,7 @@ tags:
   - technical
   - opentelemetry
   - dynatrace
+  - "2024"
 ---
 
 

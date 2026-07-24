@@ -7,6 +7,7 @@ tags:
   - technical
   - opentelemetry
   - observability
+  - "2022"
 ---
 
 

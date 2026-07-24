@@ -8,6 +8,7 @@ tags:
   - nomad
   - hashiqube
   - hashicorp
+  - "2022"
 ---
 
 

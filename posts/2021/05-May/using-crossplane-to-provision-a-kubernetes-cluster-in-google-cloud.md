@@ -7,6 +7,7 @@ tags:
   - technical
   - google-cloud
   - kubernetes
+  - "2021"
 ---
 
 

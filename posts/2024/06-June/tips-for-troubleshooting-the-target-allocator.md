@@ -9,6 +9,7 @@ tags:
   - observability
   - otel-collector
   - otel-operator
+  - "2024"
 ---
 
 

@@ -8,6 +8,7 @@ tags:
   - observability
   - opentelemetry
   - otel-operator
+  - "2024"
 ---
 
 

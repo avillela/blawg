@@ -7,6 +7,7 @@ tags:
   - technical
   - hashicorp
   - terraform
+  - "2022"
 ---
 
 

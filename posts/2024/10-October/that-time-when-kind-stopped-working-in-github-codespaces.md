@@ -8,6 +8,7 @@ tags:
   - kubernetes
   - github-codespaces
   - devcontainers
+  - "2024"
 ---
 
 

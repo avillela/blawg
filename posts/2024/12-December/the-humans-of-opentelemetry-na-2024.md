@@ -9,6 +9,7 @@ tags:
   - opentelemetry
   - observability
   - conferences
+  - "2024"
 ---
 
 

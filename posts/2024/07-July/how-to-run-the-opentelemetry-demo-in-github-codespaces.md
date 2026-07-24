@@ -7,6 +7,7 @@ tags:
   - technical
   - opentelemetry
   - devcontainers
+  - "2024"
 ---
 
 

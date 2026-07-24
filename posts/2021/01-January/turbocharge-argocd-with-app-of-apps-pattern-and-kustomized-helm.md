@@ -7,6 +7,7 @@ tags:
   - technical
   - argocd
   - kubernetes
+  - "2021"
 ---
 
 

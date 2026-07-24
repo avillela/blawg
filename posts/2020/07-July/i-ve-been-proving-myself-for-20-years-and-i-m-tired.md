@@ -8,6 +8,7 @@ tags:
   - thought-leadership
   - advice
   - personal
+  - "2020"
 ---
 
 

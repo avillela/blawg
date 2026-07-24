@@ -8,6 +8,7 @@ tags:
   - nomad
   - kubernetes
   - hashicorp
+  - "2021"
 ---
 
 

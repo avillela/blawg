@@ -6,6 +6,7 @@ added: "Jun 05, 2020"
 tags:
   - technical
   - thought-leadership
+  - "2020"
 ---
 
 

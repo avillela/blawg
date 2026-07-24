@@ -9,6 +9,7 @@ tags:
   - opentelemetry
   - hashiqube
   - hashicorp
+  - "2021"
 ---
 
 

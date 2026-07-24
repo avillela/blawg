@@ -8,6 +8,7 @@ tags:
   - mcp
   - devcontainer
   - ai
+  - "2025"
 ---
 
 

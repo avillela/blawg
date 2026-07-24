@@ -5,6 +5,7 @@ description: Learn to navigate the Private Cloud with OpenStack.
 tags:
   - technical
   - learning
+  - "2021"
 added: 2021-10-18T00:00:00.000Z
 ---
 

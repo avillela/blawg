@@ -8,6 +8,7 @@ tags:
   - argocd
   - kubernetes
   - tekton
+  - "2020"
 ---
 
 

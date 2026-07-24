@@ -8,6 +8,7 @@ tags:
   - observability
   - opentelemetry
   - lightstep
+  - "2022"
 ---
 
 

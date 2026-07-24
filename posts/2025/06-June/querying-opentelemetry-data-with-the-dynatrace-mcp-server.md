@@ -10,6 +10,7 @@ tags:
   - dynatrace
   - mcp
   - ai
+  - "2025"
 ---
 
 

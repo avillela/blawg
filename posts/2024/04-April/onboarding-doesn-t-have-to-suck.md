@@ -7,6 +7,7 @@ tags:
   - technical
   - platform-engineering
   - thought-leadership
+  - "2024"
 ---
 
 

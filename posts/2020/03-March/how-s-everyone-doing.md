@@ -6,6 +6,7 @@ added: "Mar 27, 2020"
 tags:
   - technical
   - personal
+  - "2020"
 ---
 
 

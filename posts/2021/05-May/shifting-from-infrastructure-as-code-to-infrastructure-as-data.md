@@ -7,6 +7,7 @@ tags:
   - technical
   - sre
   - thought-leadership
+  - "2021"
 ---
 
 

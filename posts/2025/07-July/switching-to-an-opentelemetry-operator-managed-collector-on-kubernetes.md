@@ -10,6 +10,7 @@ tags:
   - otel-collector
   - otel-operator
   - kubernetes
+  - "2025"
 ---
 
 

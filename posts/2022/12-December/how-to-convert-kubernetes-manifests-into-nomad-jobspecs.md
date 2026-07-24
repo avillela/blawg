@@ -7,6 +7,7 @@ tags:
   - technical
   - kubernetes
   - nomad
+  - "2022"
 ---
 
 

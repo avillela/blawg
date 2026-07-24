@@ -6,6 +6,7 @@ added: "Dec 08, 2020"
 tags:
   - technical
   - docker
+  - "2020"
 ---
 
 

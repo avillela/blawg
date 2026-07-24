@@ -7,6 +7,7 @@ tags:
   - technical
   - azure
   - argocd
+  - "2020"
 ---
 
 

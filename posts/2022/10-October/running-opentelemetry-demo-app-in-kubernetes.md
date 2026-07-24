@@ -9,6 +9,7 @@ tags:
   - opentelemetry
   - kubernetes
   - lightstep  
+  - "2022"
 ---
 
 

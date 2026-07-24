@@ -8,6 +8,7 @@ tags:
   - opentelemetry
   - observability
   - otel-collector
+  - "2025"
 ---
 
 

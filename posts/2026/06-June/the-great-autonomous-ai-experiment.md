@@ -9,6 +9,7 @@ tags:
   - ai
   - thought-leadership
   - vibe-coding
+  - "2026"
 ---
 
 ![Bee pollinating a flower. Photo by author.](/images/posts/the-great-autonomous-ai-experiment/bee-and-flower.jpg "A close‑up of a bee perched on a round cluster of purple flowers, with a blurred outdoor background.")

@@ -5,6 +5,7 @@ description: "What’s an Observability Landscape, why should you care, and how 
 added: "Jun 06, 2022"
 tags:
   - technical
+  - "2022"
 ---
 
 

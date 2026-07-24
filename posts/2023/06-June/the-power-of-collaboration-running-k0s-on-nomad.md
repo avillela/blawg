@@ -8,6 +8,7 @@ tags:
   - hashicorp
   - nomad
   - kubernetes
+  - "2023"
 ---
 
 

@@ -7,6 +7,7 @@ tags:
   - technical
   - opentelemetry
   - advice
+  - "2023"
 ---
 
 

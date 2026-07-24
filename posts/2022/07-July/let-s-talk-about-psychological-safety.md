@@ -8,6 +8,7 @@ tags:
   - thought-leadership
   - sre
   - advice
+  - "2022"
 ---
 
 

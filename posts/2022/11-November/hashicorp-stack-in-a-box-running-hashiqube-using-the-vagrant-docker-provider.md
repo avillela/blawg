@@ -7,6 +7,7 @@ tags:
   - technical
   - hashicorp
   - hashiqube
+  - "2022"
 ---
 
 

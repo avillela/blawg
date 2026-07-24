@@ -7,6 +7,7 @@ tags:
   - technical
   - ai
   - mcp
+  - "2025"
 ---
 
 

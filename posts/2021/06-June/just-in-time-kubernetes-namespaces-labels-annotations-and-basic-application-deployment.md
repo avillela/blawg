@@ -6,6 +6,7 @@ added: "Jun 22, 2021"
 tags:
   - technical
   - kubernetes
+  - "2021"
 ---
 
 

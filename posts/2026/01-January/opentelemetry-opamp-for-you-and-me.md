@@ -8,6 +8,7 @@ tags:
   - observability
   - opentelemetry
   - opamp
+  - "2026"
 ---
 
 

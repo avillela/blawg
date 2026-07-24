@@ -8,6 +8,7 @@ tags:
   - observability
   - opentelemetry
   - thought-leadership
+  - "2025"
 ---
 
 

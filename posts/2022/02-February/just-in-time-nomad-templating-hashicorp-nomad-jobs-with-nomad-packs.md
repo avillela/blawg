@@ -7,6 +7,7 @@ tags:
   - technical
   - nomad
   - hashicorp
+  - "2022"
 ---
 
 

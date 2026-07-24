@@ -7,6 +7,7 @@ tags:
   - technical
   - devops
   - sre
+  - "2020"
 ---
 
 

@@ -8,6 +8,7 @@ tags:
   - opentelemetry
   - observability
   - dynatrace
+  - "2024"
 ---
 
 

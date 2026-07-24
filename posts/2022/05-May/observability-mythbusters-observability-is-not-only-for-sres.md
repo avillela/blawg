@@ -8,6 +8,7 @@ tags:
   - observability
   - opentelemetry
   - sre
+  - "2022"
 ---
 
 

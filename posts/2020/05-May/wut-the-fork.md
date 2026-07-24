@@ -7,6 +7,7 @@ tags:
   - technical
   - thought-leadership
   - devops
+  - "2020"
 ---
 
 

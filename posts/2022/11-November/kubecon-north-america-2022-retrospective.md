@@ -7,6 +7,7 @@ tags:
   - technical
   - conferences
   - kubecon
+  - "2022"
 ---
 
 

@@ -8,6 +8,7 @@ tags:
   - ai
   - vibe-coding
   - thought-leadership
+  - "2026"
 ---
 
 

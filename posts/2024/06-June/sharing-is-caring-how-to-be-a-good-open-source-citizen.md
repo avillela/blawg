@@ -7,6 +7,7 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2024"
 ---
 
 
