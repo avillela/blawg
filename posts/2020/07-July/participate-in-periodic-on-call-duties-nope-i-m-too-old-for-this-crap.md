@@ -7,9 +7,9 @@ tags:
   - technical
   - sre
   - thought-leadership
+  - "2020"
 ---
 
-# Participate in periodic on-call duties?! Nope. I’m too old for this crap.
 
 ![](https://cdn-images-1.medium.com/max/800/1*-cBshqr9P8wYOgE8hVcOYA.jpeg)
 

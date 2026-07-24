@@ -6,9 +6,9 @@ added: "Apr 22, 2021"
 tags:
   - technical
   - kubernetes
+  - "2021"
 ---
 
-# Just-in-Time Kubernetes: A Beginner’s Guide to Kubernetes Core Concepts
 
 ![](https://cdn-images-1.medium.com/max/800/1*Wjzpy5zlWUFkqRM5vnam2w.png)
 

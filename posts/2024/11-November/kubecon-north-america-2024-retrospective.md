@@ -7,11 +7,10 @@ tags:
   - technical
   - conferences
   - kubecon
+  - "2024"
 ---
 
-# KubeCon North America 2024 Retrospective
 
-#### Reflections from attending my fifth KubeCon
 
 ![A modern building with a cylindrical glass tower displaying a ‘KubeCon + CloudNativeCon North America 2022’ banner. The intersection in front shows street signs for ‘S TEMPLE’ and ‘200 W.’ Several signs and a large red circle with ‘YOU ARE HERE’ are visible on the ground. Flags are seen on the right side of the image.](https://cdn-images-1.medium.com/max/800/1*jbrnZBt7YS6augKYitnstQ.jpeg)
 

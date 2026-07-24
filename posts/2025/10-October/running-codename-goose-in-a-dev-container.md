@@ -8,11 +8,10 @@ tags:
   - mcp
   - devcontainer
   - ai
+  - "2025"
 ---
 
-# Running Codename Goose in a Dev Container
 
-#### Exploring prompt-based workflow orchestration with MCP servers and Goose
 
 ![A grand domed building with classical architecture, featuring a green copper dome topped by a cupola and cross, stands partially obscured by trees. Ornate golden embellishments and statues accent the structure, especially on a turret to the right. A nearly full moon glows in the muted gray sky, suggesting dusk or dawn, adding a serene contrast to the building’s opulence.](https://cdn-images-1.medium.com/max/800/1*6WtlgGqlTHP4VapjbUS9Eg.jpeg)
 

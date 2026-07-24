@@ -6,11 +6,10 @@ added: "Jul 26, 2024"
 tags:
   - technical
   - devcontainers
+  - "2024"
 ---
 
-# Things I Learned About DevPod After Obsessing Over it for a Week
 
-#### Running A Dev Container for the OpenTelemetry Demo with DevPod
 
 ![Sidewalk art of a snapping black hand in a white background](https://cdn-images-1.medium.com/max/800/1*WDpuElwnEPqRgxO6zr86wg.png)
 

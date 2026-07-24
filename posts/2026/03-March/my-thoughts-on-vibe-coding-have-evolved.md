@@ -8,11 +8,10 @@ tags:
   - ai
   - vibe-coding
   - thought-leadership
+  - "2026"
 ---
 
-# My Thoughts on Vibe Coding Have Evolved
 
-#### How using BMAD for vibe coding has opened my eyes
 
 ![A light yellow cocktail in a clear glass topped with a dried citrus wheel, with a small pink plastic duck figurine sitting on the citrus slice.](https://cdn-images-1.medium.com/max/800/1*qmYmKyO2tELXb2w6DORfMg.jpeg)
 

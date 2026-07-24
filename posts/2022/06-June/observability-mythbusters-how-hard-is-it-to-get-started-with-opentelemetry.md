@@ -7,9 +7,9 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2022"
 ---
 
-# Observability Mythbusters: How hard is it to get started with OpenTelemetry?
 
 ![View of Georgian Bay from the top fo Blue Mountain.](https://cdn-images-1.medium.com/max/800/1*WHgjmjj3HZucF222vQN4BA.jpeg)
 

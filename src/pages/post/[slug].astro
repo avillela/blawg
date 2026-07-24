@@ -15,8 +15,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const firstImageMatch = post.body?.match(/!\[.*?\]\(([^\s)]+)/);
+const heroImage = firstImageMatch?.[1];
 ---
 
-<BlogPost content={post.data}>
+<BlogPost content={post.data} heroImage={heroImage}>
 	<Content />
 </BlogPost>

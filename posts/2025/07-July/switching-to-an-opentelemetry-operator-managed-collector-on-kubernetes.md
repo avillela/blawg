@@ -10,11 +10,10 @@ tags:
   - otel-collector
   - otel-operator
   - kubernetes
+  - "2025"
 ---
 
-# Switching to an OpenTelemetry Operator-managed Collector on Kubernetes
 
-#### A hands-on approach featuring the OpenTelemetry Operator and OpenTelemetry Demo on Kubernetes
 
 ![Close-up of a purple flower with yellow stamens hosting a bumblebee and a smaller insect — possibly a hoverfly — collecting nectar, highlighting active pollination.](https://cdn-images-1.medium.com/max/800/1*Vg9AOYwNMZ3es1kXAxlhjw.jpeg)
 

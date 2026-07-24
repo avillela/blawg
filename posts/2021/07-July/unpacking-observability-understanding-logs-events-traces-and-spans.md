@@ -8,9 +8,9 @@ tags:
   - opentelemetry
   - observability
   - thought-leadership
+  - "2021"
 ---
 
-# Unpacking Observability: Understanding Logs, Events, Traces, and Spans
 
 ![](https://cdn-images-1.medium.com/max/800/1*o5doa7Uuzq22wxoBk88y2A.jpeg)
 

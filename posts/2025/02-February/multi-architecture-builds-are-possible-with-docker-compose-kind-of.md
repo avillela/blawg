@@ -6,11 +6,10 @@ added: "Feb 21, 2025"
 tags:
   - technical
   - docker
+  - "2025"
 ---
 
-# Multi-Architecture Builds Are Possible With Docker Compose…Kind Of
 
-#### Workarounds of an Apple Silicon Mac user
 
 ![A yellow fire hydrant is partially buried in snow. The hydrant has a face drawn on it with black marker, including eyes, a nose, and a mouth. The background shows a snow-covered ground and a gray wall. The image presents a whimsical scene where a fire hydrant appears to have a playful expression in a snowy setting.](https://cdn-images-1.medium.com/max/800/1*b-noISvl4P9AySVhcj8Hrw.jpeg)
 

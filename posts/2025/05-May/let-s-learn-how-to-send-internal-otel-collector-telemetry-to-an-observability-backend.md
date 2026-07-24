@@ -8,11 +8,10 @@ tags:
   - opentelemetry
   - observability
   - otel-collector
+  - "2025"
 ---
 
-# Let’s Learn How to Send Internal OTel Collector Telemetry to an Observability Backend
 
-#### Configuring Your OTel Collector’s Internal Telemetry Endpoint
 
 ![A serene outdoor scene during sunset. The sun is partially obscured by trees, creating a beautiful sunburst effect with rays of light spreading out. The foreground features a wooden surface, possibly a bench or table, with visible grain and texture. The background includes lush green grass and trees, with some people faintly visible in the distance, enjoying the park. The overall atmosphere is peaceful and warm, capturing the essence of a tranquil evening in nature.](https://cdn-images-1.medium.com/max/800/1*QgDHtgh-rc80SHo49ozlKw.jpeg)
 

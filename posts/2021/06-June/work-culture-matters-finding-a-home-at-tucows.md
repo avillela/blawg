@@ -6,9 +6,9 @@ added: "Jun 18, 2021"
 tags:
   - advice
   - thought-leadership
+  - "2021"
 ---
 
-# Work Culture Matters: Finding a Home at Tucows
 
 ![](https://cdn-images-1.medium.com/max/800/1*3Bv6NwjFeYK2tz8aNsj2jw.png)
 

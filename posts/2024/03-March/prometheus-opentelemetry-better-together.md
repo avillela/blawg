@@ -8,9 +8,9 @@ tags:
   - observability
   - opentelemetry
   - otel-operator
+  - "2024"
 ---
 
-# Prometheus & OpenTelemetry: Better Together
 
 _co-written with Reese Lee_
 

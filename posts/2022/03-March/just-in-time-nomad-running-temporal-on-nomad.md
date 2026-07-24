@@ -7,9 +7,9 @@ tags:
   - technical
   - nomad
   - hashicorp
+  - "2022"
 ---
 
-# Just-in-Time Nomad: Running Temporal on Nomad
 
 ![](https://cdn-images-1.medium.com/max/800/1*99ij_kBFzYCELzEddce5tg.png)
 

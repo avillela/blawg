@@ -7,9 +7,9 @@ tags:
   - technical
   - conferences
   - kubecon
+  - "2024"
 ---
 
-# KubeCon Europe 2024 Retrospective
 
 ![](https://cdn-images-1.medium.com/max/800/1*19b8LlgboqZvvyzmCgw4QQ.png)
 

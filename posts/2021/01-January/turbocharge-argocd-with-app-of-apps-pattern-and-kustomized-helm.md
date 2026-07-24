@@ -7,9 +7,9 @@ tags:
   - technical
   - argocd
   - kubernetes
+  - "2021"
 ---
 
-# Turbocharge ArgoCD with App of Apps Pattern and Kustomized Helm
 
 ![](https://cdn-images-1.medium.com/max/800/1*xMuhoheW7huxZQIu7JePoA.png)
 

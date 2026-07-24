@@ -6,11 +6,10 @@ added: "Nov 12, 2025"
 tags:
   - technical
   - ai
+  - "2025"
 ---
 
-# I Fought the Prompt, and I (Mostly) Won
 
-#### How I stopped writing crappy AI prompts, and you can too!
 
 ![A nighttime waterfront view of Bryggen in Bergen, Norway, featuring a row of brightly lit, colorful wooden buildings with steep gabled roofs. Their reflections shimmer on the calm water in front. Behind the historic harbor district, a hillside dotted with lights from homes rises into the dark sky, adding depth to the scenic and culturally rich landscape.](https://cdn-images-1.medium.com/max/800/1*3qmCRGdkVc-D33wvfZuIAA.jpeg)
 

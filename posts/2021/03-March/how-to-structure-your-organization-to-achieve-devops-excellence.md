@@ -7,9 +7,9 @@ tags:
   - technical
   - thought-leadership
   - devops
+  - "2021"
 ---
 
-# How to Structure Your Organization to Achieve DevOps Excellence
 
 ![](https://cdn-images-1.medium.com/max/800/1*qbnYY5QVa6BJkhgsl6W64A.png)
 

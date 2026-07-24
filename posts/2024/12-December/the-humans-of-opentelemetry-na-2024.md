@@ -9,11 +9,10 @@ tags:
   - opentelemetry
   - observability
   - conferences
+  - "2024"
 ---
 
-# The Humans of OpenTelemetry NA 2024
 
-#### KubeCon North America 2024 Edition
 
 ![A colorful pixel art illustration with the words ‘OpenTelemetry Observatory’ in the center. The background includes mountains, clouds, trees, water bodies, a sailboat, a house, and cacti. The word ‘OpenTelemetry’ features a telescope integrated into the ‘O’ and ‘T’ letters.](https://cdn-images-1.medium.com/max/800/1*P03Ty-KlrOU5bpheodUzqg.jpeg)
 

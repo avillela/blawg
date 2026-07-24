@@ -8,9 +8,9 @@ tags:
   - observability
   - opentelemetry
   - lightstep
+  - "2022"
 ---
 
-# OpenTelemetry for Go: Three Ways to Send Data to an OTLP Observability Back-end
 
 ![Monarch butterfly pollinating small purple flowers.](https://cdn-images-1.medium.com/max/800/0*bYfPih0SoTP5H_7o)
 

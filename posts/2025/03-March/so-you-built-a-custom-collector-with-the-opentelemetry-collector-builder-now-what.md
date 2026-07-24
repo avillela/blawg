@@ -8,11 +8,10 @@ tags:
   - observability
   - opentelemetry
   - otel-collector
+  - "2025"
 ---
 
-# So You Built A Custom Collector with the OpenTelemetry Collector Builder…Now What?
 
-#### Things nobody tells you when you build your own OTel Collector distribution
 
 ![A street scene at dusk with a clear sky transitioning from orange to blue. The street is lined with parked cars on both sides and a few cars driving down the road. Bare trees with no leaves are visible, and streetlights hang from wires above the street. There are houses and buildings along the sides of the street, and a stop sign is visible on the right side of the image. The image captures the calm and quiet atmosphere of a residential neighborhood during sunset.](https://cdn-images-1.medium.com/max/800/1*j_QBQhOP3XUqzIvu-TzB9g.jpeg)
 

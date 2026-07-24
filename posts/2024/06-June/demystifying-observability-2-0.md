@@ -7,9 +7,9 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2024"
 ---
 
-# Demystifying Observability 2.0
 
 ![Peering down at a spiral staircase. Black and white photo](https://cdn-images-1.medium.com/max/800/1*YSePcjJVFrlbr1uzHRSTVA.png)
 

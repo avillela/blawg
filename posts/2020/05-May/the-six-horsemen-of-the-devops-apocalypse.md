@@ -6,9 +6,9 @@ added: "May 21, 2020"
 tags:
   - technical
   - thought-leadership
+  - "2020"
 ---
 
-# The Six Horsemen of the DevOps Apocalypse
 
 ![](https://cdn-images-1.medium.com/max/800/1*3H0tTxeWJSMkJpm1pME-lw.jpeg)
 

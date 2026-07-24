@@ -7,9 +7,9 @@ tags:
   - technical
   - hashicorp
   - hashiqube
+  - "2022"
 ---
 
-# HashiCorp Stack in a Box: Running HashiQube Using the Vagrant Docker Provider
 
 ![](https://cdn-images-1.medium.com/max/800/1*XUcrghwCHX910Q2FMRfefA.png)
 

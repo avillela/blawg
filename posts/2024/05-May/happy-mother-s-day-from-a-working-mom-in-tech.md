@@ -8,9 +8,9 @@ tags:
   - advice
   - thought-leadership
   - personal
+  - "2024"
 ---
 
-# Happy Mother’s Day from a Working Mom in Tech
 
 ![Mom and daughter wearing matching navy blue tops and forest green shorts posing with a capybara behind the fence](https://cdn-images-1.medium.com/max/800/1*e_aPCwdqfzD6_2H9z6l-nA.png)
 

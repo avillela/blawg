@@ -7,9 +7,9 @@ tags:
   - technical
   - thought-leadership
   - devops
+  - "2020"
 ---
 
-# Go Fork Yourself
 
 ![](https://cdn-images-1.medium.com/max/800/1*BEy22Fudy4nAA2CPWMN9XA.jpeg)
 

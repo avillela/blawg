@@ -9,9 +9,9 @@ tags:
   - observability
   - conferences
   - kubecon
+  - "2023"
 ---
 
-# The Humans of OpenTelemetry
 
 ![](https://cdn-images-1.medium.com/max/800/1*-cHHxEnHvRxSBKwANYbO3w.jpeg)
 

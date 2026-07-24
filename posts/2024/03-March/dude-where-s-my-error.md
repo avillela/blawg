@@ -7,9 +7,9 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2024"
 ---
 
-# Dude, Where’s My Error?
 
 _co-written with Reese Lee_
 

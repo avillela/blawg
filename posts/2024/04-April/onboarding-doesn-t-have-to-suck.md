@@ -7,9 +7,9 @@ tags:
   - technical
   - platform-engineering
   - thought-leadership
+  - "2024"
 ---
 
-# Onboarding Doesn’t Have to Suck
 
 _with Ana Margarita Medina_
 

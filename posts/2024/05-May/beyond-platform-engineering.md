@@ -6,9 +6,9 @@ added: "May 31, 2024"
 tags:
   - technical
   - platform-engineering
+  - "2024"
 ---
 
-# Beyond Platform Engineering
 
 _co-written with Renata Rocha_
 

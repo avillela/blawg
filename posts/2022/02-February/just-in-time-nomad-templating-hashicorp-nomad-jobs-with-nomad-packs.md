@@ -7,9 +7,9 @@ tags:
   - technical
   - nomad
   - hashicorp
+  - "2022"
 ---
 
-# Just-in-Time Nomad: Templating HashiCorp Nomad Jobs with Nomad Packs
 
 ![](https://cdn-images-1.medium.com/max/800/1*qv5zIVZC1OlSRTgabdepCg.jpeg)
 

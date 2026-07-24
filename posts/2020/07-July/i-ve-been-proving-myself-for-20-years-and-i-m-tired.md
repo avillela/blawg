@@ -8,9 +8,9 @@ tags:
   - thought-leadership
   - advice
   - personal
+  - "2020"
 ---
 
-# I’ve been proving myself for 20 years, and I’m tired
 
 ![](https://cdn-images-1.medium.com/max/800/1*1A5yC5eEf8n2em4O5Cs8MA.jpeg)
 

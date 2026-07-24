@@ -7,11 +7,10 @@ tags:
   - technical
   - opentelemetry
   - dynatrace
+  - "2024"
 ---
 
-# Curious About How to Send OpenTelemetry Data to Dynatrace? So Was I!
 
-#### OpenTelemetry Vendor Neutrality for the Win!
 
 ![A close-up image of a tiled surface with a repeating pattern. The tiles are square-shaped with white centers and edges decorated in blue geometric and floral designs. The pattern creates a visual effect where blue diamond shapes appear at the intersections of the white squares. There are visible grout lines between the tiles, and slight imperfections can be seen on the surface, indicating wear or age.](https://cdn-images-1.medium.com/max/800/1*fHiH1rz8nlpdOlhq5vM7Vg.jpeg)
 

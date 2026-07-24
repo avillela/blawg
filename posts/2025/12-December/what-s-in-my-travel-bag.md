@@ -6,11 +6,10 @@ added: "Dec 29, 2025"
 tags:
   - devrel
   - advice
+  - "2025"
 ---
 
-# What’s in My Travel Bag?
 
-#### A DevRel’s Guide to Packing
 
 ![Commercial airplane parked at airport gate during sunset, connected to a jet bridge with ground crew and service vehicles nearby. Warm orange and yellow hues fill the sky, highlighting the serene yet active atmosphere of air travel operations.](https://cdn-images-1.medium.com/max/800/0*i0od9Go_A2xBgVQw.jpeg)
 

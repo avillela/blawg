@@ -6,11 +6,10 @@ added: "Apr 15, 2026"
 tags:
   - thought-leadership
   - advice
+  - "2026"
 ---
 
-# Standing on the Edge of Burnout and Trying Not to Fall
 
-#### **The reminder that we all need for our present and future selves**
 
 ![A small red toy frog with large round eyes sits centered inside a narrow rectangular opening, with blurred black letters in the background. The framing creates a tunnel-like view that draws attention to the bright, playful figure.](https://cdn-images-1.medium.com/max/800/1*vOedPk5pUoEPLHvn54vmNQ.jpeg)
 

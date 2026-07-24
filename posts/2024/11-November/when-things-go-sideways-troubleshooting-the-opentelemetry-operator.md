@@ -9,11 +9,10 @@ tags:
   - observability
   - otel-operator
   - otel-collector
+  - "2024"
 ---
 
-# When Things Go Sideways: Troubleshooting the OpenTelemetry Operator
 
-#### co-written with Reese Lee
 
 ![A storm drain on an asphalt road is partially covered with fallen autumn leaves. The leaves are in various shades of red, orange, and brown, indicating the fall season. The drain has a distinctive V-shaped pattern with parallel slits for water to pass through. Some small yellow seed pods are also scattered among the leaves.](https://cdn-images-1.medium.com/max/800/1*kJIgPYBzu34DjfnboNvsGA.jpeg)
 

@@ -7,9 +7,9 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2024"
 ---
 
-# Sharing is Caring: How To Be A Good Open Source Citizen
 
 ![Pink sign that says “Sparkle” against a yellow backdrop with pink polkadots.](https://cdn-images-1.medium.com/max/800/1*7BVOXB9BlJHqI391xO_Blw.png)
 

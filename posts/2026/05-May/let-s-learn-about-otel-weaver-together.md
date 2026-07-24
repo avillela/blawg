@@ -7,11 +7,10 @@ tags:
   - technical
   - opentelemetry
   - observability
+  - "2026"
 ---
 
-# Let’s Learn About OTel Weaver Together
 
-#### A high-level overview of OTel’s schema tool
 
 ![A well‑preserved ancient Greek temple with tall Doric columns stands in an open archaeological site, surrounded by small trees and a gravel path.](https://cdn-images-1.medium.com/max/800/1*_bsdkKlAdWmXO9K_UW65Ng.jpeg)
 

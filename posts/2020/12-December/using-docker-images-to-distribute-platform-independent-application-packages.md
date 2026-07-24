@@ -6,9 +6,9 @@ added: "Dec 08, 2020"
 tags:
   - technical
   - docker
+  - "2020"
 ---
 
-# Using Docker Images to Distribute Platform-Independent Application Packages
 
 ![](https://cdn-images-1.medium.com/max/800/1*oLAkPNqwuZgPW63YavoIug.png)
 

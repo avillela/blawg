@@ -7,9 +7,9 @@ tags:
   - technical
   - advice
   - thought-leadership
+  - "2020"
 ---
 
-# Taking Back the Job Interview
 
 ![](https://cdn-images-1.medium.com/max/800/1*l5UeT3S4SrYNuotZ6BCdAw.jpeg)
 

@@ -7,9 +7,9 @@ tags:
   - technical
   - opentelemetry
   - devcontainers
+  - "2024"
 ---
 
-# How to Run the OpenTelemetry Demo in GitHub Codespaces
 
 ![](https://cdn-images-1.medium.com/max/800/1*PoHCGH0dNpHj_YEvdi9GEg.png)
 

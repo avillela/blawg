@@ -7,11 +7,10 @@ tags:
   - technical
   - ai
   - mcp
+  - "2025"
 ---
 
-# Prompt-based reusable workflows for lazy developers
 
-#### A solution LOOKING for a problem, or a solution FOR a problem?
 
 ![Abstract night scene with colorful light streaks — white, yellow, red, and blue — suggesting motion and energy in an urban setting.](https://cdn-images-1.medium.com/max/800/1*Q6xNM9zTi_Gqq9a0BvRuXw.jpeg)
 

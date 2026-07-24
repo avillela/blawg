@@ -7,11 +7,10 @@ tags:
   - technical
   - observability
   - thought-leadership
+  - "2025"
 ---
 
-# Observability is a Team Sport
 
-#### Why having an “Observability team” is a bad idea
 
 ![The Rosetta Stone, an ancient Egyptian artifact, featuring inscriptions in three scripts: hieroglyphic, demotic, and Greek. This stone was crucial in deciphering Egyptian hieroglyphs, as scholars could compare the identical text across the three scripts to unlock their meaning.](https://cdn-images-1.medium.com/max/800/1*7q6giAkvicZHSRq8Suvy6g.jpeg)
 

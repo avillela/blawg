@@ -7,11 +7,10 @@ tags:
   - technical
   - mcp
   - ai
+  - "2025"
 ---
 
-# Let’s Learn About MCP Together!
 
-#### Unpacking Model Context Protocol and why it’s so frickin’ cool!
 
 ![A garden gnome with a green hat decorated with yellow flowers stands atop a tree stump, surrounded by vibrant greenery. The gnome has a long white beard, black boots, and holds a small watering can in one hand and a flower pot in the other. Sunlight highlights the lush foliage and the intricate details of the gnome’s features.](https://cdn-images-1.medium.com/max/800/1*7tVzcjsgc0V1sxpp_GNzxQ.jpeg)
 

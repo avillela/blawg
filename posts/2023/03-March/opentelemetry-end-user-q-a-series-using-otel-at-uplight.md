@@ -7,9 +7,9 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2023"
 ---
 
-# OpenTelemetry End-User Q&A Series: Using OTel at Uplight
 
 ![](https://cdn-images-1.medium.com/max/800/1*g3Rj2tSBSCrlkUmjMwv1OQ.jpeg)
 

@@ -6,9 +6,9 @@ added: "Mar 27, 2020"
 tags:
   - technical
   - personal
+  - "2020"
 ---
 
-# How’s Everyone Doing??
 
 ![](https://cdn-images-1.medium.com/max/1200/1*5rTn5oItaNtUILY-SjhKIA.jpeg)
 

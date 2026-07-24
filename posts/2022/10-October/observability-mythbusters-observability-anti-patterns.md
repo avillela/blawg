@@ -7,10 +7,10 @@ tags:
   - technical
   - observability
   - opentelemetry
+  - "2022"
 
 ---
 
-# Observability Mythbusters: Observability Anti-Patterns
 
 ![](https://cdn-images-1.medium.com/max/800/1*qQlpvvDbwsE4_aOXo7OtPQ.png)
 

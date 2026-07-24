@@ -9,9 +9,9 @@ tags:
   - observability
   - otel-operator
   - otel-collector
+  - "2023"
 ---
 
-# Let’s Learn About the OTel Operator’s Target Allocator!
 
 ![Three blue Muskoka chairs on a dock, facing the lake at dusk.](https://cdn-images-1.medium.com/max/800/1*7LZeJGg2ARTPnd80PjuLsg.png)
 

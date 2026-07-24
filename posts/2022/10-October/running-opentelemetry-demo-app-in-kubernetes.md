@@ -9,9 +9,9 @@ tags:
   - opentelemetry
   - kubernetes
   - lightstep  
+  - "2022"
 ---
 
-# Running OpenTelemetry Demo App in Kubernetes
 
 ![](https://cdn-images-1.medium.com/max/800/1*3WZ5XL9U1Fc7JVoki3TCyQ.png)
 

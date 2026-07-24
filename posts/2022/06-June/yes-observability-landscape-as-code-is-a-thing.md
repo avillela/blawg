@@ -5,9 +5,9 @@ description: "What’s an Observability Landscape, why should you care, and how 
 added: "Jun 06, 2022"
 tags:
   - technical
+  - "2022"
 ---
 
-# Yes, Observability-Landscape-as-Code is a Thing
 
 ![Person walking under rail bridge in Toronto’s Junction neighbourhood.](https://cdn-images-1.medium.com/max/800/0*-SsIVYFkwtg0wf9n)
 

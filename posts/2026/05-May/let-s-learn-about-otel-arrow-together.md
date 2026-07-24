@@ -7,11 +7,10 @@ tags:
   - technical
   - opentelemetry
   - observability
+  - "2026"
 ---
 
-# Let’s Learn About OTel Arrow Together
 
-#### Learn how OpenTelemetry + Apache Arrow are a winning combination, and why
 
 ![A red paper‑cut cat with floral patterns hangs on a light wall, surrounded by trailing green pothos vines that frame the artwork with soft, natural curves.](https://cdn-images-1.medium.com/max/800/1*gPL4UvmuoUZnSdHvwztpEg.jpeg)
 

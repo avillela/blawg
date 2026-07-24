@@ -7,9 +7,9 @@ tags:
   - technical
   - devcontainers
   - opentelemetry
+  - "2024"
 ---
 
-# Things I Learned from Creating a Dev Container for the OpenTelemetry Demo
 
 ![Canada geese flying in a v-shape overhead](https://cdn-images-1.medium.com/max/800/1*CpVpfsFSOSnoIXu0Au4o4w.png)
 

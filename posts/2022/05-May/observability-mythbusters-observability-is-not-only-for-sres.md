@@ -8,9 +8,9 @@ tags:
   - observability
   - opentelemetry
   - sre
+  - "2022"
 ---
 
-# Observability Mythbusters: Observability is NOT Only for SREs
 
 ![Colourful garage door in one of Toronto’s laneways features a painting of 3 rainbow horses lounging on a field with a sun wearing sunglasses.](https://cdn-images-1.medium.com/max/800/1*xPRyTvmqY1ExOsk4rh_6UQ.png)
 

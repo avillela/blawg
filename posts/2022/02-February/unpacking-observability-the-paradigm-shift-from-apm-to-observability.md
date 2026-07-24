@@ -8,9 +8,9 @@ tags:
   - opentelemetry
   - observability
   - thought-leadership
+  - "2022"
 ---
 
-# Unpacking Observability: The Paradigm Shift from APM to Observability
 
 ![Mural artwork featuring a black blob person with the thought bubble, “If we saved them…would they notice?” while UFOs attack a city.](https://cdn-images-1.medium.com/max/800/1*CD17te4DNlITYyjphPFcEg.jpeg)
 

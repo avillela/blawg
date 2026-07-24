@@ -7,9 +7,9 @@ tags:
   - technical
   - thought-leadership
   - devops
+  - "2020"
 ---
 
-# Wut the Fork?
 
 ![](https://cdn-images-1.medium.com/max/800/1*Hjek9CMD2DD5CtdSjkoksA.jpeg)
 

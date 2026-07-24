@@ -8,9 +8,9 @@ tags:
   - nomad
   - hashiqube
   - hashicorp
+  - "2021"
 ---
 
-# Just-in-Time Nomad: Configuring HashiCorp Nomad/Vault integration on HashiQube
 
 ![](https://cdn-images-1.medium.com/max/800/1*i_NjvabZdPTGzRoBw8PNZQ.png)
 

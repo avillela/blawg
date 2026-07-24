@@ -8,9 +8,9 @@ tags:
   - opentelemetry
   - observability
   - otel-operator
+  - "2023"
 ---
 
-# Let’s Learn About Auto-Instrumentation with the OTel Operator!
 
 ![Five Muskoka chairs (2 red, 3 orange) lined up against the backdrop of a ski hill and blue skies in the summer.](https://cdn-images-1.medium.com/max/800/1*NNsloLJSm4CN0fSmsqFJ8g.png)
 

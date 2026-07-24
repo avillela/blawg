@@ -7,11 +7,10 @@ tags:
   - technical
   - advice
   - thought-leadership
+  - "2024"
 ---
 
-# From “I Don’t Know” to “Let Me Show You How”
 
-#### Eight Lessons to Inspire You to Do Great Things
 
 ![The image shows a view through a hollowed-out tree trunk, focusing on a cross-section of another tree trunk placed on a stand in the background. The scene is set in a corridor with stone walls and a tiled floor, featuring a row of columns and a slanted wooden roof. The perspective creates a tunnel-like effect, drawing attention to the intricate patterns and textures of the tree trunks.](https://cdn-images-1.medium.com/max/800/1*lO9R-nt96pMnWWf80tv6Hg.jpeg)
 
