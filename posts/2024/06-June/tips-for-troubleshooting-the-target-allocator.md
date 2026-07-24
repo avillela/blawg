@@ -11,7 +11,6 @@ tags:
   - otel-operator
 ---
 
-# Tips for Troubleshooting the Target Allocator
 
 ![Glass pyramid at the Louvre](https://cdn-images-1.medium.com/max/800/1*RDoJeOKpyqvdYe9NGtS04w.png)
 

@@ -10,7 +10,6 @@ tags:
   - otel-operator
 ---
 
-# Prometheus & OpenTelemetry: Better Together
 
 _co-written with Reese Lee_
 

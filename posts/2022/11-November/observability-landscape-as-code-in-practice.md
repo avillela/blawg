@@ -10,7 +10,6 @@ tags:
   - opentelemetry
 ---
 
-# Observability-Landscape-as-Code in Practice
 
 ![Laser lights](https://cdn-images-1.medium.com/max/800/1*AfqbFvheCe4bUFNlpZUjxw.png)
 

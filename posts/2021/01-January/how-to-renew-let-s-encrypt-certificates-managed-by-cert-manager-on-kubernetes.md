@@ -9,7 +9,6 @@ tags:
   - cert-manager
 ---
 
-# How to Renew Let’s Encrypt Certificates Managed by cert-manager on Kubernetes
 
 ![](https://cdn-images-1.medium.com/max/800/1*iO5Ir_Kfz601nECqVRZbEw.png)
 

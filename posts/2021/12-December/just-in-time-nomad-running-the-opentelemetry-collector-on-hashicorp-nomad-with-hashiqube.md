@@ -11,7 +11,6 @@ tags:
   - hashicorp
 ---
 
-# Just-in-Time Nomad: Running the OpenTelemetry Collector on Hashicorp Nomad with HashiQube
 
 ![The nomad logo on a dark Tucows blue background](https://cdn-images-1.medium.com/max/800/1*G8wbr34pitzjc6AuBpGitA.png)
 

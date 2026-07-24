@@ -12,7 +12,6 @@ tags:
   - hashiqube
 ---
 
-# Running the OpenTelemetry Demo App on HashiCorp Nomad
 
 ![Aerial view of Toronto, Canada, at night.](https://cdn-images-1.medium.com/max/800/0*YUOgNNL7C3u30jX7)
 

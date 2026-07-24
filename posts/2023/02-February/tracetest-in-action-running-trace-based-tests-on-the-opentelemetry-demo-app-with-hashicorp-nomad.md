@@ -12,7 +12,6 @@ tags:
   - hashiqube
 ---
 
-# Tracetest in Action: Running Trace-Based Tests on the OpenTelemetry Demo App with HashiCorp Nomad
 
 ![Red and white streetcar against blue sky with wispy white clouds at dusk](https://cdn-images-1.medium.com/max/800/1*2O-xGEEr4UWIZVp1vCYKcg.jpeg)
 

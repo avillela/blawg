@@ -9,7 +9,6 @@ tags:
   - thought-leadership
 ---
 
-# Onboarding Doesn’t Have to Suck
 
 _with Ana Margarita Medina_
 

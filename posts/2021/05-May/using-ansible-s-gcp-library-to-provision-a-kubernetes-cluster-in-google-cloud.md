@@ -9,7 +9,6 @@ tags:
   - kubernetes
 ---
 
-# Using Ansible’s GCP Library to Provision a Kubernetes Cluster in Google Cloud
 
 ![](https://cdn-images-1.medium.com/max/800/1*pEGiqxzrNssYHNMf8mgUlA.png)
 

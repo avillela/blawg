@@ -7,7 +7,6 @@ tags:
   - technical
 ---
 
-# Yes, Observability-Landscape-as-Code is a Thing
 
 ![Person walking under rail bridge in Toronto’s Junction neighbourhood.](https://cdn-images-1.medium.com/max/800/0*-SsIVYFkwtg0wf9n)
 

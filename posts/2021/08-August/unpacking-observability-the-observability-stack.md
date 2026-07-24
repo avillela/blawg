@@ -10,7 +10,6 @@ tags:
   - thought-leadership
 ---
 
-# Unpacking Observability: The Observability Stack
 
 ![A graphic showing a box circled by stacked files to represent unpacking. There are various rectangular and circular shapes framing the graphic which is hued in a bright blue to deep purple.](https://cdn-images-1.medium.com/max/800/1*8q-8zVAjOzxHZbLClKYTcg.png)
 

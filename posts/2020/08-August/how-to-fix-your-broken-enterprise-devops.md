@@ -9,7 +9,6 @@ tags:
   - thought-leadership
 ---
 
-# How to Fix Your Broken Enterprise DevOps
 
 ![](https://cdn-images-1.medium.com/max/1200/1*CGZOK2jW_2_4mltLMFVp4A.jpeg)
 

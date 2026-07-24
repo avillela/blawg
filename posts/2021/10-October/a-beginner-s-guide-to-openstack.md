@@ -8,7 +8,6 @@ tags:
 added: 2021-10-18T00:00:00.000Z
 ---
 
-# A Beginner’s Guide to OpenStack
 
 ![](https://cdn-images-1.medium.com/max/800/1*ig2bKOpuyFXpWZ71Sln8EA.png)
 

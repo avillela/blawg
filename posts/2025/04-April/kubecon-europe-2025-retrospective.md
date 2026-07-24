@@ -9,9 +9,7 @@ tags:
   - kubecon
 ---
 
-# KubeCon Europe 2025 Retrospective
 
-#### Reflections from attending my SIXTH KubeCon
 
 ![A banner hanging under a tent structure welcomes attendees to KubeCon + CloudNativeCon Europe 2025. The banner features the text “WELCOME” followed by the logos of KubeCon and CloudNativeCon. Below, it reads “CLOUD NATIVE COMMUNITY! BADGE PICK-UP | HALL ENTRANCE S5” and includes the hashtags “#KUBECON #CLOUDNATIVECON”. The banner is decorated with illustrations of Big Ben, an elephant, a zebra, a red double-decker bus filled with various animals, and a turtle.](https://cdn-images-1.medium.com/max/800/1*7jh6qDbnJOwlOIimjIv1VQ.jpeg)
 

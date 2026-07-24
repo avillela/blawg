@@ -9,7 +9,6 @@ tags:
   - observability
 ---
 
-# Auto-Instrumentation Is Magic: Using OpenTelemetry Python with Lightstep
 
 ![Fuzzy bumblebee pollinating a pink flower](https://cdn-images-1.medium.com/max/800/0*FCmDKtYfC5Y5Rffc)
 

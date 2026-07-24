@@ -9,7 +9,6 @@ tags:
   - nomad
 ---
 
-# How to Convert Kubernetes Manifests into Nomad Jobspecs
 
 ![Cattails in the foreground, with a blue pond in the background.](https://cdn-images-1.medium.com/max/800/0*64xxAgjBbvhvXmsO)
 

@@ -10,7 +10,6 @@ tags:
   - advice
 ---
 
-# Let’s Talk About Psychological Safety
 
 ![Mural on West Toronto Rail Path: “Be the loves you want to see in the world”](https://cdn-images-1.medium.com/max/800/0*eHqWIbOqIWagoUzj)
 

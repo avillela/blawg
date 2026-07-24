@@ -9,7 +9,6 @@ tags:
   - observability
 ---
 
-# Unpacking Observability: A Beginner’s Guide
 
 ![The graphic shows a child standing on a box peering through a telescope and observing the stars. The background is a dark shade of “Tucows Blue” and they are resting on a yellow line graphic that looks like a platform/diving board.](https://cdn-images-1.medium.com/max/800/1*GqJdmknBAPtN4oC0o-_tTg.png)
 

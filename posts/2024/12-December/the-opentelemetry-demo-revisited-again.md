@@ -10,9 +10,7 @@ tags:
   - dynatrace
 ---
 
-# The OpenTelemetry Demo Revisited (Again)
 
-#### Sending OTel Demo Data to Dynatrace
 
 ![A close-up image of a green lava lamp against a gradient background transitioning from yellow to green. The lava lamp contains blobs of wax in various stages of ascent and descent, with one large drop-shaped blob suspended near the top and a round blob at the bottom, creating an interesting visual effect.](https://cdn-images-1.medium.com/max/800/1*4Qa5XLT0zabacqoFJaD3iA.jpeg)
 

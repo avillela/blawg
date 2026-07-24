@@ -9,7 +9,6 @@ tags:
   - thought-leadership
 ---
 
-# Dear Senior Devs: It’s Okay if You Don’t Want to be a Manager
 
 ![Painted garage door that says “Never Enough”](https://cdn-images-1.medium.com/max/800/1*xC9xTR4_8igxJSH8DU0Ipw.png)
 

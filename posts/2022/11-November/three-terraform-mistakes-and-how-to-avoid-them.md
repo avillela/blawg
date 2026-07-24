@@ -9,7 +9,6 @@ tags:
   - terraform
 ---
 
-# Three Terraform Mistakes, and How to Avoid Them
 
 ![Painting of a sailboat in blue water, surrounded by a fiery red sky. Painting by Maria Helena Villela.](https://cdn-images-1.medium.com/max/800/0*uyJYaaAB_kfJYoKz)
 

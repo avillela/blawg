@@ -9,7 +9,6 @@ tags:
   - kubecon
 ---
 
-# KubeCon North America 2022 Retrospective
 
 ![Sculpture in front of Detroit skyline.](https://cdn-images-1.medium.com/max/800/1*6IhnmqVLIfmvawYKFefJ0w.png)
 

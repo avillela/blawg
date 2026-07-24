@@ -10,7 +10,6 @@ tags:
   - argocd
 ---
 
-# Using Tekton and ArgoCD to Set Up a Kubernetes-Native Build & Release Pipeline
 
 ![](https://cdn-images-1.medium.com/max/800/1*Jg9cs_IMAxXSQ3b2xEXpUQ.jpeg)
 

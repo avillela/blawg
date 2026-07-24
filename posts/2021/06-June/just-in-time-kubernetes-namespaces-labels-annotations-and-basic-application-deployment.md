@@ -8,7 +8,6 @@ tags:
   - kubernetes
 ---
 
-# Just-in-Time Kubernetes: Namespaces, Labels, Annotations, and Basic Application Deployment
 
 ![](https://cdn-images-1.medium.com/max/800/1*bBQ-cnsZNb8NhrzzbUKPSQ.png)
 

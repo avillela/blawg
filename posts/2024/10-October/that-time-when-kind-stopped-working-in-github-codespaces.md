@@ -10,9 +10,7 @@ tags:
   - devcontainers
 ---
 
-# That Time When KinD Stopped Working in GitHub Codespaces
 
-#### Sh\*t Happens, But You Deal…
 
 ![Sun’s rays peeking from behind fluffy clouds in late afternoon](https://cdn-images-1.medium.com/max/800/1*oRs6KtrJnpUnZ4a0I02QZw.png)
 

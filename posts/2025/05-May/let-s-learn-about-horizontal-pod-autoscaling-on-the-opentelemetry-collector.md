@@ -12,9 +12,7 @@ tags:
   - otel-collector
 ---
 
-# Let’s Learn About Horizontal Pod Autoscaling on the OpenTelemetry Collector
 
-#### Configuring HPA on Collectors managed by the OpenTelemetry Operator
 
 ![A close-up image of a dandelion seed head. The dandelion is in full seed stage, with numerous white, fluffy seeds radiating from the center. The background consists of green leaves and grass, slightly out of focus, highlighting the intricate details of the dandelion seeds.](https://cdn-images-1.medium.com/max/800/1*C_4HUG9iBM6_Wwd3Am8A_A.jpeg)
 

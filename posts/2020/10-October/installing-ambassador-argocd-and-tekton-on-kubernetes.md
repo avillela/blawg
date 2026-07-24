@@ -10,7 +10,6 @@ tags:
   - tekton
 ---
 
-# Installing Ambassador, ArgoCD, and Tekton on Kubernetes
 
 ![](https://cdn-images-1.medium.com/max/800/1*bZxXCJOqyxpyH_XzAwp32g.jpeg)
 

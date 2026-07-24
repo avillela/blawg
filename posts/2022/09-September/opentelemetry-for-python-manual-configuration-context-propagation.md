@@ -10,7 +10,6 @@ tags:
   - lightstep
 ---
 
-# OpenTelemetry for Python: Manual Configuration & Context Propagation
 
 ![](https://cdn-images-1.medium.com/max/800/1*_Lca7zZ3wgAGSsFZF-IHzg.jpeg)
 

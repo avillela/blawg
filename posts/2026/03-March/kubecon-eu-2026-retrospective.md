@@ -9,9 +9,7 @@ tags:
   - kubecon
 ---
 
-# KubeCon EU 2026 Retrospective
 
-#### Finding my people amidst a chaotic but fun week
 
 ![Five people smile for a selfie outdoors in front of a large orange “KubeCon + CloudNativeCon Europe 2026” event banner decorated with stylized buildings, tulips, a bicycle, and a bridge.](https://cdn-images-1.medium.com/max/800/1*_VLZc9hVFUBwo2dl4fPB6w.jpeg)
 

@@ -10,9 +10,7 @@ tags:
   - thought-leadership
 ---
 
-# From Builder to Architect
 
-#### The Senior Developer’s Survival Guide in the Age of AI
 
 ![A large historic square in Prague with cobblestone paving, people walking, and outdoor seating. The Gothic Church of Our Lady before Týn rises in the background with its two tall spires, and the Jan Hus Memorial stands prominently in the center, surrounded by ornate buildings with red‑tiled roofs under a partly cloudy sky.](https://cdn-images-1.medium.com/max/800/1*tN8GUwcvBG7e9DBF4gdW9g.jpeg)
 

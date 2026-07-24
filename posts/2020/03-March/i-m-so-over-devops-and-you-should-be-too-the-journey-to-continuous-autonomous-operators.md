@@ -9,7 +9,6 @@ tags:
   - thought-leadership
 ---
 
-# I’m so over DevOps…and you should be too: the Journey to Continuous Autonomous Operators
 
 ![](https://cdn-images-1.medium.com/max/1200/1*CjgWf5yGeHJCKDWb3iTn_Q.jpeg)
 

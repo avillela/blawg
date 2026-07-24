@@ -10,7 +10,6 @@ tags:
   - thought-leadership
 ---
 
-# Unpacking Observability: How to Choose an Observability Vendor
 
 ![](https://cdn-images-1.medium.com/max/800/1*jngxoWs6Bwgs9RPBDu7e3g.jpeg)
 

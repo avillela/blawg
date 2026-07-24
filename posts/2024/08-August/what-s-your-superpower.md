@@ -7,7 +7,6 @@ tags:
   - advice
 ---
 
-# What’s Your Superpower?
 
 ![](https://cdn-images-1.medium.com/max/800/0*CbXNtWZUsrFkpFVn.png)
 

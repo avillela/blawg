@@ -8,7 +8,6 @@ tags:
   - platform-engineering
 ---
 
-# Beyond Platform Engineering
 
 _co-written with Renata Rocha_
 

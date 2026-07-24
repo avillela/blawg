@@ -9,9 +9,7 @@ tags:
   - devcontainer
 ---
 
-# Running Dev Containers Locally with Podman & VSCode
 
-#### Running Podman in a Docker World
 
 ![A vibrant red and yellow maple leaf with intricate vein patterns lies on a textured grey concrete surface. Scattered around are small, yellow, elliptical leaves and thin twigs, contrasting with the maple leaf’s distinct shape and coloration.](https://cdn-images-1.medium.com/max/800/1*2XUbV42RE9ZypFyX4lO-6w.jpeg)
 

@@ -9,7 +9,6 @@ tags:
   - opentelemetry
 ---
 
-# Dude, Where’s My Error?
 
 _co-written with Reese Lee_
 

@@ -8,7 +8,6 @@ tags:
   - thought-leadership
 ---
 
-# How to Nail Your Digital Transformation
 
 ![](https://cdn-images-1.medium.com/max/800/1*xYOnOlAULPor6RI0I9NLyA.png)
 

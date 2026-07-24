@@ -10,7 +10,6 @@ tags:
   - hashicorp
 ---
 
-# Just-in-Time Nomad: Managing Nomad Application Deployments Using Waypoint on HashiQube
 
 ![](https://cdn-images-1.medium.com/max/800/1*o4Z1v1ASewXvsfF1LPNTsQ.jpeg)
 

@@ -10,9 +10,7 @@ tags:
   - thought-leadership
 ---
 
-# Storing All of Your Observability Signals in One Place Matters!
 
-#### Going from “Swivel Chair” Observability to “Single Pane of Glass” Observability
 
 ![A close-up of a branch with young, green leaves and buds in the foreground. The background shows a paved path with a few people walking, trees with sparse leaves, and the sun setting, casting a warm glow over the scene. The image captures the essence of spring with new growth on the trees and a serene, natural setting.](https://cdn-images-1.medium.com/max/800/1*_ZYmDqWGCr2cEadUoNcUog.jpeg)
 

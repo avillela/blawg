@@ -9,7 +9,6 @@ tags:
   - advice
 ---
 
-# Why Tech Certifications are a Waste of Time and Money
 
 ![](https://cdn-images-1.medium.com/max/800/1*UPwcgWWqBPOKWm6CxslX2g.png)
 

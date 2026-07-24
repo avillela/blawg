@@ -9,7 +9,6 @@ tags:
   - opentelemetry
 ---
 
-# Observability Mythbusters: Logs and Metrics Aren’t Enough
 
 ![](https://cdn-images-1.medium.com/max/800/0*yAT2Jif6ger8QgJg)
 

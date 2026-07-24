@@ -9,7 +9,6 @@ tags:
   - kubernetes
 ---
 
-# Using Crossplane to Provision a Kubernetes Cluster in Google Cloud
 
 ![](https://cdn-images-1.medium.com/max/800/1*3FT_chn_ZiocXmf4bgn-CQ.png)
 

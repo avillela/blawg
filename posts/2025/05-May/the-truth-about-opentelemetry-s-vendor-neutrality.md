@@ -10,9 +10,7 @@ tags:
   - observability
 ---
 
-# The Truth About OpenTelemetry’s Vendor-Neutrality
 
-#### Understanding what “vendor neutral” actually means for OpenTelemetry
 
 ![Close-up of tree branches with small, pink buds clustered along them, set against a blurred background of a park or outdoor area. The buds are in the early stages of blooming, capturing the delicate beauty and promise of new growth in spring.](https://cdn-images-1.medium.com/max/800/1*AHK77PKgDEAlrnoSM5Q7IQ.jpeg)
 

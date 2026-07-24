@@ -9,7 +9,6 @@ tags:
   - kubecon
 ---
 
-# KubeCon North America 2023 Retrospective: What A Difference A Year Makes!
 
 ![](https://cdn-images-1.medium.com/max/800/1*Yf12onfvkKB8ckDiJ7Zicg.png)
 

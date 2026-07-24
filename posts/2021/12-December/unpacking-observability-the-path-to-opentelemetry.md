@@ -10,7 +10,6 @@ tags:
   - thought-leadership
 ---
 
-# Unpacking Observability: The Path to OpenTelemetry
 
 ![A graphic with a person in a suit scrastching their heads at which direction to take next based on three directional arrows pointing north, east and west. It is meant to expemplify the pathfinding theme of this article.](https://cdn-images-1.medium.com/max/800/1*onbtAk9Jeo9zEIsddb8KHQ.png)
 

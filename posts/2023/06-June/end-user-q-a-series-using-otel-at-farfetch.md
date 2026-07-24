@@ -9,7 +9,6 @@ tags:
   - opentelemetry
 ---
 
-# End-User Q&A Series: Using OTel at Farfetch
 
 ![](https://cdn-images-1.medium.com/max/800/1*46cOicqhAZMAzDajKtTkPQ.png)
 

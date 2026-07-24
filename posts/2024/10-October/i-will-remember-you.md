@@ -7,7 +7,6 @@ tags:
   - personal
 ---
 
-# I Will Remember You
 
 ### A story about mental health and the journey to healing
 

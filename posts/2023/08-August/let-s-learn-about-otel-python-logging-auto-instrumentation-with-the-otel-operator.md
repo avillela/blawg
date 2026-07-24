@@ -10,9 +10,7 @@ tags:
   - otel-operator
 ---
 
-# Let’s Learn About OTel Python Logging Auto-Instrumentation with the OTel Operator!
 
-#### Get started with OTel Logs for Python apps on K8s and learn how to auto-instrument logs via auto-instrumentation with the OTel Operator
 
 ![Large catamaran sailboat approaching pier on the beach at sunset.](https://cdn-images-1.medium.com/max/800/1*9yDDdY1LbDO4XtK2iAkRbw.png)
 

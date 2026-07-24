@@ -10,9 +10,7 @@ tags:
   - opamp
 ---
 
-# OpenTelemetry OpAMP for You and Me
 
-#### The OTel OpAMP primer that we all desperately needed
 
 ![Concrete wall with a grid of square openings casting geometric shadows and light patterns from outside.](https://cdn-images-1.medium.com/max/800/1*nLQNHCk-D3uaT4yskPmVBQ.jpeg)
 

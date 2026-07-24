@@ -9,7 +9,6 @@ tags:
   - thought-leadership
 ---
 
-# How to Write an Awesome Technical “How-To” Blog Post
 
 ![](https://cdn-images-1.medium.com/max/800/1*TuleSczPIB7Z3McSDKIaCA@2x.jpeg)
 

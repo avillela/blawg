@@ -9,7 +9,6 @@ tags:
   - argocd
 ---
 
-# Configuring SSO with Azure Active Directory on ArgoCD
 
 ![](https://cdn-images-1.medium.com/max/800/1*Bzyh-IAVchoer9X916OYJQ.png)
 

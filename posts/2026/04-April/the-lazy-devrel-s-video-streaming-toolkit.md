@@ -8,9 +8,7 @@ tags:
   - devrel
 ---
 
-# The Lazy DevRel’s Video Streaming Toolkit
 
-#### Video streaming setup for those who want to up their game a tad
 
 ![A branch of pale pink cherry blossoms set against a clear blue sky, with some flowers open and others still in bud.](https://cdn-images-1.medium.com/max/800/1*pPp7eR7u0WTplcBgm6KCnQ.jpeg)
 

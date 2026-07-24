@@ -8,7 +8,6 @@ tags:
   - thought-leadership
 ---
 
-# E-mail sucks.
 
 ![](https://cdn-images-1.medium.com/max/800/1*yzlri6SFwragPYe0B1MGRQ.jpeg)
 

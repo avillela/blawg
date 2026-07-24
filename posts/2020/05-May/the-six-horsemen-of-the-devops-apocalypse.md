@@ -8,7 +8,6 @@ tags:
   - thought-leadership
 ---
 
-# The Six Horsemen of the DevOps Apocalypse
 
 ![](https://cdn-images-1.medium.com/max/800/1*3H0tTxeWJSMkJpm1pME-lw.jpeg)
 

@@ -8,7 +8,6 @@ tags:
   - conferences
 ---
 
-# KubeHuddle Taught Me That It’s Okay to Be Smart and Hot
 
 ![Woman wearing a pair of stiletto heels](https://cdn-images-1.medium.com/max/800/1*1ezTDcl2rjIR35Kb0iqa1Q.jpeg)
 

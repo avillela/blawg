@@ -8,7 +8,6 @@ tags:
   - thought-leadership
 ---
 
-# How to be an ethical engineering leader
 
 ![](https://cdn-images-1.medium.com/max/800/1*MSEnQ56ejdTGMRSpDC_R7w.png)
 

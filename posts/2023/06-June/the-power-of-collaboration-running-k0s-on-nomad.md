@@ -10,7 +10,6 @@ tags:
   - kubernetes
 ---
 
-# The Power of Collaboration: Running k0s on Nomad
 
 ![](https://cdn-images-1.medium.com/max/800/1*oOOeKfYuoLp29nYF_IoiHw.jpeg)
 

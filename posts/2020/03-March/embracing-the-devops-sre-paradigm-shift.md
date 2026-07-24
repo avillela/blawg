@@ -9,7 +9,6 @@ tags:
   - sre
 ---
 
-# Embracing the DevOps & SRE Paradigm Shift
 
 ![](https://cdn-images-1.medium.com/max/1200/1*vu3X1F3fuVJpj1LViPNGCQ.png)
 

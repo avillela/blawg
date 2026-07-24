@@ -9,9 +9,7 @@ tags:
   - advice
 ---
 
-# How Can I Contribute to OpenTelemetry?
 
-#### 5 ways of contributing to OTel: through docs contributions, blogging, joining the End User Working Group, contributing to the OTel Demo, or joining a SIG.
 
 ![Sunset over the water over an orange sky, with long grass in the foreground.](https://cdn-images-1.medium.com/max/800/1*rgTuGI4iquiA_g9v0VscWA.png)
 

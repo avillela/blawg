@@ -10,9 +10,7 @@ tags:
   - thought-leadership
 ---
 
-# We’re past the OpenTelemetry “Honeymoon Period”
 
-#### My wishlist for OpenTelemetry in 2026
 
 ![Kinkaku-ji (Golden Pavilion) in Kyoto, Japan, a three-story Zen Buddhist temple with gold-leaf-covered upper floors, reflected in a tranquil pond and surrounded by lush greenery. A large tree trunk appears in the foreground, adding depth to the serene landscape.](https://cdn-images-1.medium.com/max/800/1*csBZbgPf1tUQ_Ig274WpAg.jpeg)
 

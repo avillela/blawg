@@ -8,7 +8,6 @@ tags:
   - platform-engineering
 ---
 
-# Platform engineering magic: Using Kratix to quickly deliver a pre-configured OpenTelemetry Operator
 
 ![](https://cdn-images-1.medium.com/max/800/1*w1cCJk45YLZa-3gT0NwsaQ.jpeg)
 

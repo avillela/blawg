@@ -9,7 +9,6 @@ tags:
   - opentelemetry
 ---
 
-# OTel Collector Anti-Patterns
 
 ![House on stilts against mountain and ocean backdrop. Black and white photograph.](https://cdn-images-1.medium.com/max/800/1*0tjDJ-D89kqdweBuCRbsiA.jpeg)
 

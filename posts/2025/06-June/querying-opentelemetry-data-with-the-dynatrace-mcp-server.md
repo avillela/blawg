@@ -12,9 +12,7 @@ tags:
   - ai
 ---
 
-# Querying OpenTelemetry Data with the Dynatrace MCP Server
 
-#### A Natural Language Approach
 
 ![A close-up view of red leaves on tree branches with the sun shining through them. The sunlight creates a glowing effect around the edges of the leaves, highlighting their vibrant color against the bright sky. The background includes more branches and leaves, adding depth to the scene. The overall composition captures the beauty of nature with the interplay of light and color.](https://cdn-images-1.medium.com/max/800/1*4a2fpGZS0E7365vHrtF5YA.jpeg)
 

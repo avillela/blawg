@@ -10,7 +10,6 @@ tags:
   - observability
 ---
 
-# Things You Might Not Have Known About the OpenTelemetry Operator
 
 ![Snow-covered mountain peak of Mount Rainier rising above the clouds](https://cdn-images-1.medium.com/max/800/1*ygYEfPLe7E1yJEAgod9LJQ.jpeg)
 

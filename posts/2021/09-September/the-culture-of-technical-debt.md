@@ -8,7 +8,6 @@ tags:
   - thought-leadership
 ---
 
-# The Culture of Technical Debt
 
 ![A black outline of a person wearing a suit who is entangled by multiples cables coming from all angles of the graphic. The image is meant to represent the “Entaglement of a Technical Debt Culture”](https://cdn-images-1.medium.com/max/800/1*Jca22vgvp-wfEc5Yb_zUoQ.png)
 

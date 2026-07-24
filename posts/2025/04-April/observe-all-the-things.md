@@ -9,9 +9,7 @@ tags:
   - opentelemetry
 ---
 
-# Observe All The Things
 
-#### The Importance of Making Data Accessible
 
 ![The image shows a tiled floor with the word “HELLO” spelled out in large, black, capital letters. The tiles are small and square, with a white background and black lines forming the letters and a border around the word. The word “HELLO” is centered within the border.](https://cdn-images-1.medium.com/max/800/1*gAIpfkR_L_va-84zRx30yw.jpeg)
 

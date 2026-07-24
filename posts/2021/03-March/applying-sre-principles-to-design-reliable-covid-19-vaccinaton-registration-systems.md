@@ -8,7 +8,6 @@ tags:
   - sre
 ---
 
-# Applying SRE Principles to Design Reliable COVID-19 Vaccinaton Registration Systems
 
 ![](https://cdn-images-1.medium.com/max/800/1*xoW4gv3D7XxJxHGEnuaYZQ.png)
 

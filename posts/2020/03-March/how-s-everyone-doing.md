@@ -8,7 +8,6 @@ tags:
   - personal
 ---
 
-# How’s Everyone Doing??
 
 ![](https://cdn-images-1.medium.com/max/1200/1*5rTn5oItaNtUILY-SjhKIA.jpeg)
 

@@ -9,7 +9,6 @@ tags:
   - thought-leadership
 ---
 
-# Shifting from Infrastructure as Code to Infrastructure as Data
 
 ![](https://cdn-images-1.medium.com/max/800/0*qVwPYXBviS39p0br)
 

@@ -10,7 +10,6 @@ tags:
   - hashicorp
 ---
 
-# Just-in-time Nomad
 
 ![Picture of a mural featuring an astronaut surrounded by a circle.](https://cdn-images-1.medium.com/max/800/1*aYXLK8H0V3vRvFeeuSVzdA@2x.jpeg)
 
