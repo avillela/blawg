@@ -20,7 +20,7 @@ Now, this is a fairly broad topic. There are lots of different agentic ecosystem
 
 Let's dig in!
 
-## What is Goose?
+## What is Goose? 
 
 Goose is an AI agent framework. [It was originally created by Block](https://block.xyz/inside/block-open-source-introduces-codename-goose) (the company formerly known as Square), and was recently donated to the [Agentic AI Foundation (AAIF)](https://aaif.io/). I messed around with it one of its early versions last year.
 
