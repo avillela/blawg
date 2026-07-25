@@ -20,8 +20,6 @@ Now, this is a fairly broad topic. There are lots of different agentic ecosystem
 
 Let's dig in!
 
-## Goose Overview
-
 ## Enabling OTel on Goose
 
 For your convenience, I have [a lovely GitHub repository](https://github.com/avillela/goose-otel-enablement) to accompany this tutorial, including the [dev container](/tag/devcontainers) configuration. If you choose to use the dev container, you will have all of the tools that you need for this tutorial.
