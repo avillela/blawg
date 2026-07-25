@@ -24,7 +24,7 @@ Let's dig in!
 
 In case you're wondering what the heck Goose is…in a nutshell, Goose is an AI agent framework. [It was originally created by Block](https://block.xyz/inside/block-open-source-introduces-codename-goose) (the company formerly known as Square), and was recently donated to the [Agentic AI Foundation (AAIF)](https://aaif.io/). I messed around with one of its early versions last year.
 
-One of the things that I really like is that it provides an abstraction layer on top of your LLM (e.g. Claude Sonnet, GPT-5.6 Sol, Gemini Flash) and provider (e.g. Claude, GitHub Copilot, Gemini), so you can create reusable AI workflows (kind of like [Ansible playbooks](https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook), but for AI) and swap out provider and model.
+One of the things that I really like about Goose is that it provides an abstraction layer on top of your LLM (e.g. Claude Sonnet, GPT-5.6 Sol, Gemini Flash) and provider (e.g. Claude, GitHub Copilot, Gemini), so you can create reusable AI workflows (kind of like [Ansible playbooks](https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook), but for AI) and swap out provider and model.
 
 You can read more on my previous Goose dabblings [here](/tag/goose/).
 
