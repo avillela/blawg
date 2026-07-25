@@ -1,27 +1,26 @@
 ---
-title: "I Can See Your Goose!"
+title: I Can See Your Goose!
 slug: goose-with-otel
-description: "Making AAIF's Goose Observable with OpenTelemetry"
-added: "2026-07-24"
+description: Making AAIF's Goose Observable with OpenTelemetry
 tags:
   - technical
   - ai
   - aaif
   - goose
   - open-telemetry
-  - "2026"
+  - '2026'
+added: 2026-07-24T00:00:00.000Z
 ---
 
 ![Two geese stand on grass under a blue sky—one white, one a Canada goose—with a cartoon telescope shown in a speech bubble between them.](/images/posts/goose-with-otel/goose-hero-image.png)
 
-If you’ve used AI agents for tech-y things (software development, SRE type stuff, etc), you’ve probably found yourself in a yelling match at some point with your agent trying to understand why the hell it decided to take a particular course of action. Especially if that course of action is destructive or mischievous, like making code changes without permission, for example. Which is why having observable agents is important. 
+If you’ve used AI agents for tech-y things (software development, SRE type stuff, etc), you’ve probably found yourself in a yelling match at some point with your agent trying to understand why the hell it decided to take a particular course of action. Especially if that course of action is destructive or mischievous, like making code changes without permission, for example. Which is why having observable agents is important.
 
 Now, this is a fairly broad topic. There are lots of different agentic ecosystems out there. So today, I’ll dig into one specific use case: enabling [OpenTelemetry (OTel)](https://opentelemetry.io) on [AAIF's Goose](https://goose-docs.ai) to help make your Goose agents observable.
 
 Let's dig in!
 
 ## Goose Overview
-
 
 ## Enabling OTel on Goose
 
@@ -60,7 +59,7 @@ These steps show you how to set up Goose with the Claude Code provider.
 
 ![set Claude Code CLI command](/images/posts/goose-with-otel/goose-claude-code-cli-command.png)
 
-* **Provider Claude Code CLI requires CLAUDE_CODE_COMMAND, please enter a value**: `claude`
+* **Provider Claude Code CLI requires CLAUDE\_CODE\_COMMAND, please enter a value**: `claude`
 
 ![select Claude model](/images/posts/goose-with-otel/goose-claude-model.png)
 
@@ -134,7 +133,7 @@ Upon initial setup, Goose may have given you the following option:
 
 `Enable or disable anonymous usage data collection`
 
-It's kind of confusing, and if you're like me, you might have disabled it initially. It turns out that you need this setting enabled for OTel telemetry emission. Never fear, because there's a way to enable it after the fact. 
+It's kind of confusing, and if you're like me, you might have disabled it initially. It turns out that you need this setting enabled for OTel telemetry emission. Never fear, because there's a way to enable it after the fact.
 
 Open [`~/.config/goose/config.yaml`](~/.config/goose/config.yaml), and find the configuration called `GOOSE_TELEMETRY_ENABLED`, and set it to `true`:
 
@@ -158,6 +157,7 @@ OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 ```
 
 Where:
+
 * `OTEL_EXPORTER_OTLP_ENDPOINT` is the destination of our telemetry. In our case, we're sending the telemetry to an [OTel Collector](https://opentelemetry.io/docs/collector/). The Collector is configured to send telemetry data to [Jaeger](https://www.jaegertracing.io/) (traces only) and [Dynatrace](https://dt-url.net/dt-trial) (traces, logs, metrics).
 * `OTEL_EXPORTER_OTLP_PROTOCOL` is the protocol we're using for sending our OTel data. OTel supports both gRPC and HTTP. In this case, we're using HTTP. If we were sending via gRPC, the value of `OTEL_EXPORTER_OTLP_PROTOCOL` would be `grpc`, and our endpoint would be `http://localhost:4317` (the OTel Collector listens on port `4317` for gRPC).
 
@@ -180,11 +180,10 @@ If you choose to also use [Dynatrace](https://dt-url.net/dt-trial) as your obser
 
 Now we're ready to start the OTel Collector and Jaeger. This is done via a [`docker-compose.yaml`](https://github.com/avillela/goose-otel-enablement/blob/main/docker-compose.yml), which starts two containers:
 
-| Service | Image | Exposed ports |
-|---|---|---|
+| Service          | Image                                          | Exposed ports                |
+| ---------------- | ---------------------------------------------- | ---------------------------- |
 | `otel-collector` | `otel/opentelemetry-collector-contrib:0.128.0` | `4317` (gRPC), `4318` (HTTP) |
-| `jaeger` | `jaegertracing/jaeger:2.7.0` | `16686` (UI) |
-
+| `jaeger`         | `jaegertracing/jaeger:2.7.0`                   | `16686` (UI)                 |
 
 > **NOTE:** If you would like to exclude the Dynatrace components, comment out lines referencing the Dynatrace Collector configuration from [`docker-compose.yaml`](https://github.com/avillela/goose-otel-enablement/blob/main/docker-compose.yml):
 
@@ -222,9 +221,9 @@ Now you'rea ready to run the script:
 
 This starts up Jaeger and the OTel Collector.
 
-**Jaeger UI:** http://localhost:16686
+**Jaeger UI:** [http://localhost:16686](http://localhost:16686)
 
-**Dynatrace UI:** https://<your_tenant_id>.live.dynatrace.com
+**Dynatrace UI:** https\://\<your\_tenant\_id>.live.dynatrace.com
 
 ### 5. Start Goose with OTel
 
@@ -242,7 +241,8 @@ how many folders in my directory?
 
 In your observability backend, you will be able to see traces, logs, and metrics for Goose, by filtering on attribute `service.name` = `goose`.
 
-Goose prompts and results are captured in OTel [spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) (children of a [trace](https://opentelemetry.io/docs/concepts/signals/traces/)): 
+Goose prompts and results are captured in OTel [spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) (children of a [trace](https://opentelemetry.io/docs/concepts/signals/traces/)):
+
 * Prompts are stored in the `trace_input` and `user_message` fields of the span
 * Prompt results are stored in the `trace_output`
 * The prompt input span is disconnected from the prompt output trace (i.e. they're not part of the same trace)
