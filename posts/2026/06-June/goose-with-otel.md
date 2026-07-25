@@ -18,7 +18,7 @@ If you’ve used AI agents for tech-y things (software development, SRE type stu
 
 Now, this is a fairly broad topic. There are lots of different agentic ecosystems out there. So today, I’ll dig into one specific use case: enabling [OpenTelemetry (OTel)](https://opentelemetry.io) on [AAIF's Goose](https://goose-docs.ai) to help make your Goose agents observable.
 
-Let's dig in!
+Let's dig in! 
 
 ## What is Goose? 
 
