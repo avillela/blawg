@@ -6,7 +6,7 @@ added: "Oct 03, 2025"
 tags:
   - technical
   - mcp
-  - devcontainer
+  - devcontainers
   - ai
   - "2025"
 ---
