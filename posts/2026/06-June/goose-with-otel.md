@@ -20,6 +20,14 @@ Now, this is a fairly broad topic. There are lots of different agentic ecosystem
 
 Let's dig in!
 
+## What is Goose?
+
+Goose is an AI agent framework. [It was originally created by Block](https://block.xyz/inside/block-open-source-introduces-codename-goose) (the company formerly known as Square), and was recently donated to the [Agentic AI Foundation (AAIF)](https://aaif.io/). I messed around with it one of its early versions last year.
+
+One of the things that I really like is that it provides an abstraction layer on top of your LLM (e.g. Claude Sonnet, GPT-5.6 Sol, Gemini Flash) and provider (e.g. Claude, GitHub Copilot, Gemini), so you can create reusable AI workflows (kind of like [Ansible playbooks](https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook), but for AI) and swap out provider and model.
+
+You can read more on my previous Goose dabblings [here](/tag/goose/).
+
 ## Enabling OTel on Goose
 
 For your convenience, I have [a lovely GitHub repository](https://github.com/avillela/goose-otel-enablement) to accompany this tutorial, including the [dev container](/tag/devcontainers) configuration. If you choose to use the dev container, you will have all of the tools that you need for this tutorial.
