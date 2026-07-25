@@ -97,6 +97,10 @@ export default defineConfig({
 								label: "AI Stuff",
 							},
 							{
+								value: "aaif",
+								label: "AAIF",
+							},
+							{
 								value: "argocd",
 								label: "ArgoCD",
 							},
@@ -131,6 +135,10 @@ export default defineConfig({
 							{
 								value: "events",
 								label: "Events",
+							},
+							{
+								value: "goose",
+								label: "Goose",
 							},
 							{
 								value: "github-codespaces",

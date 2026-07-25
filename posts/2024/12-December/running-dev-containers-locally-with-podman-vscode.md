@@ -1,12 +1,12 @@
 ---
-title: "Running Dev Containers Locally with Podman & VSCode"
+title: "Running Dev Containers Locally with Podman and VSCode"
 slug: running-dev-containers-locally-with-podman-vscode
 description: "Running Podman in a Docker World"
 added: "Dec 06, 2024"
 tags:
   - technical
   - docker
-  - devcontainer
+  - devcontainers
   - "2024"
 ---
 

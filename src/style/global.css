@@ -254,6 +254,21 @@ article :not(.article-title) {
 	margin-block-start: 1em;
 }
 
+.blog-post blockquote {
+	background: #3e5ca1ff;
+}
+
+.blog-post table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.blog-post th,
+.blog-post td {
+	border: 1px solid var(--gray);
+	padding: 0.4rem 0.75rem;
+}
+
 time {
 	font-style: italic;
 	color: var(--gray);

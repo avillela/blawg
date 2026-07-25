@@ -5,7 +5,7 @@ description: "Exploring autonomous AI software development using Paperclip and B
 added: "Jun 25, 2026"
 tags:
   - technical
-  - devcontainer
+  - devcontainers
   - ai
   - thought-leadership
   - vibe-coding
