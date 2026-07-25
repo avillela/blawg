@@ -1,27 +1,26 @@
 ---
-title: "I Can See Your Goose!"
+title: I Can See Your Goose!
 slug: goose-with-otel
-description: "Making AAIF's Goose Observable with OpenTelemetry"
-added: "2026-07-24"
+description: Making AAIF's Goose Observable with OpenTelemetry
 tags:
   - technical
   - ai
   - aaif
   - goose
   - open-telemetry
-  - "2026"
+  - '2026'
+added: 2026-07-24T00:00:00.000Z
 ---
 
-![Two geese stand on grass under a blue sky—one white, one a Canada goose—with a cartoon telescope shown in a speech bubble between them.](/public/images/posts/goose-with-otel/goose-hero-image.png)
+![Two geese stand on grass under a blue sky—one white, one a Canada goose—with a cartoon telescope shown in a speech bubble between them.](/images/posts/public/goose-with-otel/goose-hero-image.png)
 
-If you’ve used AI agents for tech-y things (software development, SRE type stuff, etc), you’ve probably found yourself in a yelling match at some point with your agent trying to understand why the hell it decided to take a particular course of action. Especially if that course of action is destructive or mischievous, like making code changes without permission, for example. Which is why having observable agents is important. 
+If you’ve used AI agents for tech-y things (software development, SRE type stuff, etc), you’ve probably found yourself in a yelling match at some point with your agent trying to understand why the hell it decided to take a particular course of action. Especially if that course of action is destructive or mischievous, like making code changes without permission, for example. Which is why having observable agents is important.
 
 Now, this is a fairly broad topic. There are lots of different agentic ecosystems out there. So today, I’ll dig into one specific use case: enabling [OpenTelemetry (OTel)](https://opentelemetry.io) on [AAIF's Goose](https://goose-docs.ai) to help make your Goose agents observable.
 
 Let's dig in!
 
 ## Goose Overview
-
 
 ## Enabling OTel on Goose
 
@@ -50,27 +49,27 @@ These steps show you how to set up Goose with the Claude Code provider.
 
 > **NOTE:** If you need to configure your provider again, run `goose configure`
 
-![select goose provider](/public/images/posts/goose-with-otel/goose-provider.png)
+![select goose provider](/images/posts/public/goose-with-otel/goose-provider.png)
 
 * **How would you like to set up your provider?**: `Manual Configuration`
 
-![select model provider](/public/images/posts/goose-with-otel/goose-model-provider.png)
+![select model provider](/images/posts/public/goose-with-otel/goose-model-provider.png)
 
 * **Which model provider should we use?**: `Claude Code CLI`
 
-![set Claude Code CLI command](/public/images/posts/goose-with-otel/goose-claude-code-cli-command.png)
+![set Claude Code CLI command](/images/posts/public/goose-with-otel/goose-claude-code-cli-command.png)
 
-* **Provider Claude Code CLI requires CLAUDE_CODE_COMMAND, please enter a value**: `claude`
+* **Provider Claude Code CLI requires CLAUDE\_CODE\_COMMAND, please enter a value**: `claude`
 
-![select Claude model](/public/images/posts/goose-with-otel/goose-claude-model.png)
+![select Claude model](/images/posts/public/goose-with-otel/goose-claude-model.png)
 
 * **Select model**: `claude-sonnet-4-6`
 
-![select thinking effort](/public/images/posts/goose-with-otel/goose-thinking-effort.png)
+![select thinking effort](/images/posts/public/goose-with-otel/goose-thinking-effort.png)
 
 * **Select thinking effort**: `Low - Better latency, lighter reasoning`
 
-![Goose config success](/public/images/posts/goose-with-otel/goose-config-success.png)
+![Goose config success](/images/posts/public/goose-with-otel/goose-config-success.png)
 
 Success!!
 
@@ -118,7 +117,7 @@ Once Claude is authenticated, open a new terminal window and start Goose:
 goose session
 ```
 
-![goose session startup](/public/images/posts/goose-with-otel/goose-session.png)
+![goose session startup](/images/posts/public/goose-with-otel/goose-session.png)
 
 Feel free to ask it a test question. I always like to ask "how many folders in my directory?".
 
@@ -134,7 +133,7 @@ Upon initial setup, Goose may have given you the following option:
 
 `Enable or disable anonymous usage data collection`
 
-It's kind of confusing, and if you're like me, you might have disabled it initially. It turns out that you need this setting enabled for OTel telemetry emission. Never fear, because there's a way to enable it after the fact. 
+It's kind of confusing, and if you're like me, you might have disabled it initially. It turns out that you need this setting enabled for OTel telemetry emission. Never fear, because there's a way to enable it after the fact.
 
 Open [`~/.config/goose/config.yaml`](~/.config/goose/config.yaml), and find the configuration called `GOOSE_TELEMETRY_ENABLED`, and set it to `true`:
 
@@ -158,6 +157,7 @@ OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 ```
 
 Where:
+
 * `OTEL_EXPORTER_OTLP_ENDPOINT` is the destination of our telemetry. In our case, we're sending the telemetry to an [OTel Collector](https://opentelemetry.io/docs/collector/). The Collector is configured to send telemetry data to [Jaeger](https://www.jaegertracing.io/) (traces only) and [Dynatrace](https://dt-url.net/dt-trial) (traces, logs, metrics).
 * `OTEL_EXPORTER_OTLP_PROTOCOL` is the protocol we're using for sending our OTel data. OTel supports both gRPC and HTTP. In this case, we're using HTTP. If we were sending via gRPC, the value of `OTEL_EXPORTER_OTLP_PROTOCOL` would be `grpc`, and our endpoint would be `http://localhost:4317` (the OTel Collector listens on port `4317` for gRPC).
 
@@ -180,11 +180,10 @@ If you choose to also use [Dynatrace](https://dt-url.net/dt-trial) as your obser
 
 Now we're ready to start the OTel Collector and Jaeger. This is done via a [`docker-compose.yaml`](https://github.com/avillela/goose-otel-enablement/blob/main/docker-compose.yml), which starts two containers:
 
-| Service | Image | Exposed ports |
-|---|---|---|
+| Service          | Image                                          | Exposed ports                |
+| ---------------- | ---------------------------------------------- | ---------------------------- |
 | `otel-collector` | `otel/opentelemetry-collector-contrib:0.128.0` | `4317` (gRPC), `4318` (HTTP) |
-| `jaeger` | `jaegertracing/jaeger:2.7.0` | `16686` (UI) |
-
+| `jaeger`         | `jaegertracing/jaeger:2.7.0`                   | `16686` (UI)                 |
 
 > **NOTE:** If you would like to exclude the Dynatrace components, comment out lines referencing the Dynatrace Collector configuration from [`docker-compose.yaml`](https://github.com/avillela/goose-otel-enablement/blob/main/docker-compose.yml):
 
@@ -222,9 +221,9 @@ Now you'rea ready to run the script:
 
 This starts up Jaeger and the OTel Collector.
 
-**Jaeger UI:** http://localhost:16686
+**Jaeger UI:** [http://localhost:16686](http://localhost:16686)
 
-**Dynatrace UI:** https://<your_tenant_id>.live.dynatrace.com
+**Dynatrace UI:** https\://\<your\_tenant\_id>.live.dynatrace.com
 
 ### 5. Start Goose with OTel
 
@@ -242,7 +241,8 @@ how many folders in my directory?
 
 In your observability backend, you will be able to see traces, logs, and metrics for Goose, by filtering on attribute `service.name` = `goose`.
 
-Goose prompts and results are captured in OTel [spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) (children of a [trace](https://opentelemetry.io/docs/concepts/signals/traces/)): 
+Goose prompts and results are captured in OTel [spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) (children of a [trace](https://opentelemetry.io/docs/concepts/signals/traces/)):
+
 * Prompts are stored in the `trace_input` and `user_message` fields of the span
 * Prompt results are stored in the `trace_output`
 * The prompt input span is disconnected from the prompt output trace (i.e. they're not part of the same trace)
@@ -250,23 +250,23 @@ Goose prompts and results are captured in OTel [spans](https://opentelemetry.io/
 
 Here's a sample trace output from Jaeger:
 
-!["OTel trace in Jaeger from a prompt within a Goose session - request"](/public/images/posts/goose-with-otel/jaeger-goose-trace-request.png)
+!["OTel trace in Jaeger from a prompt within a Goose session - request"](/images/posts/public/goose-with-otel/jaeger-goose-trace-request.png)
 
-!["OTel trace in Jaeger from a prompt within a Goose session - response"](/public/images/posts/goose-with-otel/jaeger-goose-trace-response.png)
+!["OTel trace in Jaeger from a prompt within a Goose session - response"](/images/posts/public/goose-with-otel/jaeger-goose-trace-response.png)
 
 Here's a sample trace output from Dynatrace using [Dynatrace Query Language (DQL)](https://docs.dynatrace.com/docs/platform/grail/dynatrace-query-language) in a [Notebook](https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks/notebooks):
 
-!["OTel trace in Dynatrace from a prompt within a Goose session"](/public/images/posts/goose-with-otel/dt-goose-trace.png)
+!["OTel trace in Dynatrace from a prompt within a Goose session"](/images/posts/public/goose-with-otel/dt-goose-trace.png)
 
 As you can see, in both Jaeger and Dynatrace, there are separate traces for the request (prompt) and response (result), which kind of sucks for correlation.
 
 Goose also emits logs, which you can see in Dynatrace. Again, I used DQL in a Notebook:
 
-!["OTel logs in Dynatrace from a prompt within a Goose session"](/public/images/posts/goose-with-otel/dt-goose-logs.png)
+!["OTel logs in Dynatrace from a prompt within a Goose session"](/images/posts/public/goose-with-otel/dt-goose-logs.png)
 
 And of course, metrics (again, in Dynatrace using DQL in a Notebook):
 
-!["OTel metrics in Dynatrace from a prompt within a Goose session"](/public/images/posts/goose-with-otel/dt-goose-metrics.png)
+!["OTel metrics in Dynatrace from a prompt within a Goose session"](/images/posts/public/goose-with-otel/dt-goose-metrics.png)
 
 The metrics don't look particularly useful in this format because it's just the metric name and metadata. I wasn't looking to do anything fancy other than see that the metrics were being emitted. You'll find them more useful in a timeseries.
 
@@ -278,6 +278,6 @@ As far as Goose telemetry goes, I didn't find the Goose logs particularly useful
 
 And now, I will leave you with a very on-theme photo of a goose living its best life. Photo taken by my daughter.
 
-![A goose stands on grass near a metal fence, head lowered, with a bright water fountain spraying behind it.](/public/images/posts/goose-with-otel/goose-canadas-wonderland.jpg)
+![A goose stands on grass near a metal fence, head lowered, with a bright water fountain spraying behind it.](/images/posts/public/goose-with-otel/goose-canadas-wonderland.jpg)
 
 Until next time, peace, love, and code. 🖖💜👩‍💻
