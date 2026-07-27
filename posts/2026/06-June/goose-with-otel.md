@@ -34,7 +34,7 @@ For your convenience, I have [a lovely GitHub repository](https://github.com/avi
 
 ### Set up Goose
 
-The instructions in this section are for setting up Goose with the [Claude ACP](https://goose-docs.ai/docs/guides/acp-providers#claude-acp) provider, which is a wrapper for Claude Code. Feel free to your favourite provider instead.
+The instructions in this section are for setting up Goose with the [Claude ACP](https://goose-docs.ai/docs/guides/acp-providers#claude-acp) provider, which is a wrapper for Claude Code. Feel free to use your favourite provider instead.
 
 > ✨ **FUN FACT:** ACP stands for Agent Client Protocol. It's an open standard that allows AI agents to talk to each other.
 
