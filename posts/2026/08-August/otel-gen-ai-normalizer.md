@@ -1,7 +1,7 @@
 ---
-title: Speaking the LLM Language
+title: Let's Learn About the OpenTelemetry GenAI Normalizer
 slug: otel-gen-ai-normalizer
-description: Using the OpenTelemetry GenAI Normalizer
+description: Using Semantic Conventions for LLM Output
 tags:
   - technical
   - ai

@@ -20,7 +20,13 @@ Now, this is a fairly broad topic. There are lots of different agentic ecosystem
 
 Let's dig in!
 
-## Goose Overview
+## What is Goose?
+
+In case you're wondering what the heck Goose is…in a nutshell, Goose is an AI agent framework. [It was originally created by Block](https://block.xyz/inside/block-open-source-introduces-codename-goose) (the company formerly known as Square), and was recently donated to the [Agentic AI Foundation (AAIF)](https://aaif.io/). I messed around with one of its early versions last year.
+
+One of the things that I really like about Goose is that it provides an abstraction layer on top of your LLM (e.g. Claude Sonnet, GPT-5.6 Sol, Gemini Flash) and provider (e.g. Claude, GitHub Copilot, Gemini), so you can create reusable AI workflows (kind of like [Ansible playbooks](https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook), but for AI) and swap out provider and model.
+
+You can read more on my previous Goose dabblings [here](/tag/goose/).
 
 ## Enabling OTel on Goose
 
@@ -28,7 +34,7 @@ For your convenience, I have [a lovely GitHub repository](https://github.com/avi
 
 ### Set up Goose
 
-The instructions in this section are for setting up Goose with with the [Claude ACP](https://goose-docs.ai/docs/guides/acp-providers#claude-acp) provider, which is a wrapper for Claude Code.
+The instructions in this section are for setting up Goose with the [Claude ACP](https://goose-docs.ai/docs/guides/acp-providers#claude-acp) provider, which is a wrapper for Claude Code. Feel free to use your favourite provider instead.
 
 > ✨ **FUN FACT:** ACP stands for Agent Client Protocol. It's an open standard that allows AI agents to talk to each other.
 
