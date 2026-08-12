@@ -132,13 +132,24 @@ nav {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: clamp(0.1rem, 3vw, 2rem);
+	gap: 2rem;
 	padding: 0 1rem;
 }
 
 nav a {
 	margin: 25px 0;
 	font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+@media (max-width: 600px) {
+	nav {
+		gap: 0.4rem;
+		padding: 0 0.5rem;
+	}
+
+	nav a {
+		margin: 12px 0;
+	}
 }
 
 hr {
