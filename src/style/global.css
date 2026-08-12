@@ -132,7 +132,7 @@ nav {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: clamp(0.75rem, 3vw, 2rem);
+	gap: clamp(0.25rem, 3vw, 2rem);
 	padding: 0 1rem;
 }
 
