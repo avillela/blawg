@@ -12,9 +12,9 @@ added: 2026-08-12T00:00:00.000Z
 
 LLM calls within an application can sometimes seem like a black box. And when your LLM does something that you weren't expecting, understanding what it did, and why, is important so that you can mitigate future disastrous outcomes. Because let's face it: bad things can and will happen with tech and we can't avoid them. But we can take measures to make them suck less.
 
-Frameworks such as [OpenLLMetry](https://www.traceloop.com/docs/openllmetry/introduction) and [OpenInference](https://arize.com/glossary/openinference/) have made it possible to make LLM applications observable by instrumenting LLM SDKs from popular providers such as OpenAI, Anthropic, and Gemini. This means that not only is the application itself instrumented via the popular language-specific [OpenTelemetry SDKs](https://opentelemetry.io/docs/languages/sdk-configuration/) that we know and love, the LLM calls *within* those applications are also instrumented. 🎉
+Frameworks such as [OpenLLMetry](https://www.traceloop.com/docs/openllmetry/introduction) and [OpenInference](https://arize.com/glossary/openinference/) make LLM applications observable by instrumenting LLM SDKs from popular providers such as OpenAI, Anthropic, and Gemini. This means that not only is the application itself instrumented via the popular language-specific [OpenTelemetry SDKs](https://opentelemetry.io/docs/languages/sdk-configuration/) that we know and love, the LLM calls *within* those applications are also instrumented. 🎉
 
-Unfortunately, not all tools are created equal. Each tool supports different LLM providers, and uses different terminology for describing the telemetry that they emit. And we all know how fun it is when we have competing standards. BluRay vs HD DVD, anyone?
+Unfortunately, not all tools are created equal. LLM provider support varies among these tools. Additionally, each tool uses different span attribute names to describe the telemetry being emitted. And we all know how fun it is when we have competing standards. [Blu-ray](https://en.wikipedia.org/wiki/Blu-ray) vs [HD DVD](https://en.wikipedia.org/wiki/HD_DVD), anyone?
 
 To help bridge that gap, OpenTelemetry created the [Generative AI Semantic Conventions](https://github.com/open-telemetry/semantic-conventions-genai), providing a common language for LLM application instrumentation.
 
