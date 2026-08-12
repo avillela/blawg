@@ -1,0 +1,136 @@
+---
+const { allPosts } = Astro.props;
+
+const posts = allPosts
+	.sort(
+		(a, b) =>
+			new Date(b.data.updated || b.data.added).valueOf() -
+			new Date(a.data.updated || a.data.added).valueOf(),
+	)
+	.map((post) => {
+		const imgMatch = post.body?.match(/!\[.*?\]\(([^)\s"]+)/);
+		return {
+			slug: post.data.slug,
+			title: post.data.title,
+			description: post.data.description,
+			added: post.data.added,
+			heroImage: imgMatch?.[1] ?? null,
+		};
+	});
+
+function formatDate(dateStr) {
+	return new Date(dateStr).toLocaleDateString("en-us", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	});
+}
+---
+
+<div class="post-grid">
+	{
+		posts.map((post) => (
+			<a href={`/post/${post.slug}/`} class="post-card">
+				<div class="card-img-wrap">
+					{post.heroImage ? (
+						<img src={post.heroImage} alt={post.title} loading="lazy" />
+					) : (
+						<div class="card-img-placeholder" />
+					)}
+				</div>
+				<div class="card-body">
+					<h3>{post.title}</h3>
+					<p class="card-date">{formatDate(post.added)}</p>
+					<div class="card-cta">
+						<span>Read now &rarr;</span>
+					</div>
+				</div>
+			</a>
+		))
+	}
+</div>
+
+<style>
+	.post-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.post-card {
+		display: flex;
+		flex-direction: column;
+		background: #e6f4ff;
+		border: 2px solid var(--gray);
+		border-radius: 12px;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.3s ease;
+	}
+
+	.post-card:hover {
+		border-color: currentColor;
+		transform: translateY(-4px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+
+	.card-img-wrap {
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		background: #cce0f0;
+	}
+
+	.card-img-wrap img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.card-img-placeholder {
+		width: 100%;
+		height: 100%;
+		background: #cce0f0;
+	}
+
+	.card-body {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+
+	.card-body h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.3;
+		color: #1a1a1a;
+	}
+
+	.card-date {
+		margin: 0 0 auto;
+		font-size: 0.8rem;
+		color: #555;
+		font-style: normal;
+	}
+
+	.card-cta {
+		margin-top: 1rem;
+		padding-top: 0.75rem;
+		border-top: 1px solid #aac;
+		font-size: 0.85rem;
+		color: #1a1a1a;
+	}
+
+	@media (max-width: 640px) {
+		.post-grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.card-body {
+			padding: 1rem;
+		}
+	}
+</style>

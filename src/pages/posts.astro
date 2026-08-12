@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Post from "../components/Post.astro";
+import PostGrid from "../components/PostGrid.astro";
 import ColorScript from "../components/ColorScript.astro";
 
 import { title, subtitle } from "../settings/settings.json"
@@ -23,18 +23,7 @@ posts = posts.sort(
 	<body>
 		<Header />
 		<main>
-			<content>
-				<ul class="posts-list">
-					{
-						posts.map(
-							({
-								url,
-								data: { description, slug, title, tags, added: date },
-							}) => <Post {description} {date} {slug} {title} {tags} />
-						)
-					}
-				</ul>
-			</content>
+			<PostGrid allPosts={posts} />
 
 			<p class="center">
 				You can also <a href="https://blahg.netlify.app/rss.xml">
