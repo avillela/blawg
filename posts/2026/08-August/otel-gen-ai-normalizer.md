@@ -1,18 +1,18 @@
 ---
 title: Let's Learn About the OpenTelemetry GenAI Normalizer
 slug: otel-gen-ai-normalizer
-description: Using Semantic Conventions for LLM Output
+description: Using Semantic Conventions for telemetry from LLMs
 tags:
   - technical
   - ai
   - open-telemetry
   - '2026'
-added: 2026-08-11T00:00:00.000Z
+added: 2026-08-12T00:00:00.000Z
 ---
 
-LLM calls within an application can sometimes seem like a black box. And when your LLM does something that you weren't expecting, understanding what it did and why is important so that you can mitigate future disastrous outcomes. Because let's face it: bad things can and will happen with tech and we can't avoid them. But we can take measures to make them suck less.
+LLM calls within an application can sometimes seem like a black box. And when your LLM does something that you weren't expecting, understanding what it did, and why, is important so that you can mitigate future disastrous outcomes. Because let's face it: bad things can and will happen with tech and we can't avoid them. But we can take measures to make them suck less.
 
-Tools such as [OpenLLMetry](https://www.traceloop.com/docs/openllmetry/introduction) and [OpenInference](https://arize.com/glossary/openinference/) have made it possible to make LLM applications observable by instrumenting LLM SDKs from popular providers such as OpenAI, Anthropic, and Gemini. This means that not only is the application itself instrumented via the popular language-specific [OpenTelemetry SDKs](https://opentelemetry.io/docs/languages/sdk-configuration/) that we know and love, the LLM calls *within* those applications are also instrumented. 🎉
+Frameworks such as [OpenLLMetry](https://www.traceloop.com/docs/openllmetry/introduction) and [OpenInference](https://arize.com/glossary/openinference/) have made it possible to make LLM applications observable by instrumenting LLM SDKs from popular providers such as OpenAI, Anthropic, and Gemini. This means that not only is the application itself instrumented via the popular language-specific [OpenTelemetry SDKs](https://opentelemetry.io/docs/languages/sdk-configuration/) that we know and love, the LLM calls *within* those applications are also instrumented. 🎉
 
 Unfortunately, not all tools are created equal. Each tool supports different LLM providers, and uses different terminology for describing the telemetry that they emit. And we all know how fun it is when we have competing standards. BluRay vs HD DVD, anyone?
 
