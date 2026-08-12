@@ -71,19 +71,19 @@ function formatDate(dateStr) {
 
 <style>
 	.carousel-outer {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
+		position: relative;
 		width: 100%;
+		padding: 0 2.5rem;
+		box-sizing: border-box;
 	}
 
 	.carousel-track {
 		display: flex;
-		gap: 1rem;
+		gap: 0.5rem;
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 		scrollbar-width: none;
-		flex: 1;
+		width: 100%;
 	}
 
 	.carousel-track::-webkit-scrollbar {
@@ -92,7 +92,7 @@ function formatDate(dateStr) {
 
 	.tile {
 		scroll-snap-align: start;
-		flex: 0 0 calc(33.333% - 0.667rem);
+		flex: 0 0 calc((100% - 2rem) / 3.2);
 		text-decoration: none;
 		color: inherit;
 		display: flex;
@@ -156,6 +156,10 @@ function formatDate(dateStr) {
 
 	.carousel-arrow {
 		all: unset;
+		position: absolute;
+		top: 30%;
+		transform: translateY(-50%);
+		z-index: 10;
 		background: rgba(0, 0, 0, 0.5);
 		color: var(--white);
 		border-radius: 50%;
@@ -166,9 +170,16 @@ function formatDate(dateStr) {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		flex-shrink: 0;
 		transition: background 0.2s;
 		line-height: 1;
+	}
+
+	#carousel-prev {
+		left: 0;
+	}
+
+	#carousel-next {
+		right: 0;
 	}
 
 	.carousel-arrow:hover {
@@ -176,6 +187,9 @@ function formatDate(dateStr) {
 	}
 
 	@media (max-width: 600px) {
+		.carousel-outer {
+			padding: 0 2rem;
+		}
 		.tile {
 			flex: 0 0 100%;
 		}
@@ -183,7 +197,7 @@ function formatDate(dateStr) {
 
 	@media (min-width: 601px) and (max-width: 850px) {
 		.tile {
-			flex: 0 0 calc(50% - 0.5rem);
+			flex: 0 0 calc((100% - 0.5rem) / 2);
 		}
 	}
 </style>
