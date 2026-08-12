@@ -44,7 +44,7 @@ if (updated) {
 		<main>
 			<article>
 				<h1 class="article-title">{title}</h1>
-				{description && <h4>{description}</h4>}
+				{description && <h2>{description}</h2>}
 				{updated ?
 					<span><time>{added}</time>, last updated on <time>{updated}</time></span>
 					:
@@ -125,6 +125,9 @@ if (updated) {
 			}
 			.copy-btn:hover {
 				color: #e6edf3;
+			}
+			.article-title + h2 {
+				margin-top: 0.1em;
 			}
 		</style>
 	</body>

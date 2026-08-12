@@ -20,11 +20,12 @@ const tags = getTags(posts);
 	<body>
 		<Header title={title} />
 		<main>
+			<h2>Hello!</h2>
 			<About />
 
 			<br />
 
-			<h2>Here are my most recent posts</h2>
+			<h2>Latest on the bloggity blog</h2>
 
 			<HomePosts allPosts={posts} />
 
@@ -41,3 +42,13 @@ const tags = getTags(posts);
 		<ColorScript />
 	</body>
 </html>
+
+<style>
+	h2 {
+		border-bottom: 2px solid var(--gray);
+		padding-bottom: 0.5rem;
+	}
+	:global(.about-card) {
+		font-size: clamp(1rem, 0.6rem + 2vw, 1.3rem);
+	}
+</style>

@@ -37,7 +37,9 @@ body {
 }
 html,
 body,
-button,
+button {
+	font-family: "Inter", sans-serif;
+}
 code {
 	font-family: "iA Writer Mono", monospace;
 }
@@ -166,6 +168,7 @@ ul.tags-list {
 	margin-right: 20px;
 	color: var(--white);
 	font-size: 0.8rem;
+	font-family: "iA Writer Mono", monospace;
 }
 .tag:hover {
 	cursor: pointer;
