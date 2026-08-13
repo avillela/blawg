@@ -1,11 +1,7 @@
 <div class="about-card">
 
-<div style="width:75%; margin:0 auto;">
+My name is Adriana Villela. I was born in Brazil 🇧🇷 and have been living in Canada 🇨🇦 for a large chunk of my life. I am a serial blogger, international keynote speaker, host of the [Geeking Out podcast](https://bio.site/geekingout), CNCF Ambassador, AAIF Ambassador, OpenTelemetry Community Manager, and maintainer of the OpenTelemetry End User SIG.
 
-<hr>
+By day, I focus on Observability and OpenTelemetry, as a Principal Developer Advocate at Dynatrace. By night, I climb walls. I also love capybaras, because they make me happy.
 
-</div>
-
-My name is Adriana Villela, and I am a serial blogger, international keyynote speaker, host of the [Geeking Out podcast](https://bio.site/geekingout), CNCF Ambassador, OpenTelemetry Community Manager, and maintainer of the OpenTelemetry End User SIG. By day, I focus on Observability and OpenTelemetry, as a Principal Developer Advocate at Dynatrace. By night, I climb walls. I also love capybaras, because they make me happy.
-
-In past lives, I've managed both a Platform Engineering team and Observability Practices team at Tucows. I've also worked at various large-scale enterprises as both an individual contributor and leader, including Bank of Montreal, Ceridian, and Accenture.
+In past lives, I've worked at various large enterprises as both an individual contributor and leader, including Tucows, Bank of Montreal, Ceridian, and Accenture.

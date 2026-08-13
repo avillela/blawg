@@ -3,8 +3,9 @@ import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Post from "../components/Post.astro";
+import PostGrid from "../components/PostGrid.astro";
 import ColorScript from "../components/ColorScript.astro";
+import getTags from "../scripts/getTags";
 
 import { title, subtitle } from "../settings/settings.json"
 
@@ -15,6 +16,8 @@ posts = posts.sort(
 		new Date(b.data.updated || b.data.added).valueOf() -
 		new Date(a.data.updated || a.data.added).valueOf(),
 );
+
+const allTags = getTags(posts).sort();
 ---
 
 <!doctype html>
@@ -23,18 +26,28 @@ posts = posts.sort(
 	<body>
 		<Header />
 		<main>
-			<content>
-				<ul class="posts-list">
-					{
-						posts.map(
-							({
-								url,
-								data: { description, slug, title, tags, added: date },
-							}) => <Post {description} {date} {slug} {title} {tags} />
-						)
-					}
-				</ul>
-			</content>
+			<div class="filter-bar">
+				<div class="filter-dropdown">
+					<button class="filter-btn" id="filter-toggle" aria-expanded="false">
+						Filter by tag
+						<span class="filter-count" id="filter-count"></span>
+						<span class="filter-arrow">▾</span>
+					</button>
+					<div class="filter-panel" id="filter-panel">
+						<div class="filter-options">
+							{allTags.map((tag) => (
+								<label class="filter-option">
+									<input type="checkbox" value={tag} class="tag-checkbox" />
+									{tag}
+								</label>
+							))}
+						</div>
+						<button class="clear-btn" id="clear-filters">Clear all</button>
+					</div>
+				</div>
+			</div>
+
+			<PostGrid allPosts={posts} />
 
 			<p class="center">
 				You can also <a href="https://blahg.netlify.app/rss.xml">
@@ -46,3 +59,182 @@ posts = posts.sort(
 		<ColorScript />
 	</body>
 </html>
+
+<script>
+	const toggle = document.getElementById("filter-toggle")!;
+	const panel = document.getElementById("filter-panel")!;
+	const countBadge = document.getElementById("filter-count")!;
+	const clearBtn = document.getElementById("clear-filters")!;
+	const checkboxes = document.querySelectorAll<HTMLInputElement>(".tag-checkbox");
+	const cards = document.querySelectorAll<HTMLElement>(".post-card");
+
+	const allPostTags = Array.from(cards).map(
+		(card) => JSON.parse(card.dataset.tags || "[]") as string[]
+	);
+
+	toggle.addEventListener("click", () => {
+		const open = panel.classList.toggle("open");
+		toggle.setAttribute("aria-expanded", String(open));
+	});
+
+	document.addEventListener("click", (e) => {
+		if (!toggle.contains(e.target as Node) && !panel.contains(e.target as Node)) {
+			panel.classList.remove("open");
+			toggle.setAttribute("aria-expanded", "false");
+		}
+	});
+
+	function validTagsForSelection(selected: string[]): Set<string> {
+		return new Set(
+			allPostTags
+				.filter((tags) => selected.every((t) => tags.includes(t)))
+				.flat()
+		);
+	}
+
+	function applyFilter() {
+		const selected = Array.from(checkboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value);
+
+		// Update card visibility
+		cards.forEach((card, i) => {
+			const match = selected.length === 0 || selected.every((t) => allPostTags[i].includes(t));
+			card.style.display = match ? "" : "none";
+		});
+
+		// Hide checkboxes that would yield zero results
+		const valid = validTagsForSelection(selected);
+		checkboxes.forEach((cb) => {
+			if (!cb.checked) {
+				const isValid = valid.has(cb.value);
+				const label = cb.closest<HTMLElement>(".filter-option");
+				if (label) label.style.display = isValid ? "" : "none";
+			}
+		});
+
+		// Update badge
+		countBadge.textContent = selected.length ? `${selected.length}` : "";
+		countBadge.style.display = selected.length ? "inline-flex" : "none";
+	}
+
+	checkboxes.forEach((cb) => cb.addEventListener("change", applyFilter));
+
+	clearBtn.addEventListener("click", () => {
+		checkboxes.forEach((cb) => (cb.checked = false));
+		applyFilter();
+	});
+
+	countBadge.style.display = "none";
+</script>
+
+<style>
+	.filter-bar {
+		margin-bottom: 1.5rem;
+	}
+
+	.filter-dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
+	.filter-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: rgba(255, 255, 255, 0.08);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 8px;
+		color: var(--white);
+		font-size: 0.9rem;
+		cursor: pointer;
+		transition: background 0.2s;
+	}
+
+	.filter-btn:hover {
+		background: rgba(255, 255, 255, 0.14);
+	}
+
+	.filter-count {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--blue);
+		color: #fff;
+		font-size: 0.7rem;
+		font-weight: 700;
+		border-radius: 99px;
+		min-width: 1.2em;
+		height: 1.2em;
+		padding: 0 0.3em;
+	}
+
+	.filter-arrow {
+		font-size: 0.75rem;
+		opacity: 0.7;
+	}
+
+	.filter-panel {
+		display: none;
+		position: absolute;
+		top: calc(100% + 0.4rem);
+		left: 0;
+		z-index: 100;
+		background: #1a2a3a;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 10px;
+		padding: 0.75rem;
+		min-width: 220px;
+		max-height: 320px;
+		overflow-y: auto;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+	}
+
+	.filter-panel.open {
+		display: block;
+	}
+
+	.filter-options {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.filter-option {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--white);
+		cursor: pointer;
+		padding: 0.25rem 0.35rem;
+		border-radius: 5px;
+	}
+
+	.filter-option:hover {
+		background: rgba(255, 255, 255, 0.08);
+	}
+
+	.filter-option input {
+		accent-color: var(--blue);
+		cursor: pointer;
+	}
+
+	.clear-btn {
+		width: 100%;
+		padding: 0.4rem;
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 6px;
+		color: var(--white);
+		font-size: 0.8rem;
+		cursor: pointer;
+		transition: background 0.2s;
+	}
+
+	.clear-btn:hover {
+		background: rgba(255, 255, 255, 0.12);
+	}
+</style>

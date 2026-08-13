@@ -17,11 +17,17 @@ if (href === "/") {
 	a {
 		display: inline-block;
 		text-decoration: none;
+		padding: 0.2em 0.5em;
+		border-radius: 5px;
+	}
+	@media (max-width: 600px) {
+		a {
+			padding: 0.15em 0.25em;
+		}
 	}
 	a.active {
 		font-weight: bolder;
-		text-decoration: underline;
-		text-decoration-thickness: 0.3ex;
-		text-underline-offset: 0.3ex;
+		background-color: #eb4888;
+		color: #fff;
 	}
 </style>

@@ -44,7 +44,7 @@ if (updated) {
 		<main>
 			<article>
 				<h1 class="article-title">{title}</h1>
-				{description && <h4>{description}</h4>}
+				{description && <h2>{description}</h2>}
 				{updated ?
 					<span><time>{added}</time>, last updated on <time>{updated}</time></span>
 					:
@@ -99,7 +99,7 @@ if (updated) {
 				pre.style.setProperty("margin-top", "0", "important");
 			});
 		</script>
-		<style>
+		<style is:global>
 			.blog-post .code-block {
 				border-radius: 6px;
 				margin-block: 1em;
@@ -116,15 +116,19 @@ if (updated) {
 				padding: 0 1rem 1rem;
 				overflow-x: auto;
 			}
-			.copy-btn {
+			.blog-post .copy-btn {
 				all: unset;
 				display: flex;
 				cursor: pointer;
 				color: #6b7280;
 				transition: color 0.2s;
 			}
-			.copy-btn:hover {
+			.blog-post .copy-btn:hover {
 				color: #e6edf3;
+			}
+			.article-title + h2 {
+				margin-top: 0.1em;
+				font-style: italic;
 			}
 		</style>
 	</body>

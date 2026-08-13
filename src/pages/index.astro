@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import HomePosts from "../components/HomePosts.astro";
+import PostCarousel from "../components/PostCarousel.astro";
 import ColorScript from "../components/ColorScript.astro";
 import Tags from "../components/Tags.astro";
 import { title, subtitle } from "../settings/settings.json"
@@ -20,13 +20,14 @@ const tags = getTags(posts);
 	<body>
 		<Header title={title} />
 		<main>
+			<h2>Hello!</h2>
 			<About />
 
 			<br />
 
-			<h2>Here are my most recent posts</h2>
+			<h2>Latest on the bloggity blog</h2>
 
-			<HomePosts allPosts={posts} />
+			<PostCarousel allPosts={posts} />
 
 			<p class="center">
 				You can also <a href="https://blahg.netlify.app/rss.xml">
@@ -41,3 +42,13 @@ const tags = getTags(posts);
 		<ColorScript />
 	</body>
 </html>
+
+<style>
+	h2 {
+		border-bottom: 2px solid var(--gray);
+		padding-bottom: 0.5rem;
+	}
+	:global(.about-card) {
+		font-size: clamp(1rem, 0.6rem + 2vw, 1.3rem);
+	}
+</style>
