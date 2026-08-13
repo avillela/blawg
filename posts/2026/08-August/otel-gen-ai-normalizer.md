@@ -1,7 +1,7 @@
 ---
 title: Let's Learn About the OpenTelemetry GenAI Normalizer
 slug: otel-gen-ai-normalizer
-description: Using standardized AI semantic conventions for LLM observability
+description: LLM observability with standardized OTel AI semantic conventions
 tags:
   - technical
   - ai
@@ -67,9 +67,58 @@ service:
 
 In case you're wondering, the GenAI Normalizer only applies to `traces` pipelines. If you add the processor to the `metrics` or `logs` pipelines, your OTel Collector will throw an error and will fail to start up. Don't make the same mistake I made. 🙃
 
-## Next steps
+## The output
+
+So what does it actually look like when you run the GenAI normalizer? Well, I put it to the test myself by running two sample applications.
+
+I asked Claude to write me a simple Python program that makes a Claude API call. (Feels so meta!)
+
+One version of the program instruments the Claude API call using OpenLLMetry.
+
+```
+OpenLLMetry sample app
+  └── OpenLLMetry (traceloop-sdk)     ← wraps the Python OTel SDK
+        └── Python OTel SDK
+              └── auto-instruments anthropic.messages.create()
+                    └── OTLP HTTP → OTel Collector → OTel backend
+```
+
+Another version instruments the Claude API call using OpenInference.
+
+```
+OpenInference sample app
+  └── OpenInference (AnthropicInstrumentor)   ← patches Anthropic SDK
+        └── Python OTel SDK
+              └── OTLP HTTP → OTel Collector → OTel backend
+```
+
+Here's a sample of the OpenInference output:
+
+![A screenshot of an OpenInference trace log showing input and output message fields, token usage, and metadata from a quantum‑mechanics analogy exchange.](/images/posts/otel-gen-ai-normalizer/openinference-spans.png)
+
+
+I highlighted a couple of OpenInference attributes (`llm.*` prefix) above in red, along with their equivalent OTel ones (`gen_ai.*`) in magenta.
+
+You can see the full list of mappings are between OpenInference and the OTel GenAI semantic conventions [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/genainormalizerprocessor#openinference).
+
+
+And for comparison, here's a sample of the OpenLLMetry output:
+
+![A screenshot of an OpenLLMetry trace log showing input and output message fields, token usage, and metadata from a quantum‑mechanics analogy exchange.](/images/posts/otel-gen-ai-normalizer/openllmetry-spans.png)
+
+According to the [GenAI Normalizer docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/genainormalizerprocessor#user-defined-sources), I should be seeing a number of `llm.*` and `traceloop.*` attributes in addition to the `gen_ai.*` attributes in my trace output. But alas, I didn't see any `llm.*` attributes. So what was going on??
+
+Well, it turns out that newer versions of OpenLLMetry are already implement a number of OTel GenAI semantic conventions. How cool is that?
 
 ## Final thoughts
+
+It's an exciting time for LLM observability. It feels like things are really picking up steam!
+
+In June 2026, [Arize](https://arize.com/), creator of OpenInference, [donated OpenInference to OpenTelemetry](https://github.com/open-telemetry/community/issues/3467).
+
+To add to the mix, the OpenTelemetry folks are also working on a project called [OpenTelemetry GenAI Instrumentation](https://cloud-native.slack.com/archives/C06KR7ARS3X) which is an OTel-native approach to LLM observability. It is [currently only available for Python](https://github.com/open-telemetry/opentelemetry-python-genai), with plans to add support for Typescript and Java in the near future.
+
+Now, you might be wondering...won't this clash with the recent OpenInference donation to OTel? Great question! It turns out that the OpenInference donation will serve as the foundation for the OpenTelemetry GenAI project. The project also aims to cover broader areas and support more operations than OpenInference. Learn more [here](https://cloud-native.slack.com/archives/C06KR7ARS3X/p1786559101447759).
 
 And now, please enjoy a photo my rat Duckie, hamming it up for the camera.
 
