@@ -105,7 +105,7 @@ body.dark-mode nav {
 		background-color: var(--moretranswhite);
 	}
 	body a {
-		color: var(--white);
+		color: var(--blue);
 	}
 	body .tag {
 		color: var(--gray);
@@ -132,9 +132,15 @@ header {
 }
 
 a {
-	color: var(--white);
+	color: var(--blue);
 	text-decoration-thickness: 0.3ex;
 	text-underline-offset: 0.3ex;
+	border-radius: 2px;
+	transition: background-color 0.15s ease;
+}
+
+a:hover {
+	background-color: rgba(255, 255, 255, 0.12);
 }
 
 nav {
@@ -153,6 +159,11 @@ nav {
 nav a {
 	margin: 25px 0;
 	font-size: clamp(1rem, 3vw, 1.3rem);
+	color: var(--white);
+}
+
+nav a:hover {
+	background-color: transparent;
 }
 
 @media (max-width: 600px) {
