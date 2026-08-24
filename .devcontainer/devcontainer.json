@@ -1,30 +1,36 @@
 {
     "name": "default",
-    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
     "features": {
-      "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+      "ghcr.io/devcontainers/features/docker-in-docker:4": {},
       "ghcr.io/devcontainers/features/node:2": {
         "version": "22",
       },
       "ghcr.io/devcontainers/features/python:1": {
         "version": "3.14",
       },
-      "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+      "ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
     },
     "overrideFeatureInstallOrder": [
         "ghcr.io/devcontainers/features/docker-in-docker",
         "ghcr.io/devcontainers/features/node",
         "ghcr.io/devcontainers/features/python",
-        "ghcr.io/anthropics/devcontainer-features/claude-code",
+        "ghcr.io/dhoeric/features/k9s",
+        "ghcr.io/mpriscella/features/kind",
+        "ghcr.io/stu-bell/devcontainer-features/claude-code",
     ],
     "hostRequirements": {
-      "cpus": 5,
-      "memory": "32gb",
+      "cpus": 3,
+      "memory": "16gb",
       "storage": "16gb"
     },
     "remoteEnv": {
       "PODMAN_USERNS": "keep-id"
     },
     "containerUser": "vscode",
+    "runArgs": [
+      "--init", // Recommended for proper process management
+      "--env-file", "${localWorkspaceFolder}/.env"
+    ],
     "postCreateCommand": ".devcontainer/post-create.sh",
   }
