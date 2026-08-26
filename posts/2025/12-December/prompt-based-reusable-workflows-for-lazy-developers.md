@@ -6,12 +6,13 @@ tags:
   - technical
   - ai
   - mcp
+  - aaif
   - '2025'
   - goose
 added: 2025-12-22T00:00:00.000Z
 ---
 
-![Abstract night scene with colorful light streaks — white, yellow, red, and blue — suggesting motion and energy in an urban setting.](/images/postshttps://cdn-images-1.medium.com/max/800/1*Q6xNM9zTi_Gqq9a0BvRuXw.jpeg)
+![Abstract night scene with colorful light streaks — white, yellow, red, and blue — suggesting motion and energy in an urban setting.](https://cdn-images-1.medium.com/max/800/1*Q6xNM9zTi_Gqq9a0BvRuXw.jpeg)
 
 A happy accident! Photo by [Adriana Villela](https://bento.me/adrianamvillela).
 
@@ -19,7 +20,7 @@ Software development has evolved since I started my career as a developer. I was
 
 And if we don’t work with something on a daily basis, our brains aren’t likely to readily remember how to do them. I don’t know about you, but I always need to look how to do certain things in bash — I NEVER remember how to write IF statements. Don’t even get me started on regex. I know enough Git to be dangerous, but I always have to look up how to reset head when I mess up royally. When I don’t touch Kubernetes for a while, I forget most of the commands. I’ve gotten around this in the past by creating a mega-note with all of my most frequently-used commands for various things. I would often port that around from job to job. A couple of years ago, I got smart and moved everything to a private GitHub repo.
 
-![Screenshot of a README titled ‘Adriana’s Notes’ with command-line instructions for Base64 encoding/decoding and Docker image management, including cleanup commands and references to GitHub scripts.](/images/postshttps://cdn-images-1.medium.com/max/800/1*E7foIX8pf0ox3VgkUQM2oQ.png)
+![Screenshot of a README titled ‘Adriana’s Notes’ with command-line instructions for Base64 encoding/decoding and Docker image management, including cleanup commands and references to GitHub scripts.](https://cdn-images-1.medium.com/max/800/1*E7foIX8pf0ox3VgkUQM2oQ.png)
 
 A snippet of my private GitHub repo with my frequently used and often forgotten commands.
 
@@ -33,9 +34,9 @@ This is where we can leverage vibe coding and MCP servers. As a quick refresher,
 
 > 💡 [Check out my article on MCP servers](https://medium.com/womenintechnology/lets-learn-about-mcp-together-be1601dc7a81) if your looking for a deeper dive.
 
-![Diagram of an AI assistant architecture showing four components: MCP Client and LLM (pink boxes with Claude 3.5 Sonnet, LLaMA 4, GPT-4 logos), MCP Server (blue box), and Service (green box), with arrows indicating communication flow between them.](/images/postshttps://cdn-images-1.medium.com/max/800/1*pdKigYFUbNG2Lxd5uggqmg.jpeg)
+![Diagram of an AI assistant architecture showing four components: MCP Client and LLM (pink boxes with Claude 3.5 Sonnet, LLaMA 4, GPT-4 logos), MCP Server (blue box), and Service (green box), with arrows indicating communication flow between them.](https://cdn-images-1.medium.com/max/800/1*pdKigYFUbNG2Lxd5uggqmg.jpeg)
 
-High level MCP server overview
+#### High level MCP server overview
 
 Great. So by connecting our LLM-powered AI assistants to the right MCP servers, we can create the prompts that we need to do The Thing, and then get it done. Cool. So what tools do we use?
 
@@ -47,13 +48,13 @@ What is Goose? [Block’s Angie Jones puts it nicely](https://systemsdigest.com/
 
 It basically an abstraction layer that sits on top of my AI Assistant/LLM combo, like this:
 
-![Architecture diagram of an AI assistant system with five components — Goose, MCP Client, LLM, MCP Server, and Service — connected by red lines showing communication flow. MCP Client is central, linking to all others, with LLM featuring Claude 3.5 Sonnet, LLaMA 4, and GPT-4 logos.](/images/postshttps://cdn-images-1.medium.com/max/800/1*3FUO_0uINGXZEHZ7CopHCA.jpeg)
+![Architecture diagram of an AI assistant system with five components — Goose, MCP Client, LLM, MCP Server, and Service — connected by red lines showing communication flow. MCP Client is central, linking to all others, with LLM featuring Claude 3.5 Sonnet, LLaMA 4, and GPT-4 logos.](https://cdn-images-1.medium.com/max/800/1*3FUO_0uINGXZEHZ7CopHCA.jpeg)
 
 MCP servers with Goose!
 
 And why Goose? [Because Angie Jones kinda sold me on it with this post on Bluesky](https://bsky.app/profile/angiejones.tech/post/3lshqasecgs2t):
 
-![Screenshot of a Bluesky thread by Angie Jones (@angiejones.tech) posted on June 25, 2023, at 7:05 PM. The thread lists five quick, practical ways she used her AI agent, Goose, to assist with work tasks — each taking under a minute. Examples include generating GitHub productivity reports, summarizing a 169-reply Slack thread into action items, identifying roadmap themes from team discussions, clarifying a technical concept for a colleague, and summarizing a long Google Drive document.](/images/postshttps://cdn-images-1.medium.com/max/800/1*yLo0677nOXfLl2SW9F-aaw.png)
+![Screenshot of a Bluesky thread by Angie Jones (@angiejones.tech) posted on June 25, 2023, at 7:05 PM. The thread lists five quick, practical ways she used her AI agent, Goose, to assist with work tasks — each taking under a minute. Examples include generating GitHub productivity reports, summarizing a 169-reply Slack thread into action items, identifying roadmap themes from team discussions, clarifying a technical concept for a colleague, and summarizing a long Google Drive document.](https://cdn-images-1.medium.com/max/800/1*yLo0677nOXfLl2SW9F-aaw.png)
 
 Skeet by Angie Jones, talking about all the cool things that she used Goose for. Post link [here](https://bsky.app/profile/angiejones.tech/post/3lshqasecgs2t).
 
@@ -76,7 +77,7 @@ With that in mind, I set out to create my prompt-based reusable workflow with Go
 
 I also wanted to [run Goose in a dev container](https://medium.com/womenintechnology/running-codename-goose-in-a-dev-container-191950864090), to limit the blast radius. Basically, if things went bad, at its worst, it would mess up my Dev Container, and not my entire system. Also, [I love dev containers](https://adri-v.medium.com/list/dev-containers-78d35408c59f). 😁
 
-![Humorous deployment pipeline diagram featuring a goose with a human face initiating ArgoCD-based deployments in a Kubernetes cluster. ArgoCD manages cert-manager, OTel Operator, and OTel Demo, which sends telemetry to Dynatrace.](/images/postshttps://cdn-images-1.medium.com/max/800/1*O7GgYRxWD1cfaUkcNTGHfg.jpeg)
+![Humorous deployment pipeline diagram featuring a goose with a human face initiating ArgoCD-based deployments in a Kubernetes cluster. ArgoCD manages cert-manager, OTel Operator, and OTel Demo, which sends telemetry to Dynatrace.](https://cdn-images-1.medium.com/max/800/1*O7GgYRxWD1cfaUkcNTGHfg.jpeg)
 
 The Goose dream!
 
@@ -92,7 +93,7 @@ Prompt-writing for this project brought me to tears. No joke. I spent more time 
 
 I wrote what I thought were “great” prompts that had been super repeatable for 9 executions, only to have my LLM decide on the 10th execution to ignore everthing and do its own thing. It was infuriating, and made me feel like this:
 
-![Scene from Star Trek: The Next Generation showing Captain Picard shouting with bold white text: ‘THERE ARE FOUR LIGHTS!!!’](/images/postshttps://cdn-images-1.medium.com/max/800/1*lYxOXFuuGxPQ14Hjl2yBvg.jpeg)
+![Scene from Star Trek: The Next Generation showing Captain Picard shouting with bold white text: ‘THERE ARE FOUR LIGHTS!!!’](https://cdn-images-1.medium.com/max/800/1*lYxOXFuuGxPQ14Hjl2yBvg.jpeg)
 
 This is what it feels like when an LLM doesn’t do your bidding. Image source [here](https://satyadoylebyock.substack.com/p/there-are-four-lights-reality-in-authoritarian).
 
@@ -149,7 +150,7 @@ And as frustrating as this little exercise was for me, it was extremely educatio
 
 Skynet is coming for us.
 
-![Realistic depiction of the Terminator endoskeleton with a metallic skull, glowing red eyes, and exposed mechanical components against a dark background.](/images/postshttps://cdn-images-1.medium.com/max/800/0*jraIqDLRxGpd_u7C.jpg)
+![Realistic depiction of the Terminator endoskeleton with a metallic skull, glowing red eyes, and exposed mechanical components against a dark background.](https://cdn-images-1.medium.com/max/800/0*jraIqDLRxGpd_u7C.jpg)
 
 Terminator. Image link [here](https://www.google.com/url?sa=t\&source=web\&rct=j\&url=https%3A%2F%2Fwww.looper.com%2F1358463%2Fterminator-genisys-ending-explained-arnold-schwarzenegger%2F\&ved=0CBUQjRxqFwoTCPCCxYqzw5EDFQAAAAAdAAAAABAI\&opi=89978449).
 
@@ -161,7 +162,7 @@ Sure, we get mad at our tools for not doing what we want them/expect them to do.
 
 And now, please enjoy this photo of Barbie, making herself at home in my daughter’s sweater sleeve. 💜
 
-![Light-colored rat peeking out from the sleeve of a white knitted sweater worn by a person with dark red nail polish, resting their hand on a wooden surface.](/images/postshttps://cdn-images-1.medium.com/max/800/1*NSpzVXskkI8Omr930BQzEQ.jpeg)
+![Light-colored rat peeking out from the sleeve of a white knitted sweater worn by a person with dark red nail polish, resting their hand on a wooden surface.](https://cdn-images-1.medium.com/max/800/1*NSpzVXskkI8Omr930BQzEQ.jpeg)
 
 Barbie is feeling very much at home. Photo by [Adriana Villela](https://bento.me/adrianamvillela).
 

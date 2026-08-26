@@ -7,13 +7,14 @@ tags:
   - mcp
   - devcontainers
   - ai
+  - aaif
   - '2025'
   - goose
   - AI
 added: 2025-10-03T00:00:00.000Z
 ---
 
-![A grand domed building with classical architecture, featuring a green copper dome topped by a cupola and cross, stands partially obscured by trees. Ornate golden embellishments and statues accent the structure, especially on a turret to the right. A nearly full moon glows in the muted gray sky, suggesting dusk or dawn, adding a serene contrast to the building’s opulence.](/images/postshttps://cdn-images-1.medium.com/max/800/1*6WtlgGqlTHP4VapjbUS9Eg.jpeg)
+![A grand domed building with classical architecture, featuring a green copper dome topped by a cupola and cross, stands partially obscured by trees. Ornate golden embellishments and statues accent the structure, especially on a turret to the right. A nearly full moon glows in the muted gray sky, suggesting dusk or dawn, adding a serene contrast to the building’s opulence.](https://cdn-images-1.medium.com/max/800/1*6WtlgGqlTHP4VapjbUS9Eg.jpeg)
 
 Waxing gibbous moon and [Karlskirche](https://www.visitingvienna.com/sights/karlskirche/) in Vienna. Photo by author.
 
@@ -21,7 +22,7 @@ Waxing gibbous moon and [Karlskirche](https://www.visitingvienna.com/sights/karl
 
 It all started when I read [the post below by Angie Jones on Bluesky](https://bsky.app/profile/angiejones.tech/post/3lshqasecgs2t):
 
-![Screenshot of a Bluesky thread by Angie Jones (@angiejones.tech) posted on June 25, 2023, at 7:05 PM. The thread lists five quick, practical ways she used her AI agent, Goose, to assist with work tasks — each taking under a minute. Examples include generating GitHub productivity reports, summarizing a 169-reply Slack thread into action items, identifying roadmap themes from team discussions, clarifying a technical concept for a colleague, and summarizing a long Google Drive document.](/images/postshttps://cdn-images-1.medium.com/max/800/1*yLo0677nOXfLl2SW9F-aaw.png)
+![Screenshot of a Bluesky thread by Angie Jones (@angiejones.tech) posted on June 25, 2023, at 7:05 PM. The thread lists five quick, practical ways she used her AI agent, Goose, to assist with work tasks — each taking under a minute. Examples include generating GitHub productivity reports, summarizing a 169-reply Slack thread into action items, identifying roadmap themes from team discussions, clarifying a technical concept for a colleague, and summarizing a long Google Drive document.](https://cdn-images-1.medium.com/max/800/1*yLo0677nOXfLl2SW9F-aaw.png)
 
 Skeet by Angie Jones, talking about all the cool things that she used Goose for. Post link [here](https://bsky.app/profile/angiejones.tech/post/3lshqasecgs2t).
 
@@ -35,7 +36,7 @@ But first, allow me to provide you with some additional context.
 
 [Model Context Protocol (MCP)](https://youtu.be/7j_NE6Pjv-E?si=Jd6yELlSpFN7iDwU) servers are all the rage. They have been a huge game changer, opening up the tech world to natural language interactions with various systems à la Star Trek.
 
-![Scene from Star Trek IV: The Voyage Home showing three men gathered around a computer. The man on the left, wearing a red and yellow outfit, humorously speaks into a computer mouse. The middle man, in glasses and a beige sweater with a red button, and the man on the right, in a brown jacket, watch the screen with interest. Bold white text at the bottom reads “HELLO COMPUTER,” highlighting the comedic clash between futuristic expectations and 20th-century technology.](/images/postshttps://cdn-images-1.medium.com/max/800/0*_nduPWuqadsI_fJE.jpg)
+![Scene from Star Trek IV: The Voyage Home showing three men gathered around a computer. The man on the left, wearing a red and yellow outfit, humorously speaks into a computer mouse. The middle man, in glasses and a beige sweater with a red button, and the man on the right, in a brown jacket, watch the screen with interest. Bold white text at the bottom reads “HELLO COMPUTER,” highlighting the comedic clash between futuristic expectations and 20th-century technology.](https://cdn-images-1.medium.com/max/800/0*_nduPWuqadsI_fJE.jpg)
 
 Iconic Star Trek IV scene: in which Scotty says, “Hello, computer”. Image source [here](https://www.google.com/url?sa=i\&url=https%3A%2F%2Fwww.luisllamas.es%2Fen%2Freview-google-home-mini%2F\&psig=AOvVaw2Yo7tgjaHrDONUaI9sbO6s\&ust=1759566763960000\&source=images\&cd=vfe\&opi=89978449\&ved=0CBUQjRxqFwoTCLjI1ZPPh5ADFQAAAAAdAAAAABAs).
 
@@ -47,7 +48,7 @@ Enter [Block’s Codename Goose](https://block.github.io/goose/). [According to 
 
 You can think of Goose as an abstraction layer above your chatbot, allowing you to create reusable workflows and leverage the power of MCP servers to help you do this.
 
-![Flowchart diagram of a chatbot system architecture. On the far left, a goose icon labeled “Goose” connects to the central “MCP Client (chatbot)” which displays logos for OpenAI and other technologies. Below it, a box labeled “LLM” shows Claude 3.5 Sonnet, LLAMA 4, and GPT-4, indicating the large language models used. To the right, the MCP Client connects to “MCP Server,” which then links to a final box labeled “Service” on the far right. Arrows indicate data flow between components.](/images/postshttps://cdn-images-1.medium.com/max/800/1*QJkxfxO2tQS8MG0CTBuoEA.jpeg)
+![Flowchart diagram of a chatbot system architecture. On the far left, a goose icon labeled “Goose” connects to the central “MCP Client (chatbot)” which displays logos for OpenAI and other technologies. Below it, a box labeled “LLM” shows Claude 3.5 Sonnet, LLAMA 4, and GPT-4, indicating the large language models used. To the right, the MCP Client connects to “MCP Server,” which then links to a final box labeled “Service” on the far right. Arrows indicate data flow between components.](https://cdn-images-1.medium.com/max/800/1*QJkxfxO2tQS8MG0CTBuoEA.jpeg)
 
 High level overview of Codename Goose. Diagram by [Adriana Villela](https://adri-v.medium.com).
 
@@ -132,27 +133,27 @@ Unfortunately, installing Goose in a dev container turned out to NOT be as strai
 
 As I mentioned, the above `curl` command downloads and installs Goose. It then launches into the Goose configuration. You can run the Goose configuration at any time after installing Goose by running `goose configure`. Upon launching the Goose configuration, you get this screen:
 
-![Terminal interface for “goose-configure” tool displaying configuration options: Configure Providers, Add Extension, Toggle Extensions, Remove Extension, and Goose Settings. A message at the top notes that changes will update the existing config file and offers the option to edit it directly at /home/vscode/.config/goose/config.yaml.](/images/postshttps://cdn-images-1.medium.com/max/800/1*s5TfW90hnSCbYkkUW-WHSw.png)
+![Terminal interface for “goose-configure” tool displaying configuration options: Configure Providers, Add Extension, Toggle Extensions, Remove Extension, and Goose Settings. A message at the top notes that changes will update the existing config file and offers the option to edit it directly at /home/vscode/.config/goose/config.yaml.](https://cdn-images-1.medium.com/max/800/1*s5TfW90hnSCbYkkUW-WHSw.png)
 
 The first thing you need to do is configure an [LLM Provider](https://block.github.io/goose/docs/getting-started/providers/) (i.e. chatbot, like GitHub Copilot and Gemini). In my case, I wanted to use [GitHub Copilot](https://github.com/features/copilot), so I selected it from the list:
 
-![Terminal interface for the goose configure command, prompting the user to select a model provider. The selected option is “Tetrate Agent Router Service,” followed by a scrollable list of AI providers including OpenAI, Google Gemini, Claude Code, GitHub Copilot, Amazon SageMaker TGI, and others. A header asks, “What would you like to configure?” with “Configure Providers” selected.](/images/postshttps://cdn-images-1.medium.com/max/800/1*iKqm2tBEdMpxXuLjGSckXQ.png)
+![Terminal interface for the goose configure command, prompting the user to select a model provider. The selected option is “Tetrate Agent Router Service,” followed by a scrollable list of AI providers including OpenAI, Google Gemini, Claude Code, GitHub Copilot, Amazon SageMaker TGI, and others. A header asks, “What would you like to configure?” with “Configure Providers” selected.](https://cdn-images-1.medium.com/max/800/1*iKqm2tBEdMpxXuLjGSckXQ.png)
 
 After selecting Copilot, I got this screen:
 
-![Terminal interface showing the goose configure process for setting up GitHub Copilot. The user selects “Configure Providers” and chooses “GitHub Copilot” as the model provider. A message indicates configuration of GITHUB\_COPILOT\_TOKEN via OAuth device code flow, instructing the user to visit https://github.com/login/device and enter the code 94A9–6D1C. The config file path is /home/vscode/.config/goose/config.yaml.](/images/postshttps://cdn-images-1.medium.com/max/800/1*wRF5rvuYMCgt1aE40K_AiA.png)
+![Terminal interface showing the goose configure process for setting up GitHub Copilot. The user selects “Configure Providers” and chooses “GitHub Copilot” as the model provider. A message indicates configuration of GITHUB\_COPILOT\_TOKEN via OAuth device code flow, instructing the user to visit https://github.com/login/device and enter the code 94A9–6D1C. The config file path is /home/vscode/.config/goose/config.yaml.](https://cdn-images-1.medium.com/max/800/1*wRF5rvuYMCgt1aE40K_AiA.png)
 
 Clicking on the above link opened up my browser:
 
-![GitHub device activation screen showing the user “avillella” signed in, with a profile picture, a green “Continue” button, and a gray “Use a different account” button below.](/images/postshttps://cdn-images-1.medium.com/max/800/1*qsgLKqwlcYXWQ-nWwJKfWw.png)
+![GitHub device activation screen showing the user “avillella” signed in, with a profile picture, a green “Continue” button, and a gray “Use a different account” button below.](https://cdn-images-1.medium.com/max/800/1*qsgLKqwlcYXWQ-nWwJKfWw.png)
 
 After clicking on “Continue”, I was prompted to enter the code, `94A9–6D1C`, per the earlier screen shot:
 
-![GitHub device activation screen prompting user “avillela” to enter an activation code. Eight input boxes are shown in two groups of four, separated by a hyphen. A green “Continue” button appears below, with a note stating GitHub staff will never ask for the code on this page.](/images/postshttps://cdn-images-1.medium.com/max/800/1*3L5QmZM3Q6DjquHgjGaxlQ.png)
+![GitHub device activation screen prompting user “avillela” to enter an activation code. Eight input boxes are shown in two groups of four, separated by a hyphen. A green “Continue” button appears below, with a note stating GitHub staff will never ask for the code on this page.](https://cdn-images-1.medium.com/max/800/1*3L5QmZM3Q6DjquHgjGaxlQ.png)
 
 And then after clicking on “Continue”, I was prompted to authorize the GitHub Copilot plugin:
 
-![GitHub authorization request screen for the GitHub Copilot Plugin. It shows a request from Vienna (IP: 213.143.108.82) on October 3, 2025, at 16:50 CEST, asking user “avillela” to grant access. The page lists permissions and plugin details, with “Cancel” and “Authorize GitHub Copilot Plugin” buttons at the bottom.](/images/postshttps://cdn-images-1.medium.com/max/800/1*kThmr1wiqedgEej-yp2uxg.png)
+![GitHub authorization request screen for the GitHub Copilot Plugin. It shows a request from Vienna (IP: 213.143.108.82) on October 3, 2025, at 16:50 CEST, asking user “avillela” to grant access. The page lists permissions and plugin details, with “Cancel” and “Authorize GitHub Copilot Plugin” buttons at the bottom.](https://cdn-images-1.medium.com/max/800/1*kThmr1wiqedgEej-yp2uxg.png)
 
 And after authorizing the plugin, I got this error: 🤬
 
@@ -232,11 +233,11 @@ SUCCESS!
 
 So now we’re ready to configure our LLM Provider again. To do that, run `goose configure`, and follow the same steps as before. This time, it things should work, and you should get this:
 
-![Terminal screenshot showing GitHub Copilot setup in Visual Studio Code. The user configures the “goose-configure” option, selects “GitHub” as the provider, and is prompted to authenticate via OAuth device code flow by visiting github.com/login/device and entering a partially visible code. Authentication succeeds, followed by a “Model fetch complete” message. The user is then prompted to choose between GPT-3.5 and GPT-4 (recommended).](/images/postshttps://cdn-images-1.medium.com/max/800/1*-Cu1jeFHMCnz6JzIWTT_oQ.png)
+![Terminal screenshot showing GitHub Copilot setup in Visual Studio Code. The user configures the “goose-configure” option, selects “GitHub” as the provider, and is prompted to authenticate via OAuth device code flow by visiting github.com/login/device and entering a partially visible code. Authentication succeeds, followed by a “Model fetch complete” message. The user is then prompted to choose between GPT-3.5 and GPT-4 (recommended).](https://cdn-images-1.medium.com/max/800/1*-Cu1jeFHMCnz6JzIWTT_oQ.png)
 
 Which finally allowed me to select my Model. In my case `[gpt-4o](https://en.wikipedia.org/wiki/GPT-4o)`.
 
-![Terminal screenshot showing configuration of the “goose” tool in Visual Studio Code. The user is prompted to edit an existing config file at /home/vscode/.config/goose/config.yaml, selects “GitHub” as the provider, and authenticates using GitHub Copilot token via OAuth device code flow. After successful authentication and model fetch, the user selects “Auto” mode. Final messages confirm configuration check and successful save.](/images/postshttps://cdn-images-1.medium.com/max/800/1*Xy6P2i05rn6MBM1gwJB7Vg.png)
+![Terminal screenshot showing configuration of the “goose” tool in Visual Studio Code. The user is prompted to edit an existing config file at /home/vscode/.config/goose/config.yaml, selects “GitHub” as the provider, and authenticates using GitHub Copilot token via OAuth device code flow. After successful authentication and model fetch, the user selects “Auto” mode. Final messages confirm configuration check and successful save.](https://cdn-images-1.medium.com/max/800/1*Xy6P2i05rn6MBM1gwJB7Vg.png)
 
 Success at last! You can see the full configuration file in `[post-create.sh](https://github.com/avillela/ai-sre-workflow-demo/blob/main/.devcontainer/post-create.sh)` in my GitHub repo.
 
@@ -255,11 +256,11 @@ goose session
 
 Which will look something like this:
 
-![Terminal window showing Goose AI orchestration session initialized in /workspaces/ai-orchestration-playground using github\_copilot and gpt-4o. Session logs to a JSON file; token usage is 0%. Prompt at bottom reads: “Press Enter to send, Ctrl+J for new line.”](/images/postshttps://cdn-images-1.medium.com/max/800/1*NBOMIfBd3bi0_605_6fFuA.png)
+![Terminal window showing Goose AI orchestration session initialized in /workspaces/ai-orchestration-playground using github\_copilot and gpt-4o. Session logs to a JSON file; token usage is 0%. Prompt at bottom reads: “Press Enter to send, Ctrl+J for new line.”](https://cdn-images-1.medium.com/max/800/1*NBOMIfBd3bi0_605_6fFuA.png)
 
 And ask it a question. I asked it, “Tell me about MCP servers”. Here’s the output I got:
 
-![Screenshot of a Visual Studio Code window displaying a markdown file titled “goose session” in the directory workspace/director-testing-playground/development. The file explains the term “MCP” in Minecraft server contexts, detailing three meanings: modded Minecraft servers using the Coder Pack, categorized server lists, and Multi-Channel Protocol as a broader communication protocol. Content is organized with headings and bullet points.](/images/postshttps://cdn-images-1.medium.com/max/800/1*qzTrT7zEcgVEw7VzekbZeQ.png)
+![Screenshot of a Visual Studio Code window displaying a markdown file titled “goose session” in the directory workspace/director-testing-playground/development. The file explains the term “MCP” in Minecraft server contexts, detailing three meanings: modded Minecraft servers using the Coder Pack, categorized server lists, and Multi-Channel Protocol as a broader communication protocol. Content is organized with headings and bullet points.](https://cdn-images-1.medium.com/max/800/1*qzTrT7zEcgVEw7VzekbZeQ.png)
 
 We’re not ready to do anything fancy yet, like have Goose interact with file system. We’ll need to configure Extensions (MCP servers) for that. That’s for next time.
 
@@ -305,7 +306,7 @@ If you’d like to learn more about the stuff that I did with Goose, stay tuned 
 
 And now, I’ll leave you with this lovely photo of Katie, poking her head out of a tissue box.
 
-![Close-up of a brown rat nestled in shredded paper and bedding materials. The rat’s face is visible with dark eyes, long whiskers, and rounded ears. Surrounding debris includes green, white, and multicolored paper fragments, along with black foam-like pieces, suggesting a cozy, possibly domestic nesting environment.](/images/postshttps://cdn-images-1.medium.com/max/800/1*T03kiR3OHVwLTcxaAu9K7w.jpeg)
+![Close-up of a brown rat nestled in shredded paper and bedding materials. The rat’s face is visible with dark eyes, long whiskers, and rounded ears. Surrounding debris includes green, white, and multicolored paper fragments, along with black foam-like pieces, suggesting a cozy, possibly domestic nesting environment.](https://cdn-images-1.medium.com/max/800/1*T03kiR3OHVwLTcxaAu9K7w.jpeg)
 
 Hello from Katie! Photo by author.
 
