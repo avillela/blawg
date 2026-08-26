@@ -73,7 +73,7 @@ parameters:
     input_type: string
     requirement: required
     default: "my-cluster"
-    description: "Name of the k9s cluster to create"
+    description: "Name of the k8s cluster to create"
 
 extensions:
 - type: builtin
@@ -98,21 +98,17 @@ Let's break it down:
 * `version`: The version of the recipe (the can be whatever you want).
 * `title`: Name of the recipe.
 * `description`: What is your recipe about?
-* `instructions`: General directives for the model to follow when executing the recipe. These include things like: 
-
+* `instructions`: General directives for the model to follow when executing the recipe. These include things like:
   * **persona**: What role is the model taking on?
   * **rules/inputs/constraints**: This includes things like dos and don'ts, and links to reference documentation.
   * **outputs**: What do you want the model to output in the end, and in what format?
-
 * `prompt`: The actual things you want the recipe to do. I like to provide a task list. Don't try to do too many things in the prompt. You should have one specific goal, and the tasks should be related to that goal.
-* `parameters`: Just like you can pass parameters to a script or function, you can pass parameters to a Goose recipe! You must define the parameter name, default value, parameter type, and whether it's mandatory or optional. You reference parameters in the recipe using double curly braces: `{{ parameter_name }}` 
+* `parameters`: Just like you can pass parameters to a script or function, you can pass parameters to a Goose recipe! You must define the parameter name, default value, parameter type, and whether it's mandatory or optional. You reference parameters in the recipe using double curly braces: `{{ parameter_name }}`
 * `settings`: This section is totally optional. If you include it, it overrides the provider settings in `~/.config/goose/config.yaml`. The settings values include:
-
-  - **goose_provider**: In our case, it's set `anthropic`. To use this provider, you will need an `ANTHROPIC_API_KEY`. You are prompted for this value to set up the `anthropic` provider when you run `goose configure`. You can also set it as an environment variable. Be sure to set it before running `goose session` or `goose run --recipe <recipe_name>`, though!
-  - **goose_model**: In our case, it's set to `claude-sonnet-5`.
-  - **temperature**: In our case, it's `0.0`. Temperature is a value between 0 and 1, and it specifies how much creativity the model should have. The closer to 1, the more creative liberty the model has.
-  - **max_turns**: Maximum number of iterations Goose can spend on the prompt. This is handy to prevent Agent Infinite Loop of Doom (TM). The default value is 1000 for the parent recipe, and 25 for sub-recipes. You can set this value globally through the `GOOSE_SUBAGENT_MAX_TURNS` variable in your [Goose config.yaml](~/.config/goose/config.yaml), but remember that setting `max_turns` inside the recipe will override the global value.
-
+  * **goose\_provider**: In our case, it's set `anthropic`. To use this provider, you will need an `ANTHROPIC_API_KEY`. You are prompted for this value to set up the `anthropic` provider when you run `goose configure`. You can also set it as an environment variable. Be sure to set it before running `goose session` or `goose run --recipe <recipe_name>`, though!
+  * **goose\_model**: In our case, it's set to `claude-sonnet-5`.
+  * **temperature**: In our case, it's `0.0`. Temperature is a value between 0 and 1, and it specifies how much creativity the model should have. The closer to 1, the more creative liberty the model has.
+  * **max\_turns**: Maximum number of iterations Goose can spend on the prompt. This is handy to prevent Agent Infinite Loop of Doom (TM). The default value is 1000 for the parent recipe, and 25 for sub-recipes. You can set this value globally through the `GOOSE_SUBAGENT_MAX_TURNS` variable in your [Goose config.yaml](~/.config/goose/config.yaml), but remember that setting `max_turns` inside the recipe will override the global value.
 * `extensions`: Specify which [extensions](https://goose-docs.ai/docs/getting-started/using-extensions/) you want to include in this recipe. This overrides the extensions configuration in your [Goose config.yaml](~/.config/goose/config.yaml). Extensions are Goose speak for MCP servers registered with Goose. Goose also comes with its own [built-in extensions](https://goose-docs.ai/docs/getting-started/using-extensions/#built-in-extensions). For example, the [developer extension](https://goose-docs.ai/docs/mcp/developer-mcp) enables Goose to do stuff like update files and execute commands in your file system.
 * `author`: Author name.
 
@@ -188,7 +184,7 @@ parameters:
     input_type: string
     requirement: required
     default: "my-cluster"
-    description: "Name of the k9s cluster to create"
+    description: "Name of the k8s cluster to create"
 
 sub_recipes:
   - name: "create_kind_cluster"
@@ -234,7 +230,7 @@ sub_recipes:
     path: "./subrecipes/install-otel-operator.yaml"
 ```
 
-Which references the two aforementioned sub-recipes. We must also update our prompt to tell Goose to run the sub-recipes in the order specified. 
+Which references the two aforementioned sub-recipes. We must also update our prompt to tell Goose to run the sub-recipes in the order specified.
 
 > ✨ **FUN FACT:** Recipes can run [sequentially](https://goose-docs.ai/docs/guides/recipes/subrecipes/#sequential-processing) or [in parallel](https://goose-docs.ai/docs/tutorials/subrecipes-in-parallel). We're running them sequentially in our example.
 
@@ -391,7 +387,7 @@ A quick conversation with my AI overlord strengthened my suspicions, so I decide
 
 ### Gotcha #2: Parameter passing
 
-As I mentioned earlier, you can pass parameteres into a Goose recipe at runtime, which overrides its default value (if any). These should flow through from parent to sub-recipes. 
+As I mentioned earlier, you can pass parameteres into a Goose recipe at runtime, which overrides its default value (if any). These should flow through from parent to sub-recipes.
 
 When I first started running the sub-recipe example, I noticed that Goose was ignoring the value of the runtime paramter and kept trying to use the default value. It was INFURIATING!! 🤬
 
