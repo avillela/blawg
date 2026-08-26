@@ -18,6 +18,8 @@
 	},
 	"dependencies": {
 		"@tinacms/cli": "^1.12.6",
+		"rehype-autolink-headings": "^7.1.0",
+		"rehype-slug": "^6.0.0",
 		"tinacms": "^2.10.1"
 	}
 }
