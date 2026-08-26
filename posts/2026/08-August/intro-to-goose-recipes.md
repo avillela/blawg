@@ -1,14 +1,14 @@
 ---
-title: Cooking with Goose Recipes
+title: Cooking with Goose Recipes and Sub-Recipes
 slug: intro-to-goose-recipes
-description: Reusable prompts 
+description: Using Goose to create re-usable and shareable prompts
 tags:
   - technical
   - ai
   - aaif
   - goose
   - '2026'
-added: 2026-08-24T00:00:00.000Z
+added: 2026-08-25T00:00:00.000Z
 ---
 
 ![A small, naturally heart‑shaped piece of coral sits on smooth pale sand, with a soft, blurred ocean and cloudy sky in the background.](/images/posts/intro-to-goose-recipes/heart-in-sand.jpg)
@@ -19,7 +19,7 @@ Goose is an open source AI agent framework [originally created by Block](https:/
 
 I like Goose because it provides an abstraction layer on top of your LLM (e.g. Claude Sonnet, GPT-5.6 Sol, Gemini Flash) and provider (e.g. Claude, GitHub Copilot, Gemini). This means that you can swap out provider and model combinations but keep your prompts the same. (Well, in theory, anyway...[not all LLMs are created equal](post/prompt-based-reusable-workflows-for-lazy-developers/#lesson-2-llms-are-on-a-spectrum). 🫠) This came in handy for me last year when I was playing around with Goose and ran out of premium tokens on GitHub Copilot and had to switch my model from Claude Sonnet to GPT-4.o. But also, GPT-4.o is no Claude Sonnet.
 
-Anyhooooo...there's another reason why I like Goose: you can use it to create reusable, parameterized agentic workflows. I like to think of it as the [Ansible Playbook](https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook) of agentic workflows. It also supports sub-recipes. Think of these as helper functions.
+Anyhooooo...there's another reason why I like Goose: you can use it to create reusable, parameterized agentic workflows, which you can share within and outside of your organization. I like to think of Goose recipes as the [Ansible Playbook](https://www.redhat.com/en/topics/automation/what-is-an-ansible-playbook) of agentic workflows. It also supports sub-recipes. Think of these as helper functions.
 
 And with that in mind, today I'll be digging into how Goose recipes and sub-recipes work. Let's get started!
 
@@ -447,7 +447,7 @@ I still don't know why I couldn't have just passed in the parameter `values` in 
 
 ## Final thoughts
 
-Goose recipes are a great way to create shareable, reusable workflows. Just beware the gotchas, and you'll be on your way to Goose Recipe Wizardry in no time!
+Goose recipes are a great way to create shareable, reusable workflows within and outside your organization. I did find some ergonomic challenges when setting up my examples, but alas, these are just part of normal growing pains of software, and shouldn't stop you from creating your own.
 
 And now, please enjoy a photo of this cute dachshund puppy, from a puppy yoga class that I attended recently. (Yes, that is actually a thing!!) Isn't he adorable? 🥰
 
