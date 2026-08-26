@@ -1,5 +1,5 @@
 ---
-title: Cooking with Goose Recipes and Sub-Recipes
+title: Intro to Goose Recipes and Sub-Recipes
 slug: intro-to-goose-recipes
 description: Using Goose to create re-usable and shareable prompts
 tags:
