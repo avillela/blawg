@@ -7,7 +7,7 @@ tags:
   - ai
   - aaif
   - goose
-  - open-telemetry
+  - opentelemetry
   - '2026'
 added: 2026-07-24T00:00:00.000Z
 ---
