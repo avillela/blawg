@@ -5,7 +5,7 @@ description: LLM observability with standardized OTel AI semantic conventions
 tags:
   - technical
   - ai
-  - open-telemetry
+  - opentelemetry
   - observability
   - otel-collector
   - '2026'
