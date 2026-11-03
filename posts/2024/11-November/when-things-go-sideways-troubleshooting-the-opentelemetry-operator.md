@@ -42,47 +42,61 @@ This might seem obvious, but before installing the Operator, you must have a Kub
 
 Next, and this is less obvious: You must have a component called [cert-manager](https://cert-manager.io/docs/) already installed in that cluster. This piece manages certificates for Kubernetes by making sure the certificates are valid and up to date. You can install both the cert-manager and the Operator via kubectl or a Helm chart.
 
-> **TIP:** _Note that in either case, you have to wait for cert-manager to finish installing before you install the Operator; otherwise, the operator installation will fail._
+> **TIP:** Note that in either case, you have to wait for cert-manager to finish installing before you install the Operator; otherwise, the operator installation will fail.
 
 #### Using kubectl
 
 To install cert-manager, run the following command:
 
+```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.10.0/cert-manager.yaml
+```
 
 Next, install the Operator:
 
+```bash
 kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
+```
 
 #### Using Helm
 
 To install cert-manager, first add the Helm repository:
 
+```bash
 helm repo add jetstack https://charts.jetstack.io --force-update
+```
 
 Next, install the cert-manager Helm chart:
 
-helm install \\   
-  cert-manager jetstack/cert-manager \\   
-  --namespace cert-manager \\   
-  --create-namespace \\   
-  --version v1.16.1 \\   
+```bash
+helm install    
+  cert-manager jetstack/cert-manager    
+  --namespace cert-manager    
+  --create-namespace    
+  --version v1.16.1    
   --set crds.enabled=true
+```
 
 Expect the preceding step to take up to a few minutes. You can verify your installation of cert-manager by following the steps in [this link](https://cert-manager.io/docs/installation/kubectl/#verify), or check the deployment status by running:
 
+```bash
 kubectl get pods –namespace cert-manager
+```
 
 To install the Operator, note that **Helm 3.9+** is required. First, add the repo:
 
+```bash
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts   
 helm repo update
+```
 
 Then, install the Operator:
 
-helm install --namespace opentelemetry-operator-system \\   
-  --create namespace \\   
+```bash
+helm install --namespace opentelemetry-operator-system    
+  --create namespace    
   opentelemetry-operatoropen-telemetry/opentelemetry-operator
+```
 
 ### Deploying the OpenTelemetry Collector
 
@@ -96,6 +110,7 @@ A [custom resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-ex
 
 The Operator has a CR for managing the deployment of the Collector, called `OpenTelemetryCollector`. The following is a sample `OpenTelemetryCollector` resource:
 
+```yaml
 apiVersion: opentelemetry.io/v1beta1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -111,11 +126,11 @@ spec:
           http: {}  
       prometheus:  
         config:  
-          scrape\_configs:  
-            \- job\_name: 'otel-collector'  
-              scrape\_interval: 10s  
-              static\_configs:  
-              \- targets: \[ '0.0.0.0:8888' \]  
+          scrape_configs:  
+            - job_name: 'otel-collector'  
+              scrape_interval: 10s  
+              static_configs:  
+              - targets: [ '0.0.0.0:8888' ]  
   
     processors:  
       batch: {}  
@@ -127,17 +142,18 @@ spec:
     service:  
       pipelines:  
         traces:  
-          receivers: \[otlp\]  
-          processors: \[batch\]  
-          exporters: \[logging\]  
+          receivers: [otlp]  
+          processors: [batch]  
+          exporters: [logging]  
         metrics:  
-          receivers: \[otlp, prometheus\]  
-          processors: \[\]  
-          exporters: \[logging\]  
+          receivers: [otlp, prometheus]  
+          processors: []  
+          exporters: [logging]  
         logs:  
-          receivers: \[otlp\]  
-          processors: \[batch\]  
-          exporters: \[logging\]
+          receivers: [otlp]  
+          processors: [batch]  
+          exporters: [logging]
+```
 
 There are many configuration options for the `OpenTelemetryCollector` resource, depending on how you plan on instantiating it; however, the basic configuration requires:
 
@@ -172,23 +188,31 @@ Thus, when you deploy the `OpenTelemetryCollector` resource, make sure that the 
 
 First, confirm that the `OpenTelemetryCollector` resource was deployed:
 
+```bash
 kubectl get otelcol -n <namespace>
+```
 
 When you deploy the Collector using the `OpenTelemetryCollector` resource, it creates a `ConfigMap` containing the Collector’s configuration YAML. Confirm that the `ConfigMap` was created in the same namespace as the Collector, and that the configurations themselves are correct.
 
 List your `ConfigMap`s:
 
+```bash
 kubectl get configmap -n <namespace> | grep <collector-cr-name>-collector
+```
 
 We also recommend checking your Collector pods by running the appropriate command based on the Collector’s `mode`:
 
 *   `deployment`, `statefulset`, `daemonset` modes:
 
-kubectl get pods -n <namespace> | grep <collector\_cr\_name>-collector
+```bash
+kubectl get pods -n <namespace> | grep <collector_cr_name>-collector
+```
 
 *   `sidecar` mode:
 
-kubectl get pods <pod\_name> -n opentelemetry -o jsonpath='{.spec.containers\[\*\].name}'
+```bash
+kubectl get pods <pod_name> -n opentelemetry -o jsonpath='{.spec.containers[*].name}'
+```
 
 This will list all the containers that were created in the pod, including the Collector sidecar container. The Collector config is included as an environment variable in the Collector sidecar container.
 
@@ -196,6 +220,7 @@ This will list all the containers that were created in the pod, including the Co
 
 Take a look at the `OpenTelemetryCollector` CR version you’re using. There are two versions available: `v1alpha1`:
 
+```yaml
 apiVersion: opentelemetry.io/v1alpha1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -215,27 +240,29 @@ spec:
   
     exporters:  
       otlp:  
-        endpoint: "<my\_o11y\_backend>"  
+        endpoint: "<my_o11y_backend>"  
       logging:  
         verbosity: detailed  
   
     service:  
       pipelines:  
         traces:  
-          receivers: \[otlp\]  
-          processors: \[batch\]  
-          exporters: \[otlp/ls, logging\]  
+          receivers: [otlp]  
+          processors: [batch]  
+          exporters: [otlp/ls, logging]  
         metrics:  
-          receivers: \[otlp, prometheus\]  
+          receivers: [otlp, prometheus]  
           processors:  
-          exporters: \[otlp/ls, logging\]  
+          exporters: [otlp/ls, logging]  
         logs:  
-          receivers: \[otlp\]  
-          processors: \[batch\]  
-          exporters: \[otlp/ls, logging\]
+          receivers: [otlp]  
+          processors: [batch]  
+          exporters: [otlp/ls, logging]
+```
 
 and `v1beta1`:
 
+```bash
 apiVersion: opentelemetry.io/v1beta1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -255,24 +282,25 @@ spec:
   
     exporters:  
       otlp:  
-        endpoint: "<my\_o11y\_backend>"  
+        endpoint: "<my_o11y_backend>"  
       logging:  
         verbosity: detailed  
   
     service:  
       pipelines:  
         traces:  
-          receivers: \[otlp\]  
-          processors: \[batch\]  
-          exporters: \[otlp/ls, logging\]  
+          receivers: [otlp]  
+          processors: [batch]  
+          exporters: [otlp/ls, logging]  
         metrics:  
-          receivers: \[otlp, prometheus\]  
-          processors: \[\]  
-          exporters: \[otlp/ls, logging\]  
+          receivers: [otlp, prometheus]  
+          processors: []  
+          exporters: [otlp/ls, logging]  
         logs:  
-          receivers: \[otlp\]  
-          processors: \[batch\]  
-          exporters: \[otlp/ls, logging\]
+          receivers: [otlp]  
+          processors: [batch]  
+          exporters: [otlp/ls, logging]
+```
 
 There are two main differences between these two API versions:
 
@@ -288,6 +316,7 @@ If you want access to more components than the ones offered by core, you can use
 
 You can set the Collector’s base image by specifying the image attribute in `spec.image`, as in the following example:
 
+```yaml
 apiVersion: opentelemetry.io/v1beta1  
 kind: OpenTelemetryCollector   
 metadata:  
@@ -306,7 +335,8 @@ config:
     batch: {}  
   exporters:   
     otlp:  
-      endpoint: "<olly\_backend\_endpoint>"
+      endpoint: "<olly_backend_endpoint>"
+```
 
 **Check your backend vendor’s access requirements**
 
@@ -314,14 +344,16 @@ If you’re using a backend vendor to ingest your telemetry data, you’ll likel
 
 To store it as a secret and prevent it from appearing as plain text, first create a Kubernetes secret, and [Base64-encode](https://www.baeldung.com/linux/cli-base64-encode-decode) it:
 
+```yaml
 apiVersion: v1   
 kind: Secret   
 metadata:  
   name: otel-collector-secret   
   namespace: opentelemetry  
 data:  
-  ACCESS\_TOKEN: <base64\_encoded\_token>  
+  ACCESS_TOKEN: <base64_encoded_token>  
 type: "Opaque"
+```
 
 **Check your exporter configuration**
 
@@ -331,7 +363,9 @@ Confirm that you’ve configured the [correct endpoint](https://docs.newrelic.co
 
 Kubernetes events provide detailed and chronological information about what’s happening within various components of your cluster. To view events for a specific namespace, use:
 
+```bash
 kubectl get events -n <namespace>
+```
 
 Replace `<namespace>` with the actual namespace where your OpenTelemetry Operator and resources are deployed.
 
@@ -351,6 +385,7 @@ The Operator has a CR called `Instrumentation` that can automatically inject and
 
 The following is a sample `Instrumentation` resource definition for a Python service:
 
+```yaml
 apiVersion: opentelemetry.io/v1alpha1   
 kind: Instrumentation   
 metadata:  
@@ -358,35 +393,37 @@ metadata:
   namespace: application  
 spec:  
   env:  
-    \- name: OTEL\_EXPORTER\_OTLP\_TIMEOUT  
+    - name: OTEL_EXPORTER_OTLP_TIMEOUT  
       value: "20"  
-    \- name: OTEL\_TRACES\_SAMPLER  
-      value: parentbased\_traceidratio  
-    \- name: OTEL\_TRACES\_SAMPLER\_ARG  
+    - name: OTEL_TRACES_SAMPLER  
+      value: parentbased_traceidratio  
+    - name: OTEL_TRACES_SAMPLER_ARG  
       value: "0.85"  
   exporter:  
     endpoint: http://localhost:4317  
   propagators:  
-    \- tracecontext  
-    \- baggage   
+    - tracecontext  
+    - baggage   
   sampler:  
-    type: parentbased\_traceidratio   
+    type: parentbased_traceidratio   
     value: "0.25"  
   python:   
     env:  
-      \- name: OTEL\_METRICS\_EXPORTER  
-        value: otlp\_proto\_http  
-      \- name: OTEL\_LOGS\_EXPORTER  
-        value: otlp\_proto\_http  
-      \- name: OTEL\_PYTHON\_LOGGING\_AUTO\_INSTRUMENTATION\_ENABLED  
+      - name: OTEL_METRICS_EXPORTER  
+        value: otlp_proto_http  
+      - name: OTEL_LOGS_EXPORTER  
+        value: otlp_proto_http  
+      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED  
         value: "true"  
-      \- name: OTEL\_EXPORTER\_OTLP\_ENDPOINT  
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT  
         value: http://localhost: 4318
+```
 
 You can use a single auto-instrumentation YAML to serve multiple services written in different languages (provided they are supported for auto-instrumentation). List your global environment variables under `spec.env`, and list language-specific environment variables under `spec.<language_name>.env`. You can mix and match language-specific environment variable configurations in the same `Instrumentation` resource.
 
 In order to use the Operator’s auto-instrumentation capability, deploying an `Instrumentation` resource alone isn’t enough. The auto-instrumentation configuration must be associated with the code being instrumented. This is done by adding an auto-instrumentation annotation in your application’s `Deployment` YAML, in the template definition section, such as in the following example:
 
+```yaml
 apiVersion: apps/v1  
 kind: Deployment   
 metadata:  
@@ -405,10 +442,11 @@ spec:
         instrumentation.opentelemetry.io/inject-python: "true"  
 spec:  
   containers:  
-    \- name: py-otel-server  
+    - name: py-otel-server  
       image: otel-python-lab:0.1.0-py-otel-server ports:  
-    \- containerPort: 8082  
+    - containerPort: 8082  
       name: py-server-port
+```
 
 When the annotation called `instrumentation.opentelemetry.io/inject-python` is set to `true`, it tells the Operator to inject Python auto-instrumentation (in this case) into the containers running in this pod. For other languages, simply replace `python` with the appropriate language name (for example, `instrumentation.opentelemetry.io/inject-java` for Java apps). You can disable instrumentation by setting this value to `false`.
 
@@ -433,8 +471,10 @@ kubectl describe otelinst -n <namespace>
 
 Double check that your `Instrumentation` CR is deployed before your `Deployment`. As we learned earlier, if you’re auto-instrumenting via the Operator, you must deploy the `Instrumentation` resource before deploying your service’s `Deployment` resource, because the `Deployment` will create an `init-container` for the auto-instrumentation. You should therefore see an auto-instrumentation init-container when you run the following command:
 
-kubectl get pod <pod\_name> -n <namespace> \\  
-  -o jsonpath='{.spec.initContainers\[\*\].name}'
+```bash
+kubectl get pod <pod_name> -n <namespace>   
+  -o jsonpath='{.spec.initContainers[*].name}'
+```
 
 **Check your auto-instrumentation CR annotations**
 
@@ -442,6 +482,7 @@ kubectl get pod <pod\_name> -n <namespace> \\
 
 2- Confirm that they are in the pod’s metadata definition (`spec.template.metadata.annotation`), not the deployment’s metadata definition (`metadata.annotation`), as in the following example:
 
+```yaml
 apiVersion: apps/v1  
 kind: Deployment  
 metadata:  
@@ -465,20 +506,22 @@ spec:
         instrumentation.opentelemetry.io/inject-python: "true"  
     spec:  
       containers:  
-      \- name: py-otel-server  
+      - name: py-otel-server  
         image: otel-target-allocator-talk:0.1.0-py-otel-server  
         imagePullPolicy: IfNotPresent  
         ports:  
-        \- containerPort: 8082  
+        - containerPort: 8082  
           name: py-server-port  
         env:  
-          \- name: OTEL\_RESOURCE\_ATTRIBUTES  
+          - name: OTEL_RESOURCE_ATTRIBUTES  
             value: service.name=py-otel-server,service.version=0.1.0
+```
 
 **Check your endpoint configurations**
 
 The endpoint, configured in the following example under `spec.exporter.endpoint`, refers to the destination for your telemetry within your Kubernetes cluster:
 
+```yaml
 apiVersion: opentelemetry.io/v1alpha1  
 kind: Instrumentation  
 metadata:  
@@ -489,16 +532,17 @@ spec:
     endpoint: http://otelcol-collector.opentelemetry.svc.cluster.local:4318  
   env:  
   propagators:  
-    \- tracecontext  
-    \- baggage  
+    - tracecontext  
+    - baggage  
   python:  
     env:  
-      \- name: OTEL\_METRICS\_EXPORTER  
-        value: console,otlp\_proto\_http  
-      \- name: OTEL\_LOGS\_EXPORTER  
-        value: otlp\_proto\_http  
-      \- name: OTEL\_PYTHON\_LOGGING\_AUTO\_INSTRUMENTATION\_ENABLED  
+      - name: OTEL_METRICS_EXPORTER  
+        value: console,otlp_proto_http  
+      - name: OTEL_LOGS_EXPORTER  
+        value: otlp_proto_http  
+      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED  
         value: "true"
+```
 
 The `spec.exporter.endpoint` configuration in the `Instrumentation` resource allows you to define the destination for your telemetry data. If you omit it, it defaults to `http://localhost:4317`.
 
@@ -510,15 +554,17 @@ In addition, if the Collector is running in a different namespace, you must appe
 
 Finally, make sure that you are using the right Collector port. Normally, you can choose either `4317` (gRPC) or `4318` (HTTP); however, for [Python auto-instrumentation, you can only use 4318](https://opentelemetry.io/docs/kubernetes/operator/automatic/#python). Confirm whether there are similar caveats for the language(s) you’re using.
 
-> **Note:** _If you’re deploying your Collector as a Sidecar, your endpoint needs to be_ `[_http://localhost:4317_](http://localhost:4317)` _or_ `[_http://localhost:431_](http://localhost:4317)_8_` _(remember: it has to be_ `_4318_` _for Python)._
+> **Note:** If you’re deploying your Collector as a Sidecar, your endpoint needs to be [http://localhost:4317_](http://localhost:4317) or [http://localhost:4318](http://localhost:4318) (remember: it has to be `4318` for Python).
 
 **When all else fails…check the Operator logs**
 
 Run the following command to check the Operator logs for any occurrences of `error` in the log messages:
 
-kubectl logs -l app.kubernetes.io/name=opentelemetry-operator \\  
-  --container manager \\  
+```bash
+kubectl logs -l app.kubernetes.io/name=opentelemetry-operator   
+  --container manager   
   -n opentelemetry-operator-system --follow
+```
 
 Note that the above only applies if you have admin access to your Kubernetes cluster. If you don’t, you can still tell what’s going on by checking your Kubernetes event log, just like we did when troubleshooting issues with the `OpenTelemetryCollector` resource:
 

@@ -94,15 +94,17 @@ Since the OpAMP Extension turns the OTel Collector into an OpAMP Client, it stan
 
 To configure the OpAMP Extension, start by adding it to the extensions section of the OTel Collector config YAML:
 
+```yaml
 extensions:  
   opamp:  
     server:  
       ws:  
         endpoint: wss://opamp-server:4320/v1/opamp  
         tls:  
-          insecure\_skip\_verify: true  
+          insecure_skip_verify: true  
     capabilities:  
-      reports\_effective\_config: true
+      reports_effective_config: true
+```
 
 Let’s take a closer look:
 
@@ -110,8 +112,10 @@ Let’s take a closer look:
 
 Great. The above snippet configures the OpAMP Extension. To _enable_ it, you must add it to the Collector config’s `service` block:
 
+```yaml
 service:  
- extensions: \[opamp\]
+ extensions: [opamp]
+```
 
 Remember how I said that the OpAMP Extension turns the Collector into a read-only OpAMP Client? This means two things:
 
@@ -149,24 +153,26 @@ The OpAMP Supervisor under the covers. Image source: [GitHub](https://github.co
 
 The OpAMP Supervisor is configured via YAML:
 
+```yaml
 server:  
  endpoint: wss://opamp-server:4320/v1/opamp  
  tls:  
- insecure\_skip\_verify: true  
+ insecure_skip_verify: true  
 capabilities:  
- reports\_effective\_config: true  
- reports\_own\_metrics: true  
- reports\_own\_logs: true  
- reports\_health: true  
- accepts\_remote\_config: true  
- reports\_remote\_config: true  
+ reports_effective_config: true  
+ reports_own_metrics: true  
+ reports_own_logs: true  
+ reports_health: true  
+ accepts_remote_config: true  
+ reports_remote_config: true  
 agent:  
  executable: /otelcolcontrib  
- config\_files:  
- \- /otelcol-config.yaml  
+ config_files:  
+ - /otelcol-config.yaml  
   
 storage:  
  directory: /etc/otel/supervisor-data/
+```
 
 Let’s take a closer look:
 
@@ -185,14 +191,16 @@ You can check out the example GitHub repository [here](https://github.com/aville
 
 Start by cloning the GitHub repo:
 
+```bash
 git clone git@github.com:avillela/opamp-demo.git  
 cd opamp-demo
+```
 
 **SCENARIO 1: Running the Supervisor and Collector as Local Executable Binaries**
 
 In this scenario, both the OpAMP Supervisor and the OpenTelemetry Collector run as native binaries on your local machine. This is the simplest way to understand how the Supervisor manages a Collector and is ideal for both local development and configuring production-ready Supervisors on VMs or bare-metal servers.
 
-**1\. Start up the OpAMP Server**
+**1. Start up the OpAMP Server**
 
 We’ll be running the OpAMP Go server. I’ve gone ahead and containerized it, and put it into a [Docker Compose](https://github.com/avillela/opamp-demo/blob/c848d87d524a24bb20beb98fca3e535e5704f5e8/docker-compose.yaml#L20-L32) file to make it easier to build and start up.
 
@@ -203,9 +211,9 @@ docker compose up opamp-server
 Sample output:
 
 Attaching to opamp-server  
-opamp-server | 2026/01/29 09:35:27.955323 \[MAIN\] OpAMP Server starting…  
-opamp-server | 2026/01/29 09:35:27.955892 \[MAIN\] OpAMP Server running…  
-opamp-server | 2026/01/29 09:38:29.696623 \[OPAMP\] Agent disconnected: websocket: close 1000 (normal): Normal closure
+opamp-server | 2026/01/29 09:35:27.955323 [MAIN] OpAMP Server starting…  
+opamp-server | 2026/01/29 09:35:27.955892 [MAIN] OpAMP Server running…  
+opamp-server | 2026/01/29 09:38:29.696623 [OPAMP] Agent disconnected: websocket: close 1000 (normal): Normal closure
 
 The OpAMP Server should be accessible at `[http://localhost:4321](http://localhost:4321)`:
 
@@ -215,25 +223,31 @@ The Go OpAMP server!
 
 Note that there are no OpAMP Clients running…yet.
 
-**2\. Start the OpAMP Supervisor binary**
+**2. Start the OpAMP Supervisor binary**
 
 If you’re running this in a Dev Container, the OpAMP Supervisor and OTel Collector were installed in `[install-otel-components.sh](https://github.com/avillela/opamp-demo/blob/main/.devcontainer/install-otel-components.sh)` on initial Dev Container build.
 
 If you’re running this in the Dev Container, the will have been installed on initial Dev Container build. If you’re not running this using the Dev Container, install the OpAMP Supervisor and OTel Collector binaries on your local filesystem by running:
 
+```bash
 ./.devcontainer/install-otel-components.sh
+```
 
 Now you can start up the OpAMP Supervisor binary by opening up a new terminal window and running:
 
+```bash
 opampsupervisor - config ./src/opamp-supervisor/supervisor-3.yaml
+```
 
 The Supervisor will launch the Collector as a managed subprocess and begin reporting health, logs, metrics, and effective configuration over OpAMP.
 
 Sample output:
 
+```text
 {"level":"info","ts":1769680036.7547185,"logger":"supervisor","caller":"supervisor/supervisor.go:349","msg":"Supervisor starting","id":"019bfb31-cfe2–7090-b2fd-e3675a48cfc7"}  
 {"level":"info","ts":1769680036.8028882,"logger":"supervisor","caller":"supervisor/supervisor.go:672","msg":"Connected to the server."}  
 Note this log message: {"level":"info","ts":1769680036.7547185,"logger":"supervisor","caller":"supervisor/supervisor.go:349","msg":"Supervisor starting","id":"019bfb31-cfe2–7090-b2fd-e3675a48cfc7"}
+```
 
 And more specifically, take note of the value of the `id` field, `019bfb31-cfe2–7090-b2fd-e3675a48cfc7`. This is the ID of the Collector launched by the Supervisor.
 
@@ -241,7 +255,9 @@ When we refresh the OpAMP Server, we’ll see that same Collector ID listed:
 
 ![Alt text: OpAMP Server web interface displaying a single connected agent in a table, with one clickable Instance ID listed under the “Agents” section.](https://cdn-images-1.medium.com/max/800/1*vfjxYCgvuwokv6laifm6CA.png)
 
+```text
 OTel Collector registered with the OpAMP Server
+```
 
 And if we click on it, we’ll see this:
 
@@ -251,6 +267,7 @@ Drilling into the OTel Collector config on the OpAMP Server. Note that the OpAMP
 
 Note that the OpAMP Extension is there, even though it’s missing from our [Collector config](https://github.com/avillela/opamp-demo/blob/main/src/otel-collector/otelcol-config-3.yaml):
 
+```yaml
 receivers:  
   otlp:  
     protocols:  
@@ -267,43 +284,46 @@ exporters:
 service:  
   pipelines:  
     traces:  
-      receivers: \[ otlp \]  
-      processors: \[ batch \]  
-      exporters: \[ debug \]  
+      receivers: [ otlp ]  
+      processors: [ batch ]  
+      exporters: [ debug ]  
     metrics:  
-      receivers: \[ otlp \]  
-      processors: \[ batch \]  
-      exporters: \[ debug \]  
+      receivers: [ otlp ]  
+      processors: [ batch ]  
+      exporters: [ debug ]  
     logs:  
-      receivers: \[ otlp \]  
-      processors: \[ batch \]  
-      exporters: \[ debug \]
+      receivers: [ otlp ]  
+      processors: [ batch ]  
+      exporters: [ debug ]
+```
 
 This shows us that the Supervisor injects that OpAMP Extension into our Collector config for us! 🪄🪄🪄
 
 Now let’s take a look at our [Supervisor YAML](https://github.com/avillela/opamp-demo/blob/main/src/opamp-supervisor/supervisor-3.yaml):
 
+```yaml
 server:  
   endpoint: wss://localhost:4320/v1/opamp  
   tls:  
-    insecure\_skip\_verify: true  
+    insecure_skip_verify: true  
   
 capabilities:  
-  reports\_effective\_config: true  
-  reports\_own\_metrics: true  
-  reports\_own\_logs: true  
-  reports\_health: true  
-  accepts\_remote\_config: true  
-  reports\_remote\_config: true  
+  reports_effective_config: true  
+  reports_own_metrics: true  
+  reports_own_logs: true  
+  reports_health: true  
+  accepts_remote_config: true  
+  reports_remote_config: true  
   
 agent:  
   executable: /usr/local/bin/otelcol-contrib  
-  config\_files:  
-      \- src/otel-collector/otelcol-config-3.yaml  
+  config_files:  
+      - src/otel-collector/otelcol-config-3.yaml  
   
   
 storage:  
   directory: src/opamp-supervisor/supervisor-data-2/
+```
 
 Taking a closer look:
 
@@ -313,9 +333,11 @@ Taking a closer look:
 
 Now let’s go back to the Collector config in the OpAMP Server, and try to update the Collector configuration in the “Additional Configuration” text box, by changing the [Debug Exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md) verbosity from `detailed` to `basic`.
 
+```yaml
 exporters:  
   debug:  
     verbosity: basic
+```
 
 ![OpAMP Server web interface showing a connected agent’s details, including its instance ID, uptime, system attributes, and a full effective configuration display alongside an editable “Additional Configuration” panel with a save button.](https://cdn-images-1.medium.com/max/800/1*o1QkQ1gxgwgdd19mkDnSAA.png)
 
@@ -333,40 +355,44 @@ In this scenario, your Collector and Supervisor binaries reside in the same Dock
 
 Here is the [Dockerfile](https://github.com/avillela/opamp-demo/blob/main/src/docker/Dockerfile.opamp-supervisor):
 
-\# OpAMP Supervisor image  
+```dockerfile
+# OpAMP Supervisor image  
 FROM otel/opentelemetry-collector-opampsupervisor:latest as supervisor  
   
-\# OpenTelemetry collector image  
+# OpenTelemetry collector image  
 FROM otel/opentelemetry-collector-contrib:latest AS col  
   
-\# Final stage  
+# Final stage  
 FROM alpine:latest  
   
-\# Copy Supervisor binary  
+# Copy Supervisor binary  
 COPY - from=supervisor /usr/local/bin/opampsupervisor ./opampsupervisor  
   
-\# Copy Collector binary  
+# Copy Collector binary  
 COPY - from=col /otelcol-contrib /otelcol-contrib  
 EXPOSE 4317 4318  
-ENTRYPOINT \["./opampsupervisor", " - config", "supervisor.yaml"\]
+ENTRYPOINT ["./opampsupervisor", " - config", "supervisor.yaml"]
+```
 
 Notice how we’re building a Docker image in which we copy the Supervisor binary and the Collector binary into the same `Dockerfile`.
 
 The [Docker Compose](https://github.com/avillela/opamp-demo/blob/c848d87d524a24bb20beb98fca3e535e5704f5e8/docker-compose.yaml#L20-L31) for that piece then looks like this:
 
+```yaml
   opamp-supervisor-2:  
-    container\_name: opamp-supervisor-2  
+    container_name: opamp-supervisor-2  
     image: opamp-supervisor:latest  
-    command: \["--config", "/etc/otel/supervisor.yaml"\]  
+    command: ["--config", "/etc/otel/supervisor.yaml"]  
     build:  
       context: ./src/docker  
       dockerfile: Dockerfile.opamp-supervisor  
     volumes:  
-      \- ./src/opamp-supervisor/supervisor-2.yaml:/etc/otel/supervisor.yaml  
-      \- ./src/otel-collector/otelcol-config-2.yaml:/otelcol-config.yaml  
+      - ./src/opamp-supervisor/supervisor-2.yaml:/etc/otel/supervisor.yaml  
+      - ./src/otel-collector/otelcol-config-2.yaml:/otelcol-config.yaml  
     networks:  
-      \- opamp-network  
+      - opamp-network  
     restart: unless-stopped
+```
 
 Notice that the `volumes` configuration includes paths to the following files, which are mounting our local YAML config files to a location in the container filesystem:
 
@@ -377,18 +403,22 @@ Technically both YAML files could’ve been copied over as part of the container
 
 Let’s run the example.
 
-**1\. Start up the OpAMP Server**
+**1. Start up the OpAMP Server**
 
 Open up a new terminal window and start up the OpAMP Server if it isn’t already running from the previous example:
 
+```bash
 docker compose up opamp-server
+```
 
 Sample output:
 
+```text
 Attaching to opamp-server  
-opamp-server | 2026/01/29 09:35:27.955323 \[MAIN\] OpAMP Server starting…  
-opamp-server | 2026/01/29 09:35:27.955892 \[MAIN\] OpAMP Server running…  
-opamp-server | 2026/01/29 09:38:29.696623 \[OPAMP\] Agent disconnected: websocket: close 1000 (normal): Normal closure
+opamp-server | 2026/01/29 09:35:27.955323 [MAIN] OpAMP Server starting…  
+opamp-server | 2026/01/29 09:35:27.955892 [MAIN] OpAMP Server running…  
+opamp-server | 2026/01/29 09:38:29.696623 [OPAMP] Agent disconnected: websocket: close 1000 (normal): Normal closure
+```
 
 The OpAMP Server should be accessible at `[http://localhost:4321](http://localhost:4321)`:
 
@@ -398,17 +428,21 @@ The Collector from our previous example.
 
 If you have the previous example still running, you’ll already see a Collector listed on there, like I have.
 
-**2\. Start the OpAMP Supervisor + Collector Container**
+**2. Start the OpAMP Supervisor + Collector Container**
 
 Open up a new terminal window and run the following command. Note that the first time you run this, it will build the image if it doesn’t already exist.
 
+```bash
 docker compose up opamp-supervisor-2
+```
 
 Sample output:
 
+```text
 Attaching to opamp-supervisor-2  
 opamp-supervisor-2 | {"level":"info","ts":1769790488.4444625,"logger":"supervisor","caller":"supervisor/supervisor.go:349","msg":"Supervisor starting","id":"019be791-e9c0–7707–9636-dfe4aaca0f83"}  
 opamp-supervisor-2 | {"level":"info","ts":1769790488.453619,"logger":"supervisor","caller":"supervisor/supervisor.go:672","msg":"Connected to the server."}
+```
 
 Again, the Supervisor (in the container) will launch the Collector (in the same container) as a managed subprocess.
 
@@ -422,27 +456,29 @@ The ID of the new Collector that was started up is `019be791-e9c0–7707–9636-
 
 The [Supervisor YAML](https://github.com/avillela/opamp-demo/blob/main/src/opamp-supervisor/supervisor-2.yaml) looks like this:
 
+```yaml
 server:  
   endpoint: wss://opamp-server:4320/v1/opamp  
   tls:  
-    insecure\_skip\_verify: true  
+    insecure_skip_verify: true  
   
 capabilities:  
-  reports\_effective\_config: true  
-  reports\_own\_metrics: true  
-  reports\_own\_logs: true  
-  reports\_health: true  
-  accepts\_remote\_config: true  
-  reports\_remote\_config: true  
+  reports_effective_config: true  
+  reports_own_metrics: true  
+  reports_own_logs: true  
+  reports_health: true  
+  accepts_remote_config: true  
+  reports_remote_config: true  
   
 agent:  
   executable: /otelcol-contrib  
-  config\_files:  
-      \- /otelcol-config.yaml  
+  config_files:  
+      - /otelcol-config.yaml  
   
   
 storage:  
   directory: /etc/otel/supervisor-data/
+```
 
 Let’s take a closer look:
 
@@ -452,6 +488,7 @@ Let’s take a closer look:
 
 Here’s what the [Collector YAML](https://github.com/avillela/opamp-demo/blob/main/src/otel-collector/otelcol-config-2.yaml) looks like. Again, we didn’t configure an OpAMP Extension for it.
 
+```yaml
 receivers:  
   otlp:  
     protocols:  
@@ -468,17 +505,18 @@ exporters:
 service:  
   pipelines:  
     traces:  
-      receivers: \[ otlp \]  
-      processors: \[ batch \]  
-      exporters: \[ debug \]  
+      receivers: [ otlp ]  
+      processors: [ batch ]  
+      exporters: [ debug ]  
     metrics:  
-      receivers: \[ otlp \]  
-      processors: \[ batch \]  
-      exporters: \[ debug \]  
+      receivers: [ otlp ]  
+      processors: [ batch ]  
+      exporters: [ debug ]  
     logs:  
-      receivers: \[ otlp \]  
-      processors: \[ batch \]  
-      exporters: \[ debug \]
+      receivers: [ otlp ]  
+      processors: [ batch ]  
+      exporters: [ debug ]
+```
 
 And yet, again, we see the Extension showing up when we see it on the OpAMP Server.
 
@@ -488,9 +526,11 @@ Again, OpAMP Extension is injected into our Collector’s config
 
 This time, our Collector’s Debug Exporter’s verbosity is set to basic, so let’s change it to detailed on the OpAMP Server:
 
+```yaml
 exporters:  
   debug:  
     verbosity: detailed
+```
 
 ![OpAMP Server web interface displaying a connected agent’s details, including its instance ID, uptime, system attributes, and effective configuration, alongside an editable “Additional Configuration” panel with a save button.](https://cdn-images-1.medium.com/max/800/1*gTdbPsf62olnrimYBoCgqw.png)
 
@@ -506,7 +546,7 @@ Ta-da!
 
 ### OpAMP Bridge
 
-As we saw with the above examples, the OpAMP Supervisor works well if your Supervisor and Collector on bare metal or VMs, or if they both run in the same container. But what if we have a Supervisor running in one container, and a Collector running in a _separate_ container? Can that Supervisor manage that Collector? Nope. But do you know what can?
+As we saw with the above examples, the OpAMP Supervisor works well if your Supervisor and Collector are on bare metal or VMs, or if they both run in the same container. But what if we have a Supervisor running in one container, and a Collector running in a _separate_ container? Can that Supervisor manage that Collector? Nope. But do you know what can?
 
 The OpAMP Bridge! The [OpAMP Bridge](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/operator-opamp-bridge) is a component of the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator), one of my favourite OTel components. (Don’t believe me? Check out my [various writings on the Operator](https://adri-v.medium.com/list/opentelemetry-operator-0ee6378d630a). 😁)
 
@@ -518,12 +558,13 @@ You can think of the OpAMP Bridge as a replacement of sorts for the OpAMP Superv
 
 To configure the OpAMP Bridge, you must define a Kubernetes custom resource (CR) called `OpAMPBridge`. Below is an example taken from the [OpAMP Bridge readme on GitHub](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/operator-opamp-bridge#opampbridge-crd).
 
+```yaml
 apiVersion: opentelemetry.io/v1alpha1  
 kind: OpAMPBridge  
 metadata:  
   name: opamp-bridge  
 spec:  
-  endpoint: "<OPAMP\_SERVER\_ENDPOINT>"  
+  endpoint: "<OPAMP_SERVER_ENDPOINT>"  
   capabilities:  
     AcceptsRemoteConfig: true  
     ReportsEffectiveConfig: true  
@@ -531,12 +572,13 @@ spec:
     ReportsRemoteConfig: true  
   componentsAllowed:  
     receivers:  
-      \- otlp  
+      - otlp  
     processors:  
-      \- memory\_limiter  
-      \- batch  
+      - memory_limiter  
+      - batch  
     exporters:  
-      \- otlphttp
+      - otlphttp
+```
 
 Note that you still need to run an OpAMP Server, which you specify in the `spec.endpoint` configuration.
 
@@ -544,8 +586,15 @@ You must also “register” your OTel Collectors with the OpAMP Bridge. The equ
 
 There are two different types of labels:
 
-opentelemetry.io/opamp-reporting \= true  
-opentelemetry.io/opamp-managed \= true | <name\_of\_bridge\_resource>
+```yaml
+opentelemetry.io/opamp-reporting=true 
+```
+
+or
+
+```yaml
+opentelemetry.io/opamp-managed=true | <name_of_bridge_resource>
+```
 
 You use one or the other.
 
@@ -555,6 +604,7 @@ Use the `opentelemetry.io/opamp-managed: true | <name_of_bridge_resource>` label
 
 Here is a sample `OpenTelemetryCollector` resource configured with an OpAMP Bridge label:
 
+```yaml
 apiVersion: opentelemetry.io/v1beta1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -563,6 +613,7 @@ metadata:
     opentelemetry.io/opamp-reporting: "true"  
 spec:  
 ...
+```
 
 This is by no means an exhaustive example, but it should give you an idea of what is involved in configuring the `OpAMPBridge` resource.
 

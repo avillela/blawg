@@ -33,6 +33,7 @@ Are you ready? Let’s do this!
 
 Dev containers are defined using a JSON file called `devcontainer.json`, which resides in a folder in the root of your repo called `.devcontainer`. When launching a dev container, your dev container tool looks for `devcontainer.json` inside of the `.devcontainer` folder.
 
+```text
 my-app/  
 ├─ .devcontainer/  
 │  ├─ devcontainer.json  
@@ -47,6 +48,7 @@ my-app/
 │  ├─ workspace-2/  
 │  │  ├─ devcontainer.json  
 ...
+```
 
 But what are the valid properties for `devcontainer.json`? You can find that in the dev containers [JSON reference](https://containers.dev/implementors/json_reference/). Be sure to bookmark it!
 
@@ -54,7 +56,9 @@ But what are the valid properties for `devcontainer.json`? You can find that in 
 
 If you’re running your dev container locally using the [VSCode Dev Container plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) and have an [Apple Silicon Mac](https://en.wikipedia.org/wiki/Apple_silicon) (which uses the [ARM architecture](https://en.wikipedia.org/wiki/ARM_architecture_family)), you will notice that your dev container will fail on startup. It’s looking for an arm64 version of the base Docker image, which doesn’t exist, because [there isn’t native dev container support for ARM architectures](https://stackoverflow.com/questions/66493499/how-to-get-arm-docker-images-when-creating-devcontainer-is-vs-code-mac-m1). In order to get around this, you’ll need to pull the amd64 version of the base image yourself before starting up your dev container. For example, if your base image is `mcr.microsoft.com/devcontainers/base:ubuntu`, you would have to run the following command before launching your dev container locally for the first time:
 
+```bash
 docker pull --platform linux/amd64 mcr.microsoft.com/devcontainers/base:ubuntu
+```
 
 #### Dev containers image & feature registry
 
@@ -62,11 +66,13 @@ Not sure what base image to use? For a full list of available dev container imag
 
 If you would like to add more capabilities to your base image, you can do so by adding individual [features](https://containers.dev/implementors/features/) to your `devcontainer.json`. For example, if you want to be able to run Docker _within_ your dev container, you can just add the following feature to `devcontainer.json`:
 
+```json
 "features": {  
     "ghcr.io/devcontainers/features/common-utils:2": {  
         "version": "latest"  
     }  
 }
+```
 
 For a full list of available features, check out the [dev container feature registry](https://containers.dev/features).
 
@@ -76,11 +82,13 @@ The easiest and quickest way to test your dev container is on your local machine
 
 When I set up my `devcontainer.json`, I set the following machine specs:
 
+```json
 "hostRequirements": {  
   "cpus": 4,  
   "memory": "16gb",  
   "storage": "32gb"  
 },
+```
 
 I set these requirements with the intention of running the dev container in Codespaces, and these were the beefiest machine specs at my disposal for my GitHub account.
 
@@ -102,6 +110,7 @@ As far as I know, there’s no way to export a Codespace configuration into a `d
 
 So I created my `devcontainer.json`:
 
+```json
 {  
     "image": "mcr.microsoft.com/devcontainers/universal:dev-linux",  
     "hostRequirements": {  
@@ -110,6 +119,7 @@ So I created my `devcontainer.json`:
       "storage": "32gb"  
     }  
   }
+```
 
 Short and sweet.
 
@@ -119,6 +129,7 @@ The dev container built successfully and I was able to launch it. BUT when I ran
 
 Docker was installed, but the Docker daemon wouldn’t start up, no matter how hard I tried (and Googled). After a bit more Googling, I decided to try something different. I changed my starging image to a bare-bones Ubuntu image, `mcr.microsoft.com/devcontainers/base:ubuntu`, and added a Docker feature. So then my `devcontainer.json` looked like this:
 
+```json
 {  
     "name": "default",  
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  
@@ -131,6 +142,7 @@ Docker was installed, but the Docker daemon wouldn’t start up, no matter how h
       "storage": "32gb"  
     }  
   }
+```
 
 That did the trick — it worked both locally and in GitHub Codespaces. Success!
 
