@@ -55,20 +55,24 @@ Fortunately, the `OpenTelemetryCollector` CR gives us a way to reference that va
 
 2- [Expose the secret as an environment variable](https://kubernetes.io/docs/concepts/configuration/secret/#using-a-secret) by adding it to the `OpenTelemetryCollector` CR’s`[env](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21)` [section](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21). For example:
 
+```yaml
 env:  
- \- name: LS\_TOKEN  
+ - name: LS_TOKEN  
  valueFrom:  
  secretKeyRef:  
- key: LS\_TOKEN  
+ key: LS_TOKEN  
  name: otel-collector-secret
+```
 
 3- Reference the _environment variable_ in your [exporter definition](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L43-L47):
 
+```yaml
 exporters:  
  otlp/ls:  
  endpoint: "ingest.lightstep.com:443"  
  headers:  
- "lightstep-access-token": "${LS\_TOKEN}"
+ "lightstep-access-token": "${LS_TOKEN}"
+```
 
 For more info, check out my full example [here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml), along with full instructions [here](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
@@ -90,6 +94,7 @@ Either way, the OpenTelemetryCollector CR allows you to override the default Col
 
 Your code would look something like this:
 
+```yaml
 apiVersion: opentelemetry.io/v1alpha1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -97,9 +102,10 @@ metadata:
 namespace: mynamespace  
 spec:  
  mode: statefulset  
- image: <my\_collector\_image>  
- replicas: <number\_of\_replicas>  
+ image: <mycollectorimage>  
+ replicas: <numberofreplicas>  
 ...
+```
 
 Where:
 
@@ -120,8 +126,10 @@ Yes, you do. These CRs are bundled with the [Prometheus Operator](https://github
 
 The easiest way to install the `[PodMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.PodMonitor)` and `[ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.ServiceMonitor)` CRs is to grab a copy of the individual [PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml) and [ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml) [custom resource definitions (CRDs)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/), like this:
 
-kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.com\_servicemonitors.yaml  
-kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.com\_podmonitors.yaml
+```bash
+kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.comservicemonitors.yaml  
+kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.compodmonitors.yaml
+```
 
 Check out my example of the OpenTelemetry Operator’s Target Allocator with ServiceMonitor [here](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
@@ -131,7 +139,7 @@ No, but you do need to do a bit of extra work. So, here’s the deal…although 
 
 If you enable the Target Allocator and don’t create a service account, one is automagically created for you. This service account’s default name is a concatenation of the Collector name (`metadata.name` in the `OpenTelemetryCollector` CR) and `-collector`. For example, if your Collector is called `mycollector`, then your service account would be called `mycollector-collector`.
 
-By default, this service account has no defined policy. This means that you’ll still need to create your own `[ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole)` and `[ClusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding)`, and associate the `ClusterRole` to the `ServiceAccount` via `ClusterRoleBinding`.
+By default, this service account has no defined policy. This means that you’ll still need to create your own [ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [ClusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding), and associate the `ClusterRole` to the `ServiceAccount` via `ClusterRoleBinding`.
 
 See the [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac) for more on Target Allocator RBAC configuration.
 
@@ -145,6 +153,7 @@ Please keep in mind that [it’s usually best to keep the Target Allocator and O
 
 Your code would look something like this:
 
+```yaml
 apiVersion: opentelemetry.io/v1alpha1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -153,9 +162,10 @@ namespace: mynamespace
 spec:  
  mode: statefulset  
  targetAllocator:  
- image: <ta\_image\_name>  
- replicas: <number\_of\_replicas>  
+ image: <taimagename>  
+ replicas: <numberofreplicas>  
 ...
+```
 
 Where:
 

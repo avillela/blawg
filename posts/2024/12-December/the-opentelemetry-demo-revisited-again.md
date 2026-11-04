@@ -57,9 +57,11 @@ Here we go!
 
 Start by cloning the repo, and switch over to the `avillela-dt-backend` branch.
 
+```bash
 git clone git@github.com:avillela/opentelemetry-demo.git  
 cd opentelemetry-demo  
 git checkout avillela-dt-backend
+```
 
 #### 2- Build and run the Dev Container
 
@@ -67,8 +69,10 @@ git checkout avillela-dt-backend
 
 Next, build and run your Dev Container.
 
-devcontainer build \--no-cache  
+```bash
+devcontainer build --no-cache  
 devcontainer open
+```
 
 The build and open steps will take a few minutes when you run them for the first time.
 
@@ -91,21 +95,22 @@ If you open up [otelcol-config-extras.yml](https://github.com/avillela/opentelem
 
 The file is located under `src/otelcollector/otelcol-config-extras.yml`:
 
-\# Copyright The OpenTelemetry Authors  
-\# SPDX-License-Identifier: Apache-2.0  
+```yaml
+# Copyright The OpenTelemetry Authors  
+# SPDX-License-Identifier: Apache-2.0  
   
-\# extra settings to be merged into OpenTelemetry Collector configuration  
-\# do not delete this file  
+# extra settings to be merged into OpenTelemetry Collector configuration  
+# do not delete this file  
   
-\## Example configuration for sending data to your own OTLP HTTP backend  
-\## Note: the spanmetrics exporter must be included in the exporters array  
-\## if overriding the traces pipeline.  
+## Example configuration for sending data to your own OTLP HTTP backend  
+## Note: the spanmetrics exporter must be included in the exporters array  
+## if overriding the traces pipeline.  
 ##  
 exporters:  
   otlphttp/dt:  
-    endpoint: "https://${DT\_ENV\_ID}.${DT\_ENV\_SUFFIX}/api/v2/otlp"  
+    endpoint: "https://${DT_ENV_ID}.${DT_ENV_SUFFIX}/api/v2/otlp"  
     headers:  
-      Authorization: "Api-Token ${DT\_TOKEN}"  
+      Authorization: "Api-Token ${DT_TOKEN}"  
   debug:  
     verbosity: detailed  
   
@@ -115,12 +120,13 @@ processors:
 service:  
   pipelines:  
     traces:  
-      exporters: \[spanmetrics, otlp, otlphttp/dt, debug\]  
+      exporters: [spanmetrics, otlp, otlphttp/dt, debug]  
     metrics:  
-      processors: \[cumulativetodelta, batch\]  
-      exporters: \[otlphttp/dt, otlphttp/prometheus, debug\]  
+      processors: [cumulativetodelta, batch]  
+      exporters: [otlphttp/dt, otlphttp/prometheus, debug]  
     logs:  
-      exporters: \[otlphttp/dt, opensearch, debug\]
+      exporters: [otlphttp/dt, opensearch, debug]
+```
 
 Note that I:
 
@@ -144,16 +150,20 @@ You might be wondering why you can’t see that file in my example repo. Two rea
 
 And with that in mind, let’s create `docker-compose.override.yml`.
 
+```bash
 touch docker-compose.override.yml
+```
 
 And then let’s populate it, like this:
 
+```yaml
 services:   
   otelcol:  
     environment:   
-      \- DT\_ENV\_ID=<your\_dynatrace\_tenant>  
-      \- DT\_TOKEN=<your\_dynatrace\_token>  
-      \- DT\_ENV\_SUFFIX=live.dynatrace.com
+      - DT_ENV_ID=<your_dynatrace_tenant>  
+      - DT_TOKEN=<your_dynatrace_token>  
+      - DT_ENV_SUFFIX=live.dynatrace.com
+```
 
 Where:
 
@@ -205,9 +215,9 @@ Screen shot of the Dynatrace Distributed Tracing UI
 
 Screen shot of the Dynatrace Logs UI
 
-![Screen shot of the Dynatrace platform’s user interface. It includes a navigation bar on the left side with links various applications. The right 3/4 of the main pane features a line graph for a metric called “app\_recommendations\_counter”. The left 1/4 of the main pane features a list of Notebooks. This notebook is called “Recommendations Counter Notebook”.](https://cdn-images-1.medium.com/max/800/1*8QQHDuHsNPhf2SceeQ7g7Q.png)
+![Screen shot of the Dynatrace platform’s user interface. It includes a navigation bar on the left side with links various applications. The right 3/4 of the main pane features a line graph for a metric called “app_recommendations_counter”. The left 1/4 of the main pane features a list of Notebooks. This notebook is called “Recommendations Counter Notebook”.](https://cdn-images-1.medium.com/max/800/1*8QQHDuHsNPhf2SceeQ7g7Q.png)
 
-Screen shot of a Notebook created for the app\_recommendations\_counter metric
+Screen shot of a Notebook created for the app_recommendations_counter metric
 
 ### Final Thoughts
 
