@@ -1,7 +1,7 @@
 ---
-title: 'Let''s Learn About the OpenTelemetry OpAMP Bridge'
+title: Let's Learn About the OpenTelemetry OpAMP Bridge
 slug: opamp-bridge-otel-collector
-description: 'Kubernetes Native OTel Collector Management at Scale'
+description: Kubernetes Native OTel Collector Management at Scale
 tags:
   - technical
   - opentelemetry
@@ -15,7 +15,7 @@ added: 2026-11-04T00:00:00.000Z
 
 If your organization uses [OpenTelemetry (OTel)](https://opentelemetry.io), chances are that you're running not one or two [OTel Collectors](https://opentelemetry.io/docs/collector/), but tens or even hundeds at once. And if you've ever had to manage that much infrastructure at scale, you know that it is quite difficult to do, unless you have good tooling available to help you.
 
-Which is why the good OTel folks developed the [OpenAgent Management Protocol (OpAMP)](https://opentelemetry.io/docs/specs/opamp/). Not only can it mangage the configuration and deployment of OTel Collectors at scale, it has the ability to manage the configuration and deployment of *any data collection agent at scale*. Translation: proprietary observability agents can be also managed by OpAMP!
+Which is why the good OTel folks developed the [OpenAgent Management Protocol (OpAMP)](https://opentelemetry.io/docs/specs/opamp/). Not only can it manage the configuration and deployment of OTel Collectors at scale, it has the ability to manage the configuration and deployment of *any data collection agent at scale*. Translation: proprietary observability agents can be also managed by OpAMP!
 
 [I've written about OpAMP before](/post/opentelemetry-opamp-for-you-and-me/), so the purpose of this post isn't to rehash OpAMP. Instead, I want to dig a little deeper into an aspect of OpAMP that I've touched upon previously: the OpAMP Bridge.
 
@@ -24,7 +24,8 @@ But before get into that, let's do a brief OpAMP refresher.
 ## OpAMP refresher
 
 OpAMP is made up on the following components:
-* **[Server](/post/opentelemetry-opamp-for-you-and-me/#opamp-server)**: Sends config updates, packages, instructions to the client. 
+
+* **[Server](/post/opentelemetry-opamp-for-you-and-me/#opamp-server)**: Sends config updates, packages, instructions to the client.
 * **[Client](/post/opentelemetry-opamp-for-you-and-me/#opamp-client)**: Reports status, applies updates, receives configs.
 * **Protocol**: Allows the client and server to communicate. Spoiler alert: the protocol is...OpAMP!
 
@@ -34,7 +35,7 @@ Any data collection agent can become an OpAMP client, as long as it implements t
 
 First, we have the **[OpAMP Extension](/post/opentelemetry-opamp-for-you-and-me/#opamp-extension)**. It turns the OTel Collector into a read-only OpAMP client. All it can do is report status to the OpAMP server. Not super useful and I doubt you'll ever use this in prod. Or non-prod.
 
-Next, we have the **[OpAMP Supservisor](/post/opentelemetry-opamp-for-you-and-me/#opamp-supervisor)**. You can think of the Supervisor as a bolt-on (or sidecar, if prefer) for your Collector, giving the Collector full [OpAMP Client capabilities](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md#agenttoservercapabilities). You configure one Supervisor per Collector.
+Next, we have the **[OpAMP Supervisor](/post/opentelemetry-opamp-for-you-and-me/#opamp-supervisor)**. You can think of the Supervisor as a bolt-on (or sidecar, if prefer) for your Collector, giving the Collector full [OpAMP Client capabilities](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md#agenttoservercapabilities). You configure one Supervisor per Collector.
 
 Finally, we have the **[OpAmp Bridge](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/operator-opamp-bridge/README.md)**, a Kubernetes-native "replacement" for the OpAMP Supervisor.
 
@@ -42,7 +43,7 @@ And here is where our journey begins.
 
 ## The OpAMP Bridge
 
-The OpAMP Supervisor requires the location of the OTel Collector binary and Collector config YAML. Which means that the ideal way to run the OpAMP Supervisor and Collector is if they're both running on bare metal or a VM. If you want to containerize this setup, you'd need to put both the Supervisor and Collector binaries in the same contaiener. Or, you can surely do some container magic with shared volumes, but honestly, that feels like too much work. Screw that.
+The OpAMP Supervisor requires the location of the OTel Collector binary and Collector config YAML. Which means that the ideal way to run the OpAMP Supervisor and Collector is if they're both running on bare metal or a VM. If you want to containerize this setup, you'd need to put both the Supervisor and Collector binaries in the same container. Or, you can surely do some container magic with shared volumes, but honestly, that feels like too much work. Screw that.
 
 So, enter the OpAMP Bridge to solve the problem of OpAMP with Collectors on Kubernetes!
 
@@ -54,13 +55,14 @@ As I noted earlier, you can think of the OpAMP Bridge as a "replacement" for the
 
 * It manages OTel Collectors in a Kubernetes-native way
 * It can be used for multiple Collectors at once, whereas the Supervisor can be used with only one Collector at a time
-* It can _only_ be used with OTel Collectors managed by the OTel Operator
+* It can *only* be used with OTel Collectors managed by the OTel Operator
 
 Okay...now that you've got a feel for what the OpAMP Bridge is all about, let's see it in action with a tutorial.
 
 ## Tutorial time!
 
 In this tutorial we will:
+
 * Create a Kubernetes cluster (I'm using [KinD](https://kind.sigs.k8s.io/))
 * Install the OpenTelemetry Operator
 * Install an OpAMP Server
@@ -72,6 +74,7 @@ You can check out the tutorial repository [here](https://github.com/avillela/opa
 I have provided all the tools that you'll need in a [dev container](/tag/devcontainers). But if dev containers aren't your jam, feel free to skip that part.
 
 If you choose to install the tools yourself, you'll need:
+
 * A Kubernetes cluster (e.g. [KinD](https://kind.sigs.k8s.io/))
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/)
 * [k9s](https://k9scli.io/) (optional)
@@ -126,20 +129,20 @@ This is an optional step, but it speeds up the Kubernetes deployment process lat
 
 ### 4- Deploy the OpAMP server
 
-Remember what I said earlier that the OpAMP server communicates with the OpAMP client via OpAMP (protocol)? There is no official OpAMP server implementation; there is only a server specification, which anyone can implement. And I mean _anyone_.
+Remember what I said earlier that the OpAMP server communicates with the OpAMP client via OpAMP (protocol)? There is no official OpAMP server implementation; there is only a server specification, which anyone can implement. And I mean *anyone*.
 
 At the time of this writing, the OpAMP servers out there are:
 
-| OpAMP Server | Author | Type | Production-ready? |
-  |--------------|--------|------|-------------------|
-  | [OpAMP Go server](https://github.com/open-telemetry/opamp-go/tree/main/internal/examples/server) | OpenTelemetry | Open source (educational example) | No |
-  | [OpAMP Elixir server](https://github.com/jaronoff97/opamp-elixir) | [Jacob Aronoff](https://github.com/jaronoff97) | Open source | No |
-  | [OpAMP Python server](https://github.com/agardnerIT/opamp-server-py) | [Adam Gardner](https://github.com/agardnerit) | Open source (vibecoded) | No |
-  | [Bindplane](https://bindplane.com) | Bindplane by Dynatrace | Commercial | Yes |
+| OpAMP Server                                                                                     | Author                                         | Type                              | Production-ready? |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------------- | --------------------------------- | ----------------- |
+| [OpAMP Go server](https://github.com/open-telemetry/opamp-go/tree/main/internal/examples/server) | OpenTelemetry                                  | Open source (educational example) | No                |
+| [OpAMP Elixir server](https://github.com/jaronoff97/opamp-elixir)                                | [Jacob Aronoff](https://github.com/jaronoff97) | Open source                       | No                |
+| [OpAMP Python server](https://github.com/agardnerIT/opamp-server-py)                             | [Adam Gardner](https://github.com/agardnerit)  | Open source (vibecoded)           | No                |
+| [Bindplane](https://bindplane.com)                                                               | Bindplane by Dynatrace                         | Commercial                        | Yes               |
 
 For the purposes of this tutorial, we don't need a "production ready" OpAMP server. Now, if you think that you can use ANY of the above servers with the OpAMP Bridge, you'd be wrong. Believe me, I fell into that trap.
 
-This is because the Bridge needs to talk to a server that can pass [OpenTelemetryCollector Custom Resources (CRs)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1) in the remote config message instead of plain OTel Collector config YAML. While the `OpenTelemetryCollector` CR includes the Collector config we all know and love, it also has a bunch of Kubernetes constructs in its YAML, because it's a Kubernetes resource. The "regular" OTel Collector config YAML is _just_ the Collector config YAML. So basically the 2 YAMLs are not the same, and whatever OpAMP Server you choose to use with the OpAMP Bridge needs to be able to speak OTel Operator YAML.
+This is because the Bridge needs to talk to a server that can pass [OpenTelemetryCollector Custom Resources (CRs)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1) in the remote config message instead of plain OTel Collector config YAML. While the `OpenTelemetryCollector` CR includes the Collector config we all know and love, it also has a bunch of Kubernetes constructs in its YAML, because it's a Kubernetes resource. The "regular" OTel Collector config YAML is *just* the Collector config YAML. So basically the 2 YAMLs are not the same, and whatever OpAMP Server you choose to use with the OpAMP Bridge needs to be able to speak OTel Operator YAML.
 
 Okay, so after all this, we're left with 2 options: the Elixir Server or Bindplane. In this example, we'll use the Elixir server. (PS: Huge thanks to Jacob, who made a bunch of updates to this server to improve the UX.)
 
@@ -150,6 +153,7 @@ Let's go ahead and deploy it:
 ```
 
 The above script will:
+
 * Create an `opamp` namespace
 * Create Kubernetes `secrets`, to be used by Postgres and the Elixir server
 * Deploy Postgres. This is used to store the configurations and configuraiton changes.
@@ -165,7 +169,6 @@ You can now access the server at: [http://localhost:4320](http://localhost:4320)
 
 ![OpAMP Elixir server main screen](/images/posts/opamp-bridge-otel-collector/opamp-elixir-server.png)
 
-
 ### 5- Deploy the OpAMP Bridge and Collectors
 
 Next we need to deploy the OpAMP Brdige and OTel Collectors managed by the Bridge:
@@ -175,6 +178,7 @@ Next we need to deploy the OpAMP Brdige and OTel Collectors managed by the Bridg
 ```
 
 The above script deploys:
+
 * [OpAMP Bridge RBAC](https://github.com/avillela/opamp-demo/blob/8a0431e4c3e4496aef6fc0859f8877b422cd4a1f/src/k8s/elixir-bridge-rbac.yaml)
 * [OpAMP Bridge](https://github.com/avillela/opamp-demo/blob/8a0431e4c3e4496aef6fc0859f8877b422cd4a1f/src/k8s/elixir-bridge.yaml)
 * Two [OTel Collectors](https://github.com/avillela/opamp-demo/blob/8a0431e4c3e4496aef6fc0859f8877b422cd4a1f/src/k8s/otel-collector.yaml)
@@ -262,6 +266,7 @@ spec:
 ```
 
 Notable items:
+
 * `serviceAccount`: references the [ServiceAccount](https://github.com/avillela/opamp-demo/blob/8a0431e4c3e4496aef6fc0859f8877b422cd4a1f/src/k8s/elixir-bridge-rbac.yaml#L1-L7) described in the [section above](/post/opamp-bridge-otel-collector/#opamp-bridge-rbac).
 * `endpoint`: The endpoint of the OpAMP server. The prefix is either `ws` for websocket or `wss` for secure websocket. The `opamp-server.opamp.svc` refers to the fully-qualified Kubernetes [service](https://kubernetes.io/docs/concepts/services-networking/service/) name of the Elixir OpAMP server. The `/v1/opamp` is the service endpoint.
 * `tls.insecure`: Set to `true` because we don't have any TLS set up. In the real world, you'd have TLS set up.
@@ -287,9 +292,10 @@ componentsAllowed:
 When we configured the OpAMP Bridge, you may have noticed that there was nothing in the configuration that indicated what Collector(s) it would manage. That's defined in the `OpenTelemetryCollector` CR, by setting a label in `metadata.labels`.
 
 There are 3 possibilities, which are mutually exclusive:
+
 * `opentelemetry.io/opamp-managed: "true"`: Let the OpAMP Bridge manage this Collector.
-* `opentelemetry.io/opamp-managed: "opamp-bridge"`: Let _only_ the OpAMP Bridge named `opamp-bridge` manage this Collector.
-* `opentelemetry.io/opamp-reporting: "true"`: Allow this Collector to _only_ report status to the OpAMP Bridge. Realistically, you'll probably never use this, because you can't do much with it.
+* `opentelemetry.io/opamp-managed: "opamp-bridge"`: Let *only* the OpAMP Bridge named `opamp-bridge` manage this Collector.
+* `opentelemetry.io/opamp-reporting: "true"`: Allow this Collector to *only* report status to the OpAMP Bridge. Realistically, you'll probably never use this, because you can't do much with it.
 
 Here's what our `OpenTelemetryCollector` CR looks like:
 
@@ -380,7 +386,6 @@ Scroll to `line 29` and change the [debug exporter](https://github.com/open-tele
 Upon success, you'll see a popup on the top right-hand corner of the page saying, `The agent applied the config`.
 
 ![Successful update of the debug exporter verbosity from detailed to basic](/images/posts/opamp-bridge-otel-collector/collector-update-debug-exporter-success.png)
-
 
 ## Final thoughts
 
