@@ -13,8 +13,6 @@ tags:
   - "2025"
 ---
 
-
-
 ![Close-up of a purple flower with yellow stamens hosting a bumblebee and a smaller insect — possibly a hoverfly — collecting nectar, highlighting active pollination.](https://cdn-images-1.medium.com/max/800/1*Vg9AOYwNMZ3es1kXAxlhjw.jpeg)
 
 A bumblebee and a smaller insect pollinating the same flower. Photo by [Adriana Villela](https://instagram.com/adrianamvillela).
@@ -31,7 +29,7 @@ I will be demonstrating this by deploying the OpenTelemetry Demo App on Kubernet
 
 Let’s do this!
 
-### Tutorial
+## Tutorial
 
 I’m a huge fan of [Development (Dev) Containers](https://containers.dev/), so I created one for running this example. While it is totally optional, I recommend it just because it gives you an environment with all of the tools you need to run the Demo App in Kubernetes.
 
@@ -52,17 +50,21 @@ Here we go!
 
 Start by cloning the repo:
 
+```bash
 git clone git@github.com:avillela/otel-demo-k8s-dt.git  
 cd otel-demo-k8s-dt
+```
 
 #### 2- Build and run the Dev Container
 
-> **_NOTE:_** If Dev Containers aren’t your jam, you can go ahead and skip this step.
+> ✨ **NOTE:** If Dev Containers aren’t your jam, you can go ahead and skip this step.
 
 Next, build and run the Dev Container.
 
-devcontainer build \--no-cache  
+```bash
+devcontainer build --no-cache  
 devcontainer open
+```
 
 The build and open steps will take a few minutes when you run them for the first time.
 
@@ -76,7 +78,7 @@ I used the original file as a start, but then made the following modifications:
 
 **1) Updated namespaces.** The original manifest deploys some resources to the `default` namespace and some to the `otel-demo` namespace. I’m personally not a fan of deploying resources to `default`, so I’ve modified the file to deploy all resources to `otel-demo`.
 
-**2) Removed Collector references from the Demo App’s Kubernetes manifest**, since I want to deploy a Collector managed by the OTel Operator. I removed any `[ServiceAccount](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L52-L61)`, `[ConfigMap](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L254-L418)`, `[ClusterRole](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L10071-L10089)`, `[ClusterRoleBinding](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L10160-L10176)`, `[Service](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L10404-L10452)`, and `[Deployment](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L11121-L11217)` having `metadata.name: otel-collector`.
+**2) Removed Collector references from the Demo App’s Kubernetes manifest**, since I want to deploy a Collector managed by the OTel Operator. I removed any [ServiceAccount](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L52-L61), [ConfigMap](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L254-L418), [ClusterRole](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L10071-L10089), [ClusterRoleBinding](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L10160-L10176), [Service](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L10404-L10452), and [Deployment](https://github.com/open-telemetry/opentelemetry-demo/blob/f1c3783304108c302f2954c16cf693e4fd53c705/kubernetes/opentelemetry-demo.yaml#L11121-L11217) having `metadata.name: otel-collector`.
 
 #### 4- Create an OpenTelemetryCollector resource
 
@@ -84,6 +86,7 @@ Since we’re replacing the OpenTelemetry Collector (and associated components) 
 
 The OTel Operator introduces a custom resource called `OpenTelemetryCollector`, which is used for managing the deployment and configuration of the OTel Collector. Here’s a snippet of what mine looks like (see full definition [here](https://github.com/avillela/otel-demo-k8s-dt/blob/main/src/k8s/otel-collector-dt.yaml)):
 
+```yaml
 apiVersion: opentelemetry.io/v1beta1  
 kind: OpenTelemetryCollector  
 metadata:  
@@ -101,6 +104,7 @@ spec:
 ...  
   config:  
 ...
+```
 
 Let’s break things down.
 
@@ -112,6 +116,7 @@ When you specify `deployment`, `statefulset`, or `daemonset` mode, a `Deployment
 
 When you specify a `sidecar` deployment mode, a Collector sidecar container is created in your application’s pod, named `otc-container`. You also have to add an annotation to your application’s `Deployment` resource, under `spec.template.metadata.annotations`:
 
+```yaml
 apiVersion: apps/v1  
 kind: Deployment   
 metadata:  
@@ -130,11 +135,12 @@ spec:
         instrumentation.opentelemetry.io/inject-python: "true"  
 spec:  
   containers:  
-    \- name: py-otel-server  
+    - name: py-otel-server  
       image: otel-python-lab:0.1.0-py-otel-server  
   ports:  
-    \- containerPort: 8082  
+    - containerPort: 8082  
       name: py-server-port
+```
 
 **2) Image name**
 
@@ -144,9 +150,9 @@ If you leave out `spec.image`, the OTel Operator will use the latest compatible 
 
 I created my own `ServiceAccount`, `ClusterRole`, and `ClusterRoleBinding` for my Operator-managed Collector, to keep them separate from the ones in the original OTel Demo manifest. I could, however, have just left the ones from the manifest. It’s really up to you.
 
-You reference the Collector’s `ServiceAccount` in the `OpenTelemetryCollector` resource’s `[spec.serviceAccount](https://github.com/avillela/otel-demo-k8s-dt/blob/535ffaea82d3cab243aa5c81c6a0031840360f7f/src/k8s/otel-collector-dt.yaml#L17)` config.
+You reference the Collector’s `ServiceAccount` in the `OpenTelemetryCollector` resource’s [spec.serviceAccount](https://github.com/avillela/otel-demo-k8s-dt/blob/535ffaea82d3cab243aa5c81c6a0031840360f7f/src/k8s/otel-collector-dt.yaml#L17) config.
 
-> ✨ NOTE: The Operator creates a default `ServiceAccount` for you named `<collector_CR_name>-collector` if you don’t specify one, but you still have to create the `ClusterRole` and `ClusterRoleBinding` for it.
+> ✨ **NOTE:** The Operator creates a default `ServiceAccount` for you named `<collector_CR_name>-collector` if you don’t specify one, but you still have to create the `ClusterRole` and `ClusterRoleBinding` for it.
 
 **4) Collector configuration**
 
@@ -158,41 +164,47 @@ You can see the full Collector config [here](https://github.com/avillela/otel-de
 
 #### 5- Set up the Collector exporter
 
-In order to export the OpenTelemetry data to Dynatrace, we need to configure the [OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) in the `[OpenTelemetryCollector](https://github.com/avillela/otel-demo-k8s-dt/blob/main/src/k8s/otel-collector-dt.yaml)` resource as follows:
+In order to export the OpenTelemetry data to Dynatrace, we need to configure the [OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) in the [OpenTelemetryCollector](https://github.com/avillela/otel-demo-k8s-dt/blob/main/src/k8s/otel-collector-dt.yaml) resource as follows:
 
+```yaml
 exporters:  
   otlphttp/dt:  
-    endpoint: "https://${DT\_ENV}/api/v2/otlp"  
+    endpoint: "https://${DT_ENV}/api/v2/otlp"  
     headers:  
-      Authorization: "Api-Token ${DT\_TOKEN}"
+      Authorization: "Api-Token ${DT_TOKEN}"
+```
 
-Note that the exporter configuration references two environment variables: `DT_TOKEN` and `DT_ENV`. Both `DT_TOKEN` and `DT_URL` are mounted as environment variables from a `[Secret](https://kubernetes.io/docs/concepts/configuration/secret/)` called `otel-collector-secret` in `[OpenTelemetryCollector](https://github.com/avillela/otel-demo-k8s-dt/blob/main/src/k8s/otel-collector-dt.yaml)`.
+Note that the exporter configuration references two environment variables: `DT_TOKEN` and `DT_ENV`. Both `DT_TOKEN` and `DT_URL` are mounted as environment variables from a [Secret](https://kubernetes.io/docs/concepts/configuration/secret/) called `otel-collector-secret` in [OpenTelemetryCollector](https://github.com/avillela/otel-demo-k8s-dt/blob/main/src/k8s/otel-collector-dt.yaml).
 
+```
 env:  
-  \- name: DT\_TOKEN  
+  - name: DT_TOKEN  
     valueFrom:  
       secretKeyRef:  
-        key: DT\_TOKEN  
+        key: DT_TOKEN  
         name: otel-collector-secret  
-  \- name: DT\_ENV  
+  - name: DT_ENV  
     valueFrom:  
       secretKeyRef:  
-        key: DT\_ENV  
+        key: DT_ENV  
         name: otel-collector-secret
+```
 
-And the `[Secret](https://kubernetes.io/docs/concepts/configuration/secret/)`? You create it like this:
+And the [Secret](https://kubernetes.io/docs/concepts/configuration/secret/)? You create it like this:
 
-tee \-a src/k8s/otel-collector-secret-dt.yaml <<EOF  
+```bash
+tee -a src/k8s/otel-collector-secret-dt.yaml <<EOF  
  apiVersion: v1  
  kind: Secret  
  metadata:  
    name: otel-collector-secret  
    namespace: opentelemetry  
  data:  
-   DT\_TOKEN: <base64-encoded-dynatrace-token>  
-   DT\_ENV: <base64-encoded-dynatrace-environment-identifier>  
+   DT_TOKEN: <base64-encoded-dynatrace-token>  
+   DT_ENV: <base64-encoded-dynatrace-environment-identifier>  
  type: "Opaque"  
 EOF
+```
 
 Where:
 
@@ -201,7 +213,9 @@ Where:
 
 You’ll need to [Base-64 encode](https://en.wikipedia.org/wiki/Base64) both `DT_TOKEN` and `DT_ENV` like this:
 
+```bash
 echo <base64-encoded-dynatrace-token> | base64
+```
 
 Or you can Base64-encode it through [this website](https://www.base64encode.org/).
 
@@ -215,71 +229,95 @@ If you don’t have a Kubernetes cluster up and running, feel free to spin one u
 
 **Option 1: Create a** [**KinD**](https://kind.sigs.k8s.io) **cluster locally:**
 
+```bash
 ./src/scripts/00-create-kind-cluster.sh
+```
 
 **Option 2: Create a GKE cluster on Google Cloud:**
 
-Make a copy of `[.env](https://github.com/avillela/otel-demo-k8s-dt/blob/main/.env)`:
+Make a copy of [.env](https://github.com/avillela/otel-demo-k8s-dt/blob/main/.env):
 
+```bash
 cp .env secrets.env
+```
 
 > **✨ NOTE:** While can use the original `.env`, if you have any sensitive info that you don’t want committed to version control, you should use `secrets.env`, as it is in `.gitignore`.
 
 Edit the following values in the `secrets.env` file (you can ignore the other stuff in that file):
 
-GCP\_PROJECT\_NAME\=<your\_gcp\_project\_name>  
+```bash
+GCP_PROJECT_NAME=<your_gcp_project_name>  
   
-\# e.g. us-east1  
-GCP\_REGION\=<your\_gcp\_region>  
+# e.g. us-east1  
+GCP_REGION=<your_gcp_region>  
   
-\# e.g. us-east1-c  
-GCP\_ZONE\=<your\_gcp\_zone>  
+# e.g. us-east1-c  
+GCP_ZONE=<your_gcp_zone>  
   
-\# e.g. e2-standard-8  
-GKE\_MACHINE\_TYPE\=<your\_gke\_machine\_type>
+# e.g. e2-standard-8  
+GKE_MACHINE_TYPE=<your_gke_machine_type>
+```
 
 Create the cluster:
 
+```bash
 ./src/scripts/00-create-gke-cluster.sh secrets.env
+```
 
 Verify that the cluster has been created:
 
+```bash
 kubectl get nodes
+```
 
 Once the cluster is up and running, you should get something like this:
 
+```text
 NAME                      STATUS   ROLES           AGE   VERSION  
 otel-demo-control-plane   Ready    control-plane   21s   v1.33.1
+```
 
 Now you’re ready to install the OpenTelemetry Operator. This will install [cert-manager](https://cert-manager.io) (Operator pre-requisite) and the OTel Operator:
 
+```bash
 ./src/scripts/02-install-otel-operator.sh
+```
 
 Make sure that cert-manager is up and running:
 
+```bash
 kubectl get pods -n cert-manager
+```
 
 Sample output:
 
+```text
 NAME                                       READY   STATUS    RESTARTS   AGE  
-cert\-manager\-7f6665fd8c\-gp8vl              1/1     Running   0          9m32s  
-cert\-manager\-cainjector\-666564dc88\-crzr9   1/1     Running   0          9m32s  
-cert\-manager\-webhook\-fd94896cd\-d6s5v       1/1     Running   0          9m32s
+cert-manager-7f6665fd8c-gp8vl              1/1     Running   0          9m32s  
+cert-manager-cainjector-666564dc88-crzr9   1/1     Running   0          9m32s  
+cert-manager-webhook-fd94896cd-d6s5v       1/1     Running   0          9m32s
+```
 
 And then make sure that the Operator is up and running:
 
-kubectl get pods -n opentelemetry-operator\-system
+```bash
+kubectl get pods -n opentelemetry-operator-system
+```
 
 Sample output:
 
+```text
 NAME                                                         READY   STATUS    RESTARTS   AGE  
-opentelemetry-operator\-controller-manager\-7dd6b7c9c9-pxwzg   2/2     Running   0          9m11s
+opentelemetry-operator-controller-manager-7dd6b7c9c9-pxwzg   2/2     Running   0          9m11s
+```
 
 #### 7- Deploy the Kubernetes manifests
 
 This will deploy the OTel Demo and the `OpenTelemetryCollector` resources:
 
+```bash
 ./src/scripts/03-deploy-resources.sh
+```
 
 The above script will:
 
@@ -306,9 +344,9 @@ Dynatrace Distributed Tracing app
 
 Dynatrace Logs app
 
-![Line chart in a Dynatrace notebook titled “Recommendations Counter Notebook,” showing the average number of application-generated recommendations (avg(app\_recommendations\_counter)) over time. The x-axis spans from 11:32 AM to 12:03 PM; the y-axis ranges from 0 to 160. Data points fluctuate to reflect changing recommendation activity.](https://cdn-images-1.medium.com/max/800/0*Illhxo-xfufvwUiT.png)
+![Line chart in a Dynatrace notebook titled “Recommendations Counter Notebook,” showing the average number of application-generated recommendations (avg(app_recommendations_counter)) over time. The x-axis spans from 11:32 AM to 12:03 PM; the y-axis ranges from 0 to 160. Data points fluctuate to reflect changing recommendation activity.](https://cdn-images-1.medium.com/max/800/0*Illhxo-xfufvwUiT.png)
 
-Dynatrace Notebook showing app\_recommendation\_counter
+Dynatrace Notebook showing app_recommendation_counter
 
 ### Final Thoughts
 
