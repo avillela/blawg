@@ -272,7 +272,7 @@ Notable items:
 * `tls.insecure`: Set to `true` because we don't have any TLS set up. In the real world, you'd have TLS set up.
 * `capabilities`: The [OpAMP Client capabilities](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md#agenttoservercapabilities) that we're giving to the OTel Collectors managed by the Bridge. Remember that the Bridge turns your OTel Operator-managed Collectors into OpAMP clients.
 
-You can also get fancy and tell the Bridge what parts of the Collector config are allowed to be updated by the OpAMP Server by adding this snippet under `spec`:
+If you want to add further restrictions, you can also add a `componentsAllowed` section under `spec`, where any configuration containing components not in the `componentsAllowed` list will be rejected by the Bridge:
 
 ```yaml
 componentsAllowed:
