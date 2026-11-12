@@ -7,6 +7,7 @@ tags:
   - technical
   - opentelemetry
   - observability
+  - otel-opamp
   - thought-leadership
   - "2025"
 ---
