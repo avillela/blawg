@@ -7,7 +7,7 @@ tags:
   - technical
   - observability
   - opentelemetry
-  - opamp
+  - otel-opamp
   - "2026"
 ---
 
@@ -39,11 +39,12 @@ The OpAMP Server manages one or more OpAMP Clients. It sends configuration updat
 
 There are a few existing OpAMP Server implementations that you can play with yourself. You can also write your own OpAMP Server, by implementing the [OpAMP protobuf specs](https://opentelemetry.io/docs/specs/opamp/). Some OpAMP Server implementations include:
 
-*   [Go OpAMP Example Server from OpenTelemetry](https://github.com/open-telemetry/opamp-go/tree/main/internal/examples/server)
-*   [Python OpAMP Server by Adam Gardner](https://github.com/agardnerIT/opamp-server-py)
-*   [Elixir OpAMP Server by Jacob Aronoff](https://github.com/jaronoff97/opamp-elixir/tree/main)
+* [Go OpAMP Example Server from OpenTelemetry](https://github.com/open-telemetry/opamp-go/tree/main/internal/examples/server)
+* [Python OpAMP Server by Adam Gardner](https://github.com/agardnerIT/opamp-server-py)
+* [Elixir OpAMP Server by Jacob Aronoff](https://github.com/jaronoff97/opamp-elixir/tree/main)
+* [Bindplane](https://bindplane.com) by Dynatrace (https://dynatrace.com)
 
-> **🚨NOTE:** The above may not be production-ready servers, so please use with caution!
+> **🚨NOTE:** With the exception of Bindplane, all other OpAMP servers are NOT production-ready, so please use with caution!
 
 ### OpAMP Client
 
