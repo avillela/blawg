@@ -113,7 +113,7 @@ In the pop-up, set the name to `opamp-bridge-test` (honestly, you can call it wh
 
 ![Bindplane Kubernetes Clusters configuration screen](/images/posts/opamp-bridge-bindplane/bindplane-config-k8s-cluster.png)
 
-This will take you to a screen for `opamp-bridge-test`. You'll notice that there's a section that says, `Cluster Not Connected`. That's because we haven't yet configured and deployed an OpAMP Bridge pointed at Bindplane (our OpAMP server). To do that, you'll first have to click on `Show Intall Instructions`.
+This will take you to a screen for `opamp-bridge-test`. You'll notice that there's a section that says, `Cluster Not Connected`. That's because we haven't yet configured and deployed an OpAMP Bridge pointed at Bindplane (our OpAMP server). To do that, you'll first have to click on `Show Install Instructions`.
 
 ![Getting ready to connect Bindplane to our Kubernetes cluster](/images/posts/opamp-bridge-bindplane/bindplane-k8s-cluster-opamp-bridge-test-config.png)
 
@@ -329,7 +329,7 @@ Notable items:
 * `serviceAccount`: references the [ServiceAccount](https://github.com/avillela/opamp-demo/blob/8a0431e4c3e4496aef6fc0859f8877b422cd4a1f/src/k8s/elixir-bridge-rbac.yaml#L1-L7) described in the [section above](/post/opamp-bridge-bindplane/#opamp-bridge-rbac).
 * `endpoint`: The endpoint of the OpAMP Server. The prefix is either `ws` for websocket or `wss` for secure websocket. We're using `wss` for Bindplane, since this a commercial, production-ready offering. The `app.bindplane.com` points to the Bindplane OpAMP Server. The `/v1/opamp` is the service endpoint.
 * `capabilities`: The [OpAMP Client capabilities](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md#agenttoservercapabilities) that we're giving to the OTel Collectors managed by the Bridge. Remember that the Bridge turns your OTel Operator-managed Collectors into OpAMP clients.
-* `headers`: Authentication headers so that we can connect to the Bindplane sever, and to make sure we're connected to the right account. They take their values from [envs](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml#L109-L118). You'll notice that `BINDPLANE_SECRET_KEY` environment variable gets its value from `secret-key`, the key for the secret that we set in [03-deploy-bindplane-bridge.sh](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/scripts/03-deploy-bindplane-bridge.sh#L17-L27).
+* `headers`: Authentication headers so that we can connect to the Bindplane server, and to make sure we're connected to the right account. They take their values from [envs](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml#L109-L118). You'll notice that `BINDPLANE_SECRET_KEY` environment variable gets its value from `secret-key`, the key for the secret that we set in [03-deploy-bindplane-bridge.sh](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/scripts/03-deploy-bindplane-bridge.sh#L17-L27).
 * `description`: Used for identification purposes, but not a must-have for deployment.
 
 > **NOTE:** If you compare this OpAMP Bridge configuration to [the one used with the Elixir server](/post/opamp-bridge-otel-collector/#opamp-bridge-rbac), you'll notice that they're quite similar, except that this one includes a `headers`, `env`, and `description` section.
@@ -438,13 +438,13 @@ Oh, and since we modified our Collector config, we should see the changes reflec
 
 ![Collector configuration file after adding exporter and receiver](/images/posts/opamp-bridge-bindplane/bindplane-collector-updated-config.png)
 
-> 💡 **NOTE:** In this example, we only added a receiver and expoerter to the logs pipeline. We can in fact add more receivers and exporters to it, along with processors. We can also configure metrics and traces pipelines, adding exporters, receivers, and processors to those.
+> 💡 **NOTE:** In this example, we only added a receiver and exporter to the logs pipeline. We can in fact add more receivers and exporters to it, along with processors. We can also configure metrics and traces pipelines, adding exporters, receivers, and processors to those.
 
 ## Final thoughts
 
 Using Bindplane as an OpAMP Server, specifically for the OpAMP Bridge was a cool experience. I'm not gonna lie. I had some help. And to that effect, I'd like to thank my co-worker and OpAMP maintainer, [Andy Keller](https://github.com/andykellr), for showing me the ropes and letting me play in his environment so that I could get the demo ready for my talk and subsequently, for this blog post.
 
-With it being a commercial product, Bindplane certainly has quite a learning curve, but it also has a lot to offer. I guess it's a balance! From what I've seen so far, it has a LOT of really cool functionality, and as the OpAMP Bridge support moves from private beta to public beta to GA, I can't wait to see it evolve.
+Bindplane has a LOT of very cool features, and the OpAMP Bridge functionality is just the tip of the iceberg. With lots of features, of course, comes a learning curve. I guess it's a balance! As OpAMP Bridge support moves from private beta to public beta to GA, I can't wait to see the product evolve.
 
 And now, I will leave you with a photo of Barbie, my hammiest of rats who loves her humans. Don't let that shy face throw you off. She loves attention. 💜
 
