@@ -14,12 +14,12 @@ added: 2026-11-12T00:00:00.000Z
 
 ![Close-up of a decorative clear glass Edison-style LED bulb mounted on a black wall sconce, glowing against a textured gray stone wall.](/images/posts/opamp-bridge-bindplane/lightbulb.jpg)
 
-
 [In my last blog post](/post/opamp-bridge-otel-collector/), I talked about the [OpAMP Bridge](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/operator-opamp-bridge/README.md), a Kubernetes-native “replacement” of sorts for the [OpAMP Supervisor](/post/opentelemetry-opamp-for-you-and-me/#opamp-supervisor), an add-on which turns the [OTel Collector](https://opentelemetry.io/docs/collector/) into a full-featured [OpAMP Client](/post/opentelemetry-opamp-for-you-and-me/#opamp-client), using [Jacob Aronoff](https://github.com/jaronoff97)'s [Elixir OpAMP server](https://github.com/jaronoff97/opamp-elixir) to demonstrate the OpAMP Bridge's capabilities.
 
 Now, if you're looking to play around with the OpAMP Bridge to understand how it works, or use it for one of your personal projects, Jacob's Elixir server is absolutely the way to go.
 
 BUT...if you're looking to use the OpAMP Bridge in a production environment, it might be tough to sell your boss on using an OpAMP Server that is a mostly solo maintainer operation. This leaves you two options:
+
 1. Write your own OpAMP Server (you'd better be ready for the "maintenance burden" of that)
 2. Use a commercial OpAMP Server
 
@@ -118,6 +118,7 @@ This will take you to a screen for `opamp-bridge-test`. You'll notice that there
 ![Getting ready to connect Bindplane to our Kubernetes cluster](/images/posts/opamp-bridge-bindplane/bindplane-k8s-cluster-opamp-bridge-test-config.png)
 
 This reveals a number of steps and instructions for configuring our Kubernetes cluster to get it ready for OpAMP and Bindplane. These steps include:
+
 * Installing cert-manager
 * Installing the OTel Operator
 * Applying the OpAMP Bridge manifest
@@ -147,9 +148,10 @@ stringData:
   secret-key: "<your-bindplane-secret-key>"
 ```
 
-Next, copy of the _value_ of `secret-key` on line 115, and paste it as the _value_ of `BINDPLANE_SECRET` in your newly-created `.env` file.
+Next, copy the _value_ of `secret-key` on line 115, and paste it as the _value_ of `BINDPLANE_SECRET` in your newly-created `.env` file.
 
 We won't be using the rest of the file that you downloaded from Bindplane, because I already have that all set up for you in [bindplane-bridge.yaml](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml) in the tutorial repository. If you compare [that file](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml) to the one you downloaded from Bindplane, they are _almost_ identical, except for the following things:
+
 1. I removed the `namespace` YAML definition
 2. I removed the `secret` YAML definition
 
@@ -186,6 +188,7 @@ opamp-bridge-test-opamp-bridge-696d9786-m5wqj   1/1     Running   0          24m
 Okay...but so what did [the above script](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml) actually do?
 
 It does the following:
+
 1. Sets up OpAMP RBAC
 2. Configures the OpAMP Bridge
 
@@ -326,7 +329,7 @@ Notable items:
 * `serviceAccount`: references the [ServiceAccount](https://github.com/avillela/opamp-demo/blob/8a0431e4c3e4496aef6fc0859f8877b422cd4a1f/src/k8s/elixir-bridge-rbac.yaml#L1-L7) described in the [section above](/post/opamp-bridge-bindplane/#opamp-bridge-rbac).
 * `endpoint`: The endpoint of the OpAMP Server. The prefix is either `ws` for websocket or `wss` for secure websocket. We're using `wss` for Bindplane, since this a commercial, production-ready offering. The `app.bindplane.com` points to the Bindplane OpAMP Server. The `/v1/opamp` is the service endpoint.
 * `capabilities`: The [OpAMP Client capabilities](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md#agenttoservercapabilities) that we're giving to the OTel Collectors managed by the Bridge. Remember that the Bridge turns your OTel Operator-managed Collectors into OpAMP clients.
-* `headers`: Authentication headers so that we can connect to the Bindplane sever and make sure we're connected to the right account. They take their values from [envs](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml#L109-L118). You'll notice that `BINDPLANE_SECRET_KEY` environment variable gets its value from `secret-key`, the key for the secret that we set in [03-deploy-bindplane-bridge.sh](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/scripts/03-deploy-bindplane-bridge.sh#L17-L27).
+* `headers`: Authentication headers so that we can connect to the Bindplane sever, and to make sure we're connected to the right account. They take their values from [envs](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/k8s/bindplane-bridge.yaml#L109-L118). You'll notice that `BINDPLANE_SECRET_KEY` environment variable gets its value from `secret-key`, the key for the secret that we set in [03-deploy-bindplane-bridge.sh](https://github.com/avillela/opamp-demo/blob/0dd4139394ac0b8592feb97972b5e665bfbec9dc/src/scripts/03-deploy-bindplane-bridge.sh#L17-L27).
 * `description`: Used for identification purposes, but not a must-have for deployment.
 
 > **NOTE:** If you compare this OpAMP Bridge configuration to [the one used with the Elixir server](/post/opamp-bridge-otel-collector/#opamp-bridge-rbac), you'll notice that they're quite similar, except that this one includes a `headers`, `env`, and `description` section.
@@ -348,13 +351,13 @@ componentsAllowed:
 
 ### 5- Deploy an OTel Collector
 
-In the previous tutorial, [we created and deployed an OpenTelemetryCollector resource "by hand"](/post/opamp-bridge-otel-collector/#opentelemetrycollector). If you're using Bindplane, however, you configure and deploy the `OpenTelemetryCollector` resource from within the Bindplane UI. Let's go ahead and do that. 
+In the previous tutorial, [we created and deployed an OpenTelemetryCollector resource "by hand"](/post/opamp-bridge-otel-collector/#opentelemetrycollector). If you're using Bindplane, however, you configure and deploy the `OpenTelemetryCollector` resource from within the Bindplane UI. Let's go ahead and do that.
 
 From the `opamp-bridge-test` configuration screen, click `Add Collector Workload`.
 
 ![Add OTel Collector in Bindplane](/images/posts/opamp-bridge-bindplane/bindplane-k8s-cluster-add-collector-workload.png)
 
-And then select a workload type. Let's pick `Kubernetes Node`. This deploys an OpenTelemetryCollector resources to your Kubernetes cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/). 
+And then select a workload type. Let's pick `Kubernetes Node`. This deploys an `OpenTelemetryCollector` resource to your Kubernetes cluster as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
 > 💡 **WHAT'S A DAEMONSET?** A `DaemonSet` ensures that Kubernetes nodes run a copy of a pod. In this case, the pod being run is a Collector pod. Whenever a node is added to a cluster, a pod is added to it. When a node is removed from a cluster, the pod is also removed. When a DaemonSet is deleted, any pods created by it are also deleted.
 
@@ -383,7 +386,7 @@ But we need to finish configuring the Collector. So click the link under the `Co
 
 ![Configure OTel Collector in Bindplane](/images/posts/opamp-bridge-bindplane/bindplane-k8s-cluster-config-collector-3.png)
 
-You an actually see the Collector's configuration by clicking `View Configuration File`:
+You can actually see the Collector's configuration by clicking `View Configuration File`:
 
 ![Configure OTel Collector in Bindplane](/images/posts/opamp-bridge-bindplane/bindplane-view-collector-config.png)
 
@@ -399,7 +402,7 @@ As you can see, it's a bare bones Collector configuration.
 > kubectl describe OpenTelemetryCollector -n bindplane $(kubectl -n bindplane get OpenTelemetryCollectors -o jsonpath='{.items[0].metadata.name}')
 > ```
 >
-> Interestingly enough, if you modify the above command by adding ` | grep Image:`, it will return the Collector's base image, `ghcr.io/dynatrace/dynatrace-bindplane-otel-collector:1.3.1`, which is a [Bindplane distribution of the OTel Collector](https://github.com/observiq/bindplane-otel-collector).
+> Interestingly enough, if you modify the above command by adding `| grep Image:`, it will return the Collector's base image, `ghcr.io/dynatrace/dynatrace-bindplane-otel-collector:1.3.1`, which is a [Bindplane distribution of the OTel Collector](https://github.com/observiq/bindplane-otel-collector).
 
 If we want to do something a little more interesting, we can set receivers and exporters for our Collector.
 
@@ -407,11 +410,11 @@ Under the `Logs` sub-section of `Pipelines`, you can set a `Source` (receiver) a
 
 ![Configure OTel Collector Logs pipeline in Bindplane](/images/posts/opamp-bridge-bindplane/bindplane-collector-config-2.png)
 
-Let's start with configuring our receiver. Click the `Source` box. Since this is a logs pipeline, Bindplane gives you a few options of log sources. Or you can configure your own (`Custom` option). Let's pick a pre-configured source: 
+Let's start with configuring our receiver. Click the `Source` box. Since this is a logs pipeline, Bindplane gives you a few options of log sources. Or you can configure your own (`Custom` option). Let's pick a pre-configured source:
 
 ![Add Kubernetes cluster logs receiver to logs pipeline in Bindplane](/images/posts/opamp-bridge-bindplane/bindplane-collector-add-logs-source.png)
 
-And then you'll be prompted to name it. Since since this receiver is pulling logs from our clusteter, let's call it `otel-opamp-demo`, the name of our cluster, and click `Done`.
+And then you'll be prompted to name it. Since this receiver is pulling logs from our cluster, let's call it `otel-opamp-demo`, the name of our cluster, and click `Done`.
 
 ![Add Kubernetes cluster logs receiver to logs pipeline in Bindplane](/images/posts/opamp-bridge-bindplane/bindplane-collector-add-logs-source-2.png)
 
@@ -435,7 +438,7 @@ Oh, and since we modified our Collector config, we should see the changes reflec
 
 ![Collector configuration file after adding exporter and receiver](/images/posts/opamp-bridge-bindplane/bindplane-collector-updated-config.png)
 
-> 💡 **NOTE:** In this example, we only added a receiver and expoerter the logs pipeline. We can in fact add more receivers and exporters to it, along with processors. We can also configure metrics and traces pipelines, adding exporters, receivers, and processors to those.
+> 💡 **NOTE:** In this example, we only added a receiver and expoerter to the logs pipeline. We can in fact add more receivers and exporters to it, along with processors. We can also configure metrics and traces pipelines, adding exporters, receivers, and processors to those.
 
 ## Final thoughts
 
@@ -446,6 +449,5 @@ With it being a commercial product, Bindplane certainly has quite a learning cur
 And now, I will leave you with a photo of Barbie, my hammiest of rats who loves her humans. Don't let that shy face throw you off. She loves attention. 💜
 
 ![White pet rat partially hidden in cupped hands, peering outward with one visible eye and pink ears against a dark fabric background.](/images/posts/opamp-bridge-bindplane/barbie-peek-a-boo.jpg)
-
 
 Until next time, peace, love, and code. 🖖💜👩‍💻
